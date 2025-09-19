@@ -30,7 +30,7 @@ const Header = () => {
           <Link href="/about">About Us</Link>
         </nav>
 
-        <nav className="md:hidden flex flex-col gap-1 absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 peer-checked:h-50 overflow-hidden" style={{transition: "200ms ease-in-out"}}>
+        <nav className="md:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 peer-checked:h-50 overflow-hidden transition-all px-4 text-center gap-2.5" >
           <Link href="/">Home</Link>
           <Link href="/collections">Collections</Link>
           <Link href="/academy">Our Academy</Link>
