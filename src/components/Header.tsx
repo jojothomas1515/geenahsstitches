@@ -16,7 +16,7 @@ const Header = () => {
         <label htmlFor="dsdj">
           <MenuIcon
             className={
-              "absolute right-4 top-4 -translate-y-2 cursor-pointer md:hidden w-10"
+              "absolute right-4 top-[50%] -translate-y-[50%] cursor-pointer md:hidden w-10"
             }
           />
         </label>
