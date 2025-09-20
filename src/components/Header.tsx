@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
@@ -20,7 +19,7 @@ const Header = () => {
             }
           />
         </label>
-        <input type="checkbox" name="" id="dsdj" hidden className="peer"/>
+        <input type="checkbox" name="" id="dsdj" className="peer hidden"/>
         <nav className="hidden lg:flex gap-5">
           <Link href="/">Home</Link>
           <Link href="/collections">Collections</Link>
