@@ -47,13 +47,13 @@ export default function Home() {
       </section>
 
       <section
-        className="appointment h-[70dvh] bg-cover bg-no-repeat bg-right-bottom"
+        className="appointment h-[70vh] bg-cover bg-no-repeat bg-right-bottom"
         style={{ backgroundImage: "url(/banner.png)" }}
       >
         <div className="h-full">
-          <div className="container m-auto h-full flex flex-col justify-center p-10 md:p-20 lg:p-30 items-center gap-10">
+          <div className="container m-auto h-full flex flex-col md:justify-center p-10 md:p-20 lg:p-30 items-center gap-10">
             <h1
-              className="text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl text-amber-100 
+              className="mt-10 md:mt-0 text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl text-amber-100 
             "
             >
               Book an appointment with us today
