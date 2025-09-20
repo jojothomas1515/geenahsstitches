@@ -16,12 +16,12 @@ const Header = () => {
         <label htmlFor="dsdj">
           <MenuIcon
             className={
-              "absolute right-4 top-[50%] -translate-y-[50%] cursor-pointer md:hidden w-10"
+              "absolute right-4 top-[50%] -translate-y-[50%] cursor-pointer lg:hidden w-10"
             }
           />
         </label>
         <input type="checkbox" name="" id="dsdj" hidden className="peer"/>
-        <nav className="hidden md:flex gap-5">
+        <nav className="hidden lg:flex gap-5">
           <Link href="/">Home</Link>
           <Link href="/collections">Collections</Link>
           <Link href="/academy">Our Academy</Link>
@@ -30,7 +30,7 @@ const Header = () => {
           <Link href="/about">About Us</Link>
         </nav>
 
-        <nav className="md:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 peer-checked:h-50 overflow-hidden transition-all px-4 text-center gap-2.5" >
+        <nav className="lg:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 peer-checked:h-50 overflow-hidden transition-all px-4 text-center gap-2.5" >
           <Link href="/">Home</Link>
           <Link href="/collections">Collections</Link>
           <Link href="/academy">Our Academy</Link>
