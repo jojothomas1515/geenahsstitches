@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import FLogo from "@/public/Geenahs-Stitches_072957-300x43.png";
-import { SiVisa } from "react-icons/si";
-import { GrMastercard, GrVisa } from "react-icons/gr";
 import {
   FaApplePay,
   FaCcDiscover,
@@ -41,7 +39,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-gray-100 border-t text-white p-5 flex justify-between">
-        <div>&copy; GEENAH'S STITCHES 2024</div>
+        <div>&copy; GEENAH&apos;S STITCHES 2024</div>
         <div className="flex gap-2 text-2xl md:text-3xl">
           <FaCcVisa />
           <FaCcMastercard />
