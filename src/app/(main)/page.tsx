@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <section
-        className="h-[calc(100vh-200px)] md:h-vh  bg-cover bg-no-repeat bg-right-bottom"
+        className="h-[calc(100dvh-200px)] md:h-dvh  bg-cover bg-no-repeat bg-right-bottom"
         style={{ backgroundImage: "url(/banner.png)" }}
       >
         <div className="h-full container">
