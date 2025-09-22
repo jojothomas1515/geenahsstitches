@@ -3,12 +3,9 @@
 import Image from "next/image";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
 import Link from "next/link";
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 const Header = () => {
-  
-
   function closeButton(ev: MouseEvent<HTMLButtonElement>) {
-
     const firstChild = ev.currentTarget.firstChild as HTMLElement;
     const mobileNav = ev.currentTarget.nextSibling as HTMLElement;
     if (firstChild.classList.contains("active")) {
@@ -22,7 +19,10 @@ const Header = () => {
 
   function closeNav(ev: MouseEvent<HTMLElement>) {
     const mobileNav = ev.currentTarget;
+    const menuButton = ev.currentTarget.previousSibling
+      ?.firstChild as HTMLElement;
     mobileNav.classList.remove("h-100");
+    menuButton.classList.remove("active");
   }
 
   return (
@@ -52,7 +52,10 @@ const Header = () => {
           <CgClose className="text-4xl hidden" /> */}
           <div className=""></div>
         </button>
-        <nav onClick={closeNav} className="lg:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 overflow-hidden transition-all px-4 text-center gap-2.5 z-10">
+        <nav
+          onClick={closeNav}
+          className="lg:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 overflow-hidden transition-all px-4 text-center gap-2.5 z-10"
+        >
           <Link href="/">Home</Link>
           <Link href="/collections">Collections</Link>
           <Link href="/academy">Our Academy</Link>
