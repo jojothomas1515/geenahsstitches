@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="bg-black">
       <div className="container m-auto flex flex-col gap-10 p-10 md:p-20 lg:p-30 md:flex-row md:items-start font-extralight">
         <div>
-          <Link href="/" className="text-center m-auto inline-block border">
+          <Link href="/" className="text-center m-auto inline-block border" aria-label="Home">
             <Image src={FLogo} alt="Geenah's Stitches" />
           </Link>
         </div>

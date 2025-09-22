@@ -18,7 +18,7 @@ export default function Home() {
             <h1 className="text-amber-100 text-4xl w-max md:text-5xl">
               Geenah’s Stitches
             </h1>
-            <p className="text-white text-center md:text-start md:w-2xl md:text-2xl">
+            <p className="text-white text-center md:text-start md:w-2xl md:text-2xl opacity-90">
               Crafting bespoke, luxury dresses with timeless elegance and
               exceptional craftsmanship since 2015.{" "}
             </p>

@@ -1,9 +1,53 @@
 @import "tailwindcss";
 
+@layer components {
+  .nav-btn {
+    div {
+      height: 2px;
+      width: 100%;
+      background-color: black;
+      position: relative;
+      transition: all 150ms ease-in-out;
+    }
+
+    div.active {
+      &::before, &::after {
+        top:0;
+        rotate: -90deg; 
+        translate: (0 50%);
+        right:0;
+        
+      }
+      &::after {
+        opacity: 0;
+      }
+      & {
+        rotate:45deg;
+      }
+    }
+
+    div::before,
+    div::after {
+      content: "";
+      height: 2px;
+      right: 0;
+      left: 0;
+      position: absolute;
+      top: -7px;
+      background-color: black;
+      transition: 150ms ease-in-out;
+    }
+
+    div::after {
+      top: +7px;
+    }
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary:#170d05;
+  --primary: #170d05;
 }
 
 @theme inline {
