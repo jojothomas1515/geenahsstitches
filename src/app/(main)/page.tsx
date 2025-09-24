@@ -6,6 +6,16 @@ import Cat3 from "@/public/IMG_R_2348-scaled.jpg";
 import Cat4 from "@/public/Snapinsta.app_465564792_18136445497367481_4508641791635045191_n_1080.jpg";
 import Cat5 from "@/public/Snapinsta.app_468807924_18138671200367481_7220958232310374237_n_1080-820x1024.jpg";
 import Cat6 from "@/public/Snapinsta.app_468936096_18138678037367481_8269139110164864126_n_1080-819x1024.jpg";
+
+const ImageCatalog = [
+  { src: Cat1, alt: "Catalog Image 1" },
+  { src: Cat2, alt: "Catalog Image 2" },
+  { src: Cat3, alt: "Catalog Image 3" },
+  { src: Cat4, alt: "Catalog Image 4" },
+  { src: Cat5, alt: "Catalog Image 5" },
+  { src: Cat6, alt: "Catalog Image 6" },
+];
+
 export default function Home() {
   return (
     <main>
@@ -34,7 +44,8 @@ export default function Home() {
       </section>
 
       <section className="mini-catalog bg-amber-100">
-        <div className="h-full">
+        <div className="h-full py-7">
+          <h1 className="text-2xl text-center">Featured</h1>
           <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-around m-auto p-10">
             <Image src={Cat1} alt="catalog image 1" />
             <Image src={Cat2} alt="catalog image 2" />
@@ -64,6 +75,19 @@ export default function Home() {
             >
               Book an Appointment
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="collection h-dvh bg-amber-100">
+        <div className="h-full p-4">
+          <div className="carousel container flex overflow-hidden scroll-auto">
+            <Image src={Cat1} alt="catalog image 1" />
+            <Image src={Cat2} alt="catalog image 2" />
+            <Image src={Cat3} alt="catalog image 3" />
+            <Image src={Cat4} alt="catalog image 4" />
+            <Image src={Cat5} alt="catalog image 5" />
+            <Image src={Cat6} alt="catalog image 6" />
           </div>
         </div>
       </section>
