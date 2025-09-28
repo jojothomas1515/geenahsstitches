@@ -80,8 +80,17 @@ export default function Home() {
       </section>
 
       <section className="collection h-dvh bg-amber-100">
-        <div className="h-full p-4">
-          <div className="carousel container flex overflow-hidden scroll-auto">
+        <div className="h-full p-4 relative">
+          <div className=" carousel h-full flex gap-2 overflow-x-auto scroll-smooth">
+            <button id="scroll-left" 
+            className="rounded-2xl font-bolder text-2xl  text-white absolute inset-y-1/2 left-5 bg-amber-950 
+            w-12 h-12 right-auto">
+              &larr;
+            </button>
+            <button id="scroll-right" 
+            className="rounded-2xl font-bolder text-2xl   text-white absolute inset-y-1/2 right-5 bg-amber-950 
+            w-12 h-12 ">
+              &rarr;</button>
             <Image src={Cat1} alt="catalog image 1" />
             <Image src={Cat2} alt="catalog image 2" />
             <Image src={Cat3} alt="catalog image 3" />
