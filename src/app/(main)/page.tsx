@@ -6,6 +6,7 @@ import Cat3 from "@/public/IMG_R_2348-scaled.jpg";
 import Cat4 from "@/public/Snapinsta.app_465564792_18136445497367481_4508641791635045191_n_1080.jpg";
 import Cat5 from "@/public/Snapinsta.app_468807924_18138671200367481_7220958232310374237_n_1080-820x1024.jpg";
 import Cat6 from "@/public/Snapinsta.app_468936096_18138678037367481_8269139110164864126_n_1080-819x1024.jpg";
+import CarouselCollection from "@/components/CarouselCollection";
 
 const ImageCatalog = [
   { src: Cat1, alt: "Catalog Image 1" },
@@ -47,12 +48,9 @@ export default function Home() {
         <div className="h-full py-7">
           <h1 className="text-2xl text-center">Featured</h1>
           <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-around m-auto p-10">
-            <Image src={Cat1} alt="catalog image 1" />
-            <Image src={Cat2} alt="catalog image 2" />
-            <Image src={Cat3} alt="catalog image 3" />
-            <Image src={Cat4} alt="catalog image 4" />
-            <Image src={Cat5} alt="catalog image 5" />
-            <Image src={Cat6} alt="catalog image 6" />
+            {ImageCatalog.map((image) => {
+              return <Image src={image.src} alt={image.alt} key={image.alt} />;
+            })}
           </div>
         </div>
       </section>
@@ -78,28 +76,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="collection h-dvh bg-amber-100">
-        <div className="h-full p-4 relative">
-          <div className=" carousel h-full flex gap-2 overflow-x-auto scroll-smooth">
-            <button id="scroll-left" 
-            className="rounded-2xl font-bolder text-2xl  text-white absolute inset-y-1/2 left-5 bg-amber-950 
-            w-12 h-12 right-auto">
-              &larr;
-            </button>
-            <button id="scroll-right" 
-            className="rounded-2xl font-bolder text-2xl   text-white absolute inset-y-1/2 right-5 bg-amber-950 
-            w-12 h-12 ">
-              &rarr;</button>
-            <Image src={Cat1} alt="catalog image 1" />
-            <Image src={Cat2} alt="catalog image 2" />
-            <Image src={Cat3} alt="catalog image 3" />
-            <Image src={Cat4} alt="catalog image 4" />
-            <Image src={Cat5} alt="catalog image 5" />
-            <Image src={Cat6} alt="catalog image 6" />
-          </div>
-        </div>
-      </section>
+      <CarouselCollection />
     </main>
   );
 }

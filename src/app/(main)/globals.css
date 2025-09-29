@@ -58,15 +58,31 @@ img {
     &::-webkit-scrollbar {
       display: none;
     }
+  
+    max-height: 100%;
+
 
 
     scroll-snap-type: x mandatory;
-    
+     width: 350px;
+     margin: auto;
+    gap:2px;
+     @media screen and (min-width:700px) {
+      width: 700px;
+     }
+     @media screen and (min-width:1050px) {
+      width: 1050px;
+     }
+    @media screen and (min-width:1400px) {
+      width: 1400px;
+    }
     img {
       scroll-snap-align: start;
       scroll-snap-stop: always;
       aspect-ratio: 1/1.5;
       object-fit: cover;
+      width: 100% !important;
+      min-width: 350px;
       }
 
   }
