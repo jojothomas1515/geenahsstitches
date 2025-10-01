@@ -12,13 +12,13 @@ const Footer = () => {
   return (
     <footer className="bg-black">
       <div className="container m-auto flex flex-col gap-10 p-10 md:p-20 lg:p-30 md:flex-row md:items-start font-extralight">
-        <div>
-          <Link href="/" className="text-center m-auto inline-block border" aria-label="Home">
+        <div className="flex justify-center">
+          <Link href="/" className="text-center m-auto inline-block w-50" aria-label="Home">
             <Image src={FLogo} alt="Geenah's Stitches" />
           </Link>
         </div>
         <div
-          className="w-full flex flex-col text-center items-center md:flex-row md:justify-around gap-10 text-white "
+          className="w-full flex flex-col text-center items-center md:flex-row md:justify-around gap-10 text-white  font-extralight"
           style={{ fontSize: "clamp(.7rem, calc(.5rem + 1vw), 1rem)" }}
         >
           <div

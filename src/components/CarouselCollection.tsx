@@ -6,7 +6,7 @@ import Cat4 from "@/public/Snapinsta.app_465564792_18136445497367481_45086417916
 import Cat5 from "@/public/Snapinsta.app_468807924_18138671200367481_7220958232310374237_n_1080-820x1024.jpg";
 import Cat6 from "@/public/Snapinsta.app_468936096_18138678037367481_8269139110164864126_n_1080-819x1024.jpg";
 import Image from "next/image";
-import { MouseEvent, useRef } from "react";
+import { MouseEvent } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const ImageCatalog = [
