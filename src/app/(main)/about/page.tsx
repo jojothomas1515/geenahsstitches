@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Image1 from "@/public/IMG_4673.jpg";
+import QuoteIcon from "@/public/quote.png";
 
 import { FaFacebookSquare, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
@@ -60,6 +61,48 @@ const About = () => {
             </p>
           </div>
         </div>
+      </section>
+      <section className="next">
+        <div className="container flex flex-col items-center md:flex-row md:justify-around">
+          <div className="p-4">
+            <Image
+              src={QuoteIcon}
+              alt="Quote icon"
+              width={20}
+              height={20}
+              className=" h-7.5 w-7.5!"
+            />
+            <p className="text-[#3e4754]">
+              {" "}
+              Fashion is the silent language of confidence, a canvas where
+              individuality meets timeless elegance.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="last">
+        <div className="container flex flex-col items-center md:justify-around m-auto gap-5 pb-4 p-4 ">
+          <p>
+            At the heart of Geenah’s Stitches is an unwavering commitment to
+            excellence. Every fabric, embellishment, and silhouette is carefully
+            curated to elevate your experience, making you feel as exceptional
+            as the dress you wear. Whether it’s an enchanting gown for a
+            red-carpet moment, a wedding dress for your most cherished day, or
+            an elegant ensemble for an unforgettable occasion, we promise to
+            bring your vision to life with unmatched finesse.
+          </p>
+          <p>
+            Step into a world where fashion meets art, and let Geenah’s Stitches
+            transform your style into an extraordinary expression of you.
+            Because at Geenah’s Stitches, we believe every woman deserves to
+            wear a dress as remarkable as she is.
+          </p>
+        </div>
+        <div className="container flex flex-col md:flex-row md:justify-between m-auto p-4 gap-3 pb-5">
+          <h2 className="font-bold text-2xl">The Philosophy</h2>
+          <p className="md:w-[70%]">Our philosophy is rooted in understanding our clients on a profound level – their desires, dreams, and distinctive style. This enables us to craft garments that not only fit perfectly but also tell a story of individuality, confidence, and grace.</p>
+        </div>
+
       </section>
     </main>
   );
