@@ -1,3 +1,4 @@
+import Link from "next/link";
 const Consultation = async () => {
   return (
     <main>
@@ -26,6 +27,56 @@ const Consultation = async () => {
             event type, and the urgency of your booking. Select the plan that
             best aligns with your vision:
           </p>
+        </div>
+      </section>
+      <section className="package">
+        <div className="container p-4 flex gap-5 justify-between m-auto">
+          <div className="consultation-card">
+           <div className="content"> <h2>STANDARD</h2>
+            <h4>Vision and project planning.</h4>
+            <hr />
+            <ul>
+              <li>Discuss your vision, preferences, and requirements.</li>
+              <li>Define the scope of the project and establish a timeline.</li>
+            </ul></div>
+            <Link href="https://paystack.shop/pay/geenahsstitches-standard-consultation">
+              ₦35000
+            </Link>
+          </div>
+          <div className="consultation-card">
+            <div className="content"><h2>PREMIUM</h2>
+            <h4>Style, fabric, and fit.</h4>
+            <hr />
+            <ul>
+              <li>
+                Personalized style assessment, recommendations, and advice.
+              </li>
+              <li>Fabric selection and a collaborative design process.</li>
+              <li>Measurements to ensure a perfect fit.</li>
+            </ul></div>
+            <Link href="https://paystack.shop/pay/geenahs-stitches-premium-consultation">
+              ₦70000
+            </Link>
+          </div>
+          <div className="consultation-card">
+            <div className="content">
+              <h2>BRIDAL CONSULTATION</h2>
+              <h4>Custom design and accessories.</h4>
+              <hr />
+              <ul>
+                <li>Discuss your vision, preferences, and requirements.</li>
+                <li>Professional sketching of your design.</li>
+                <li>Budget and timeline planning.</li>
+                <li>Collaborative design process and fabric selection.</li>
+                <li>
+                  Guidance on accessories, including veils, jewelry, and shoes.
+                </li>
+              </ul>
+            </div>
+            <Link href="https://paystack.shop/pay/geenahs-stitches-bridal-consultation">
+              ₦100000
+            </Link>
+          </div>
         </div>
       </section>
     </main>
