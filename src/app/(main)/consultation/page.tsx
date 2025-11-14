@@ -2,8 +2,8 @@ import Link from "next/link";
 const Consultation = async () => {
   return (
     <main>
-      <section className="header bg-amber-700 p-4">
-        <h1 className="md:font-bold md:text-2xl ">Book an appointment</h1>
+      <section className="header bg-black p-5">
+        <h1 className="md:font-bold md:text-2xl text-white">Book an appointment</h1>
       </section>
       <section>
         <div className="container m-auto p-4">
@@ -30,7 +30,7 @@ const Consultation = async () => {
         </div>
       </section>
       <section className="package">
-        <div className="container p-4 flex gap-5 justify-between m-auto">
+        <div className="container p-4 flex gap-5 justify-center-safe m-auto flex-wrap">
           <div className="consultation-card">
            <div className="content"> <h2>STANDARD</h2>
             <h4>Vision and project planning.</h4>
