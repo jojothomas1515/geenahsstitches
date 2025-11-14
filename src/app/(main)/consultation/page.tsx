@@ -6,7 +6,7 @@ const Consultation = async () => {
         <h1 className="md:font-bold md:text-2xl text-white">Book an appointment</h1>
       </section>
       <section>
-        <div className="container m-auto p-4 text-[#312e39]">
+        <div className="container m-auto p-4 py-8 text-[#312e39]">
           <h4 className="text-xl font-bold mb-3">Thank You for Choosing Geenah’s Stitches</h4>
           <p className="mb-3">
             We’re thrilled that you’re interested in creating magic with us! To
