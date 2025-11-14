@@ -30,7 +30,7 @@ const Consultation = async () => {
         </div>
       </section>
       <section className="package">
-        <div className="container p-4 flex gap-5 justify-center-safe m-auto flex-wrap">
+        <div className="container p-4 flex gap-5 justify-between m-auto flex-wrap">
           <div className="consultation-card">
            <div className="content"> <h2>STANDARD</h2>
             <h4>Vision and project planning.</h4>
