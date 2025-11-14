@@ -6,22 +6,22 @@ const Consultation = async () => {
         <h1 className="md:font-bold md:text-2xl text-white">Book an appointment</h1>
       </section>
       <section>
-        <div className="container m-auto p-4">
-          <h4>Thank You for Choosing Geenah’s Stitches</h4>
-          <p>
+        <div className="container m-auto p-4 text-[#312e39]">
+          <h4 className="text-xl font-bold mb-3">Thank You for Choosing Geenah’s Stitches</h4>
+          <p className="mb-3">
             We’re thrilled that you’re interested in creating magic with us! To
             ensure we bring your vision to life seamlessly, a consultation is
             required before placing an order. This allows us to discuss your
             designs, fabric choices, and measurements in detail.
           </p>
-          <p>
+          <p className="mb-3">
             If you’re unsure of the design you want, we recommend booking an
             appointment to explore ideas and create something unique together.
             However, if you already have a design in mind, simply contact us and
             provide the details so we can bring your vision to reality.
           </p>
 
-          <h4>Choose Your Consultation Type</h4>
+          <h4 className="text-xl font-bold mb-3 mt-5">Choose Your Consultation Type</h4>
           <p>
             Our consultation plans are tailored to suit your specific needs,
             event type, and the urgency of your booking. Select the plan that
