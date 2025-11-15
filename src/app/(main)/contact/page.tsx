@@ -4,6 +4,26 @@ const Contact = () => {
       <section className="header bg-black p-5">
         <h1 className="md:font-bold md:text-2xl text-white">Contact Us</h1>
       </section>
+      <section className="get-in-touch p-4">
+        <div className="container flex flex-col md:flex-row p-4 gap-4">
+          <div>
+            <h1 className="text-xl font-bold mb-3">Get In Touch</h1>
+            <p>
+              At Geenah’s Stitches, we value every connection. Whether you’re
+              looking to enroll in our academy, inquire about our bespoke
+              services, or simply learn more about what we do, we’re here to
+              assist you. Reach out today, and let’s begin your journey to
+              elegance and creativity.
+            </p>
+          </div>
+          <div className="md:w-1/2">
+            <h1 className="text-xl font-bold mb-3">Social Media</h1>
+            <ul className="social-links" aria-label="social links">
+                <li aria-label="social link"></li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <section className="location-info p-4">
         <div className="containter flex-col md:flex-row gap-4 m-auto justify-between p-4">
           <div className="flex gap-2">
@@ -81,6 +101,17 @@ const Contact = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1982.8731711671956!2d5.616427703810239!3d6.297026998649819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTcnNDkuMyJOIDXCsDM3JzAzLjQiRQ!5e0!3m2!1sen!2sng!4v1763182299621!5m2!1sen!2sng"
+          width="800"
+          height="600"
+          allowFullScreen={false}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="border-0 m-auto w-full p-4"
+        ></iframe>
       </section>
     </main>
   );
