@@ -1,3 +1,11 @@
+import {
+  BiLogoFacebookSquare,
+  BiLogoInstagram,
+  BiLogoTiktok,
+  BiLogoWhatsapp,
+} from "react-icons/bi";
+import Link from "next/link";
+
 const Contact = () => {
   return (
     <main>
@@ -18,8 +26,33 @@ const Contact = () => {
           </div>
           <div className="md:w-1/2">
             <h1 className="text-xl font-bold mb-3">Social Media</h1>
-            <ul className="social-links" aria-label="social links">
-                <li aria-label="social link"></li>
+            <ul className="social-links flex gap-1" aria-label="social links">
+              <li aria-label="social link">
+                <Link
+                  href={
+                    "https://web.facebook.com/profile.php?id=100054223071005"
+                  }
+                  target={"_blank"}
+                >
+                  <BiLogoFacebookSquare />
+                </Link>
+              </li>
+              <li aria-label="social link">
+                <Link
+                  href={"https://www.instagram.com/geenahs__stitches"}
+                  target={"_blank"}
+                >
+                  <BiLogoInstagram />
+                </Link>
+              </li>
+              <li aria-label="social link">
+                <Link
+                  href={"https://api.whatsapp.com/send/?phone=2347056730031"}
+                  target={"_blank"}
+                >
+                  <BiLogoWhatsapp />
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
