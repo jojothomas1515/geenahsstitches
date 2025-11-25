@@ -11,7 +11,7 @@ const Academy = () => {
         </h1>
       </section>
       <section className="sign p-4">
-        <div className="container m-auto h-50">
+        <div className="container m-auto h-60">
           <Image
             className={"h-full object-contain"}
             src={SignImage}
@@ -132,6 +132,56 @@ const Academy = () => {
             </div>
             <Link href="#">₦300000</Link>
           </div>
+        </div>
+      </section>
+      <section className="p-4">
+        <div className="container p-4 m-auto flex gap-3 flex-col">
+          <p>
+            The program at Geenah’s Stitches Academy is designed to cater to
+            different durations, allowing flexibility for our students.
+            Additionally, there is a one-time <strong>Registration Fee</strong>{" "}
+            of <strong>₦50,000</strong>.
+          </p>
+          <p>
+            Our programs are designed to cater to various schedules, ensuring
+            that you receive the best possible training at your own pace. With
+            experienced instructors, a well-equipped learning environment, and a
+            focus on personalized attention, we ensure that every student’s
+            journey is unique and transformative.
+          </p>
+          <p>
+            Don’t wait to start building the career you’ve always dreamed of.
+            Join Geenah’s Stitches Academy and become part of a legacy of
+            excellence in fashion education. Let’s design your future, one
+            stitch at a time.
+          </p>
+          <p>
+            Affordable student accommodation is available at an extra cost.{" "}
+            <i>T&C apply.</i>
+          </p>
+
+          <strong className="p-5">
+            <i>Certificate & Graduation on Completion</i>
+          </strong>
+
+          <h2 className="text-2xl font-bold">
+            Your Fashion Journey Starts Here
+          </h2>
+
+          <p>
+            Turn your passion for fashion into a rewarding career with Geenah’s
+            Stitches Academy. Join our upcoming batch starting February 3rd and
+            gain the skills, knowledge, and creativity needed to thrive in the
+            fashion industry. With expert guidance and hands-on experience, your
+            dream of becoming a fashion professional is just a step away.
+          </p>
+
+          <Link
+            className="btn"
+            href="https://paystack.shop/pay/geenahs-stitches-academy"
+          >
+            REGISTER NOW
+          </Link>
         </div>
       </section>
     </main>

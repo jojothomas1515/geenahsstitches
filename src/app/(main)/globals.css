@@ -138,6 +138,24 @@ img {
       }
     }
   }
+
+  .btn {
+    
+      display: block;
+
+      @apply p-4;
+      background-color: black;
+      color: white;
+      text-align: center;
+
+      transition:background-color 200ms ease-in-out;
+
+
+      &:hover {
+        background-color: #161616;
+      }
+    }
+  
 }
 
 :root {
