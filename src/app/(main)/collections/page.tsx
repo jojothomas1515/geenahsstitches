@@ -3,7 +3,6 @@ import Link from "next/link";
 import Img1 from "@/public/IMG_1022-scaled.jpg";
 import Img2 from "@/public/asoebi_1.jpg";
 import Img3 from "@/public/IMG_R_2348-scaled.jpg";
-import Bg from "@/public/banner.png";
 
 const Collection = () => {
   return (
