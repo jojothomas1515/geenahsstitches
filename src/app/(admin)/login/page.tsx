@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Admin Login",
-  description: "Admin login page for Geenah's Stitches",
+  description: "Admin login page for Geenah&apos;s Stitches",
 };
 
 export default function AdminLoginPage() {
@@ -15,7 +15,7 @@ export default function AdminLoginPage() {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
         >
-          Geenah's Stitches Admin
+          Geenah&apos;s Stitches Admin
         </a>
         <div className="w-full bg-white rounded-lg shadow-2xl md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
