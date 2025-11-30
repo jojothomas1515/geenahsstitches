@@ -53,9 +53,9 @@ const Footer = () => {
             <Link href={"/about"} className="uppercase md:w-max">
               Book an appointment
             </Link>
-            <Link href="/contact" className="uppercase md:w-max">
+            {/* <Link href="/contact" className="uppercase md:w-max">
               Our academy
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
