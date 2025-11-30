@@ -85,7 +85,7 @@ img {
   }
 
   .consultation-card {
-    @apply p-4 bg-amber-100;
+    @apply p-4 bg-white;
     position: relative;
     justify-content: space-between;
     display: flex;

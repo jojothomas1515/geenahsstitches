@@ -21,12 +21,12 @@ export default function Home() {
   return (
     <main>
       <section
-        className="h-[calc(100dvh-200px)] md:h-dvh  bg-cover bg-no-repeat bg-right-bottom"
-        style={{ backgroundImage: "url(/banner.png)" }}
+        className="h-lvh bg-no-repeat bg-cover bg-top"
+        style={{ backgroundImage: `url(${Cat1.src})` }}
       >
         <div className="h-full container">
           <div className=" flex flex-col gap-10 items-center md:items-start p-3 md:justify-center h-full ">
-            <h1 className="text-amber-100 text-4xl w-max md:text-5xl">
+            <h1 className="text-white text-4xl w-max md:text-5xl">
               Geenah’s Stitches
             </h1>
             <p className="text-white text-center md:text-start md:w-2xl md:text-2xl opacity-90">
@@ -35,7 +35,8 @@ export default function Home() {
             </p>
             <Link
               href={"/collections"}
-              className="bg-amber-100 w-max p-3 uppercase text-[var(--primary)]"
+              className="w-max p-3 uppercase text-[var(--primary)]"
+              style={{backgroundColor: "rgba(255, 255, 255, 0.2)"}}
             >
               {" "}
               View Collections
@@ -44,7 +45,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mini-catalog bg-amber-100">
+      <section className="mini-catalog bg-white">
         <div className="h-full py-7">
           <h1 className="text-2xl text-center">Featured</h1>
           <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-around m-auto p-10">
@@ -62,14 +63,14 @@ export default function Home() {
         <div className="h-full">
           <div className="container m-auto h-full flex flex-col md:justify-center p-10 md:p-20 lg:p-30 items-center gap-10">
             <h1
-              className="mt-10 md:mt-0 text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl text-amber-100 
+              className="mt-10 md:mt-0 text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl text-white 
             "
             >
               Book an appointment with us today
             </h1>
             <Link
               href="contact"
-              className="uppercase p-3 bg-amber-100 text-black hover:text-amber-100 hover:bg-amber-800 transition-colors "
+              className="uppercase p-3 bg-white text-black hover:text-white hover:bg-amber-800 transition-colors "
             >
               Book an Appointment
             </Link>

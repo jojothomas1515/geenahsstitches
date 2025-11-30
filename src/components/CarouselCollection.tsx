@@ -35,12 +35,12 @@ const CarouselCollection = () => {
       carousel.scrollBy({ left: imageItem.width + 2 });
   }
   return (
-    <section className="collection h-[80vh] bg-amber-100 border-8 border-[var(--primary)] p-2">
+    <section className="collection h-[80vh] bg-white border-8 border-[var(--primary)] p-2">
       <div className="h-full  relative border-8 border-[var(--primary)] flex align-center justify-center p-2">
         <button
           id="scroll-left"
           onClick={moveLeft}
-          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-amber-100 absolute inset-y-1/2 left-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-white absolute inset-y-1/2 left-5 bg-[var(--primary)]
             w-8 h-8 right-auto cursor-pointer"
         >
           <FaArrowLeft />
@@ -48,7 +48,7 @@ const CarouselCollection = () => {
         <button
           id="scroll-right"
           onClick={moveRight}
-          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-amber-100 absolute inset-y-1/2 right-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-white absolute inset-y-1/2 right-5 bg-[var(--primary)]
             w-8 h-8  cursor-pointer"
         >
           <FaArrowRight />

@@ -87,7 +87,7 @@ const Consultation = async () => {
           </h4>
           <h2 className="font-bold text-3xl md:text-4xl text-center" >Already Have a Design?</h2>
           <p className="text-center">If you’ve already envisioned your perfect design, we’re here to bring it to life. Simply contact us and share your design details, and we’ll ensure every detail is crafted to perfection.</p>
-          <Link href={"/contact"} className="w-max self-center bg-black text-gray-50 p-4 py-2 cursor-pointer transition-colors hover:bg-amber-100 hover:text-black">CONTACT US</Link>
+          <Link href={"/contact"} className="w-max self-center bg-black text-gray-50 p-4 py-2 cursor-pointer transition-colors hover:bg-white hover:text-black">CONTACT US</Link>
         </div>
       </section>
     </main>

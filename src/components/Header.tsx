@@ -64,7 +64,7 @@ const Header = () => {
         ref={overlayRef}
         onClick={touchOverlay}
       ></div>
-      <header className="sticky top-0 px-20 py-5 sm:py-5 sm:px-10 bg-amber-100 w-full z-10">
+      <header className="sticky top-0 px-20 py-5 sm:py-5 sm:px-10 bg-white w-full z-10">
         <div className="flex justify-center md:justify-between">
           <div className="logo-container  w-[200px]">
             <Link href={"/"}>
@@ -101,7 +101,7 @@ const Header = () => {
           <nav
             onClick={closeNav}
             ref={navRef}
-            className="lg:hidden flex flex-col absolute  top-[100%] bg-amber-100 left-0 right-0 h-0 overflow-hidden transition-all px-4 text-center gap-2.5 z-10"
+            className="lg:hidden flex flex-col absolute  top-[100%] bg-white left-0 right-0 h-0 overflow-hidden transition-all px-4 text-center gap-2.5 z-10"
           >
             {NavLinks.map((link) => {
               return (
