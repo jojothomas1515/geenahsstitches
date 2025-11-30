@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <main>
       <section
-        className="h-lvh bg-no-repeat bg-cover bg-top"
-        style={{ backgroundImage: `url(${Cat1.src})` }}
+        className="h-lvh bg-no-repeat bg-bottom sm:bg-center bg-cover"
+        style={{ backgroundImage: `url(/main.jpg)`}}
       >
         <div className="h-full container">
           <div className=" flex flex-col gap-10 items-center md:items-start p-3 md:justify-center h-full ">
@@ -35,8 +35,8 @@ export default function Home() {
             </p>
             <Link
               href={"/collections"}
-              className="w-max p-3 uppercase text-[var(--primary)]"
-              style={{backgroundColor: "rgba(255, 255, 255, 0.2)"}}
+              className="w-max p-3 uppercase text-[var(--primary)] hover:bg-white! transition-colors"
+              style={{backgroundColor: "rgba(255, 255, 255, 0.4)"}}
             >
               {" "}
               View Collections
