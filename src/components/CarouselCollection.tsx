@@ -35,8 +35,11 @@ const CarouselCollection = () => {
       carousel.scrollBy({ left: imageItem.width + 2 });
   }
   return (
-    <section className="collection h-[80vh] bg-white border-8 border-[var(--primary)] p-2">
-      <div className="h-full  relative border-8 border-[var(--primary)] flex align-center justify-center p-2">
+    <section className="collection h-[80vh] bg-white 
+    
+     p-2">
+      <div className="h-full  relative 
+       flex align-center justify-center p-2">
         <button
           id="scroll-left"
           onClick={moveLeft}
@@ -53,7 +56,7 @@ const CarouselCollection = () => {
         >
           <FaArrowRight />
         </button>
-        <div className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-[var(--primary)]">
+        <div className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-black">
           {ImageCatalog.map((image) => {
             return <Image src={image.src} alt={image.alt} key={image.alt} />;
           })}

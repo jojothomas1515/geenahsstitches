@@ -39,7 +39,7 @@ export default function Home() {
               style={{backgroundColor: "rgba(255, 255, 255, 0.4)"}}
             >
               {" "}
-              View Collections
+              Shop Now
             </Link>
           </div>
         </div>
@@ -58,19 +58,19 @@ export default function Home() {
 
       <section
         className="appointment h-[70vh] bg-cover bg-no-repeat bg-right-bottom"
-        style={{ backgroundImage: "url(/banner.png)" }}
+        // style={{ backgroundImage: "url(/banner.png)" }}
       >
         <div className="h-full">
           <div className="container m-auto h-full flex flex-col md:justify-center p-10 md:p-20 lg:p-30 items-center gap-10">
             <h1
-              className="mt-10 md:mt-0 text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl text-white 
+              className="mt-10 md:mt-0 text-center uppercase text-2xl font-bold md:text-3xl lg:text-4xl 
             "
             >
               Book an appointment with us today
             </h1>
             <Link
               href="contact"
-              className="uppercase p-3 bg-white text-black hover:text-white hover:bg-amber-800 transition-colors "
+              className="uppercase p-3 bg-black text-white hover:text-white hover:bg-gray-800 transition-colors"
             >
               Book an Appointment
             </Link>
