@@ -22,7 +22,7 @@ export default function Home() {
     <main>
       <section
         className="h-lvh bg-no-repeat bg-bottom sm:bg-center bg-cover"
-        style={{ backgroundImage: `url(/main.jpg)`}}
+        style={{ backgroundImage: `url(/main.jpg)` }}
       >
         <div className="h-full container">
           <div className=" flex flex-col gap-10 items-center md:items-start p-3 md:justify-center h-full ">
@@ -33,19 +33,41 @@ export default function Home() {
               Crafting bespoke, luxury dresses with timeless elegance and
               exceptional craftsmanship since 2015.{" "}
             </p>
-            <Link
+            {/* <Link
               href={"/collections"}
               className="w-max p-3 uppercase text-[var(--primary)] hover:bg-white! transition-colors"
-              style={{backgroundColor: "rgba(255, 255, 255, 0.4)"}}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
             >
               {" "}
               Shop Now
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
 
-      <section className="mini-catalog bg-white">
+      <section className="welcome bg-white">
+        <div className="p-10">
+          <h1 className="text-2xl text-center">
+            WELCOME TO THE WORLD OF GEENAH&apos;S STITCHES
+          </h1>
+          <h1 className="text-2xl text-center">
+            WHERE EVERY PIECE IS MADE WITH LOVE
+          </h1>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea
+            doloribus nam, nemo accusamus officiis provident voluptate corrupti
+            distinctio id, assumenda quo sunt consequuntur placeat. Quidem ea
+            labore consectetur aut veniam accusantium dolorum ab, suscipit,
+            eligendi, rerum fugit deleniti harum mollitia nihil! Accusantium
+            numquam fuga quos, voluptatibus accusamus sint expedita perspiciatis
+            repellendus ipsa maiores, neque doloribus illum nesciunt et sed. Eum
+            sequi sed omnis, similique temporibus aliquid sint explicabo
+           
+          </p>
+        </div>
+      </section>
+
+      {/* <section className="mini-catalog bg-white">
         <div className="h-full py-7">
           <h1 className="text-2xl text-center">Featured</h1>
           <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-10 justify-around m-auto p-10">
@@ -54,7 +76,7 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         className="appointment h-[70vh] bg-cover bg-no-repeat bg-right-bottom"
@@ -77,7 +99,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <CarouselCollection />
+      {/* <CarouselCollection /> */}
     </main>
   );
 }
