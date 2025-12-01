@@ -21,18 +21,18 @@ export default function Home() {
   return (
     <main>
       <section
-        className="h-lvh bg-no-repeat bg-bottom sm:bg-center bg-cover"
+        className="h-[70lvh] sm:h-lvh bg-no-repeat bg-bottom sm:bg-center bg-cover"
         style={{ backgroundImage: `url(/main.jpg)` }}
       >
         <div className="h-full container">
           <div className=" flex flex-col gap-10 items-center md:items-start p-3 md:justify-center h-full ">
-            <h1 className="text-white text-4xl w-max md:text-5xl">
+            {/* <h1 className="text-white text-4xl w-max md:text-5xl">
               Geenah’s Stitches
             </h1>
             <p className="text-white text-center md:text-start md:w-2xl md:text-2xl opacity-90">
               Crafting bespoke, luxury dresses with timeless elegance and
               exceptional craftsmanship since 2015.{" "}
-            </p>
+            </p> */}
             {/* <Link
               href={"/collections"}
               className="w-max p-3 uppercase text-[var(--primary)] hover:bg-white! transition-colors"
