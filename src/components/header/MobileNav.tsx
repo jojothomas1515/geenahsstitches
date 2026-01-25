@@ -1,42 +1,15 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const NavLinks = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Collections",
-    href: "/collections",
-  },
-  {
-    name: "Our Academy",
-    href: "/academy",
-  },
-  {
-    name: "Consultation",
-    href: "/consultation",
-  },
-  {
-    name: "Our Store",
-    href: "/store",
-  },
-  {
-    name: "Contact Us",
-    href: "/contact",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-];
-
-export default function MobileNav(): React.JSX.Element {
+export default function MobileNav({
+  NavLinks,
+}: {
+  NavLinks?: Array<{ name: string; href: string }>;
+}): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   function toggleNav() {
     setIsOpen(!isOpen);
@@ -44,12 +17,40 @@ export default function MobileNav(): React.JSX.Element {
 
   return (
     <>
-      <button
-        onClick={toggleNav}
-        className="md:hidden ml-auto rounded shadow p-2"
-      >
-        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-      </button>
+      <AnimatePresence>
+        <motion.button
+          initial={{ y: "-100%" }}
+          animate={{ y: "0%" }}
+          transition={{ duration: 0.5 }}
+          onClick={toggleNav}
+          className="md:hidden ml-auto rounded shadow p-2"
+        >
+          {isOpen ? (
+            <motion.svg
+              key={"1"}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              initial={{ y: "-50%", scaleY: 0}}
+              animate={{ y: "0%" , scaleY: 1}}
+              transition={{ duration: 0.3 }}
+              className={"h-6 w-6"}
+            >
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </motion.svg>
+          ) : (
+            <motion.svg
+              key={"2"}
+              initial={{ y: "50%", scaleY: 0 }}
+              animate={{ y: "0%", scaleY: 1 }}
+              transition={{ duration: 0.3 }}
+              className="h-6 w-6"
+            >
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </motion.svg>
+          )}
+        </motion.button>
+      </AnimatePresence>
       <AnimatePresence>
         {isOpen && (
           <motion.nav
@@ -60,13 +61,16 @@ export default function MobileNav(): React.JSX.Element {
             className="absolute bg-white w-full left-0 top-full -z-10"
           >
             <ul className="container px-4 flex gap-2 flex-col py-4 shadow">
-              {NavLinks.map((link) => {
-                return (
-                  <li key={link.href} className="" onClick={toggleNav}>
-                    <Link href={link.href} className="block p-2 py-1">{link.name}</Link>
-                  </li>
-                );
-              })}
+              {NavLinks &&
+                NavLinks.map((link) => {
+                  return (
+                    <li key={link.href} className="" onClick={toggleNav}>
+                      <Link href={link.href} className="block p-2 py-1">
+                        {link.name}
+                      </Link>
+                    </li>
+                  );
+                })}
             </ul>
           </motion.nav>
         )}

@@ -1,24 +1,21 @@
-"use client";
 
 import Image from "next/image";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
 import Link from "next/link";
-import { MouseEvent, useRef } from "react";
-import { usePathname } from "next/navigation";
 import MobileNav from "./header/MobileNav";
+import DesktopNav from "./header/DesktopNav";
 
 const NavLinks = [
-  { name: "Home", path: "/" },
-  { name: "Collections", path: "/collections" },
-  // { name: "Our Academy", path: "/academy" },
-  { name: "Consultation", path: "/consultation" },
-  { name: "Our Store", path: "/store" },
-  { name: "Contact Us", path: "/contact" },
-  { name: "About", path: "/about" },
+  { name: "Home", href: "/" },
+  { name: "Collections", href: "/collections" },
+  // { name: "Our Academy", href: "/academy" },
+  { name: "Consultation", href: "/consultation" },
+  { name: "Our Store", href: "/store" },
+  { name: "Contact Us", href: "/contact" },
+  { name: "About", href: "/about" },
 ];
 
 const Header = () => {
-  const pathName = usePathname();
 
   return (
     <>
@@ -30,24 +27,8 @@ const Header = () => {
                 <Image src={Logo} alt="Geenah's Stitches Logo" />
               </Link>
             </div>
-            {/* <nav className="hidden lg:flex gap-5">
-            {NavLinks.map((link) => {
-              return (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={
-                    pathName === link.path
-                      ? "border-b-2 border-[var(--primary)]"
-                      : "hover:border-b-2 hover:border-amber-300"
-                  }
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </nav> */}
-            <MobileNav />
+            <DesktopNav NavLinks={NavLinks} />
+            <MobileNav NavLinks={NavLinks} />
           </div>
         </div>
       </header>
