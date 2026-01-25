@@ -1,9 +1,11 @@
+"use client";
 
 import Image from "next/image";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
 import Link from "next/link";
 import MobileNav from "./header/MobileNav";
 import DesktopNav from "./header/DesktopNav";
+import { scrollInfo,scroll } from "motion";
 
 const NavLinks = [
   { name: "Home", href: "/" },
@@ -16,7 +18,8 @@ const NavLinks = [
 ];
 
 const Header = () => {
-
+  // header disappear on scroll up
+ 
   return (
     <>
       <header className="sticky top-0">
