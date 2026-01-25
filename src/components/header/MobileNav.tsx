@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function MobileNav({
@@ -14,6 +14,14 @@ export default function MobileNav({
   function toggleNav() {
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   return (
     <>
@@ -31,8 +39,8 @@ export default function MobileNav({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
-              initial={{ y: "-50%", scaleY: 0}}
-              animate={{ y: "0%" , scaleY: 1}}
+              initial={{ y: "-50%", scaleY: 0 }}
+              animate={{ y: "0%", scaleY: 1 }}
               transition={{ duration: 0.3 }}
               className={"h-6 w-6"}
             >
@@ -55,12 +63,12 @@ export default function MobileNav({
         {isOpen && (
           <motion.nav
             initial={{ y: "-100%" }}
-            animate={{ y: "0%" }}
+            animate={{ y: "0%", height: "100dvh" }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.3 }}
             className="absolute bg-white w-full left-0 top-full -z-10"
           >
-            <ul className="container px-4 flex gap-2 flex-col py-4 shadow">
+            <ul className="container px-4 flex gap-2 flex-col py-4">
               {NavLinks &&
                 NavLinks.map((link) => {
                   return (
