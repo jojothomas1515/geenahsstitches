@@ -17,11 +17,12 @@ export default function DesktopNav({
             <Link
               key={link.href}
               href={link.href}
-              className={
+              className={` relative after:w-0 after:left-0 after:h-0.5 after:content-['']  after:top-full after:absolute after:transition-all after:duration-500 hover:after:w-full ${
                 pathName === link.href
-                  ? "border-b-2 border-[var(--primary)]"
-                  : "hover:border-b-2 hover:border-amber-300"
+                  ? "after:w-full after:bg-amber-300"
+                  : " hover:after:w-full after:bg-black"
               }
+              `}
             >
               {link.name}
             </Link>

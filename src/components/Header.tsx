@@ -37,7 +37,7 @@ const Header = () => {
     }
     if (currentY - prevY >= 70 || prevY - currentY >= 70) {
       console.log("prevY", prevY);
-      console.log("currentY", currentY )
+      console.log("currentY", currentY);
       prevY = currentY;
     }
   }
@@ -54,9 +54,9 @@ const Header = () => {
       <motion.header
         // initial={{ y: "-100%", position: "fixed" }}
         animate={{
-          y: isSrolled ? "-100%" : "0%",
+          y: isSrolled ? "-110%" : "0%",
         }}
-        // transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 `}
       >
         <div className="bg-white md:bg-[rgba(255,255,255,.5)] md:backdrop-blur-xl w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10">
