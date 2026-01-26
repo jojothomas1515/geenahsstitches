@@ -68,10 +68,11 @@ export default function MobileNav({
             transition={{
               duration: 0.3,
             }}
-            className="md:hidden absolute bg-white w-full left-0 top-full -z-10"
+            className="md:hidden bg-white absolute w-full left-0 top-full -z-10"
           >
             <ul
-              className="container px-4 flex gap-2 flex-col py-4"
+              className="container px-4 flex gap-2 flex-col py-4 overflow-hidden"
+
             >
               {NavLinks &&
                 NavLinks.map((link) => {

@@ -19,9 +19,9 @@ const ImageCatalog = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="">
       <section
-        className="h-[70lvh] sm:h-lvh bg-no-repeat bg-bottom sm:bg-center bg-cover"
+        className="h-[70lvh] sm:h-[90lvh] bg-no-repeat bg-bottom sm:bg-center bg-cover "
         style={{ backgroundImage: `url(/main.jpg)` }}
       >
         <div className="h-full container">
