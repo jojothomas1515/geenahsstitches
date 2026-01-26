@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, stagger } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -65,18 +65,29 @@ export default function MobileNav({
             initial={{ y: "-100%" }}
             animate={{ y: "0%", height: "100dvh" }}
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.3 }}
-            className="absolute bg-white w-full left-0 top-full -z-10"
+            transition={{
+              duration: 0.3,
+            }}
+            className="md:hidden absolute bg-white w-full left-0 top-full -z-10"
           >
-            <ul className="container px-4 flex gap-2 flex-col py-4">
+            <ul
+              className="container px-4 flex gap-2 flex-col py-4"
+            >
               {NavLinks &&
                 NavLinks.map((link) => {
                   return (
-                    <li key={link.href} className="" onClick={toggleNav}>
+                    <motion.li
+                      initial={{ x: "-80%" }}
+                      animate={{ x: "0%" }}
+                      transition={{ duration: 0.3, delay: 0.1}}
+                      key={link.href}
+                      className=""
+                      onClick={toggleNav}
+                    >
                       <Link href={link.href} className="block p-2 py-1">
                         {link.name}
                       </Link>
-                    </li>
+                    </motion.li>
                   );
                 })}
             </ul>
