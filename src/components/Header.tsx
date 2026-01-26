@@ -20,19 +20,24 @@ const NavLinks = [
 
 const Header = () => {
   const [isSrolled, setIsSrolled] = useState(false);
+  // initial window scroll position is 0
   let prevY = 0;
 
   function handleScroll() {
+    // get the current scroll position
     const currentY = window.scrollY;
-    if (currentY > prevY) {
+
+    // check that the current scroll position is different by 100 then hide the bar
+    if (currentY - prevY >= 70) {
       setIsSrolled(true);
-    } else if (currentY < prevY){
+    }
+    // checks that we're scrolling to the top
+    else if (currentY - prevY <= -70 || currentY <= 80) {
       setIsSrolled(false);
     }
-    if (currentY - prevY > 100 || prevY - currentY > 400) {
-      console.log("prev:", prevY);
-      console.log("current:", currentY);
-      console.log("");
+    if (currentY - prevY >= 70 || prevY - currentY >= 70) {
+      console.log("prevY", prevY);
+      console.log("currentY", currentY )
       prevY = currentY;
     }
   }
