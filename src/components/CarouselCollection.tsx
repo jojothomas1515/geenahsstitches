@@ -56,7 +56,7 @@ const CarouselCollection = () => {
         >
           <FaArrowRight />
         </button>
-        <div className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-black">
+        <div className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-black overflow-y-hidden">
           {ImageCatalog.map((image) => {
             return <Image src={image.src} alt={image.alt} key={image.alt} />;
           })}

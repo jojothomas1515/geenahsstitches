@@ -57,9 +57,9 @@ const Header = () => {
           y: isSrolled ? "-110%" : "0%",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 `}
+        className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 z-10`}
       >
-        <div className="bg-white md:bg-[rgba(255,255,255,.5)] md:backdrop-blur-xl w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10">
+        <div className="bg-white md:bg-[rgba(255,255,255,.5)] md:backdrop-blur-sm w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10 md:rounded">
           <div className="flex justify-center items-center md:justify-between w-full">
             <div className="logo-container  w-[200px]">
               <Link href={"/"}>
