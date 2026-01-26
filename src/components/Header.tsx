@@ -20,13 +20,20 @@ const NavLinks = [
 
 const Header = () => {
   const [isSrolled, setIsSrolled] = useState(false);
+  let prevY = 0;
 
   function handleScroll() {
-    console.log(window.scrollY);
-    if (window.scrollY > 200) {
+    const currentY = window.scrollY;
+    if (currentY > prevY) {
       setIsSrolled(true);
-    } else {
+    } else if (currentY < prevY){
       setIsSrolled(false);
+    }
+    if (currentY - prevY > 100 || prevY - currentY > 400) {
+      console.log("prev:", prevY);
+      console.log("current:", currentY);
+      console.log("");
+      prevY = currentY;
     }
   }
 
@@ -43,7 +50,6 @@ const Header = () => {
         // initial={{ y: "-100%", position: "fixed" }}
         animate={{
           y: isSrolled ? "-100%" : "0%",
-         
         }}
         // transition={{ duration: 0.5 }}
         className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 `}
