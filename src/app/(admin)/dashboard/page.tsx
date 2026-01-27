@@ -13,11 +13,11 @@ export default function DashboardPage() {
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <div className="flex gap-4">
         <Link href="/dashboard/collections/add">
-          <button className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900">
+          <button className="bg-gray-800 text-basic px-4 py-2 rounded-lg hover:bg-gray-900">
             Add Collection
           </button>
         </Link>
-        <button className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900">
+        <button className="bg-gray-800 text-basic px-4 py-2 rounded-lg hover:bg-gray-900">
           Add Shop Item
         </button>
       </div>

@@ -19,7 +19,7 @@ const ImageCatalog = [
 
 export default function Home() {
   return (
-    <main className="bg-neutral dark:bg-neutral-dark">
+    <main className="bg-background text-basic">
       <section
         className="h-[70lvh] sm:h-[90lvh] bg-no-repeat bg-bottom sm:bg-center bg-cover "
         style={{ backgroundImage: `url(/main.jpg)` }}

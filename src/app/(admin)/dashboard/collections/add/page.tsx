@@ -19,7 +19,7 @@ export default function AddCollectionPage() {
                         type="text"
                         id="name"
                         name="name"
-                        className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                        className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-basic placeholder-gray-500 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
                         placeholder="e.g., Asoebi"
                     />
                 </div>
@@ -31,7 +31,7 @@ export default function AddCollectionPage() {
                         id="description"
                         name="description"
                         rows={3}
-                        className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
+                        className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-basic placeholder-gray-500 focus:outline-none focus:ring-amber-500 focus:border-amber-500 sm:text-sm"
                         placeholder="A brief description of the collection."
                     ></textarea>
                 </div>
@@ -49,7 +49,7 @@ export default function AddCollectionPage() {
                 <div className="flex justify-end">
                     <button
                         type="submit"
-                        className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700"
+                        className="bg-amber-600 text-basic px-4 py-2 rounded-lg hover:bg-amber-700"
                     >
                         Add Collection
                     </button>

@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <main>
       <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-white">Contact Us</h1>
+        <h1 className="md:font-bold md:text-2xl text-basic">Contact Us</h1>
       </section>
       <section className="get-in-touch p-4">
         <div className="container flex flex-col md:flex-row p-4 gap-4">

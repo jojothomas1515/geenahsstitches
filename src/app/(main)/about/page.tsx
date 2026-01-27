@@ -7,7 +7,7 @@ import { FaFacebookSquare, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
 const About = () => {
   return (
-    <main className="bg-neutral dark:bg-neutral-dark md:pt-15">
+    <main className="bg-neutral dark:bg-neutral-dark md:pt-15 text-basic">
       <section className="header">
         <div className="container flex flex-col items-center md:flex-row md:justify-around">
           <div className="flex flex-col gap-2 p-4 md:max-w-[400px] m-auto mt-2">
@@ -16,7 +16,7 @@ const About = () => {
             </div>
             <div className="info flex flex-col gap-2">
               <h1 className="text-2xl">Regina Thomas</h1>
-              <i>Fashion Designer</i>
+              <i className="text-muted">Fashion Designer</i>
               <div className="social-links flex gap-1">
                 <Link
                   href={"https://www.instagram.com/geenahs__stitches/"}
@@ -44,7 +44,7 @@ const About = () => {
           </div>
           <div className="content flex flex-col gap-4 p-4 md:w-100">
             <b>Where Elegance Meets Artistry – Welcome to Geenah’s Stitches</b>
-            <p>
+            <p className="">
               At Geenah’s Stitches, we are more than just a bespoke fashion
               house – we are storytellers weaving elegance, sophistication, and
               individuality into every stitch. Since starting our journey in
@@ -52,7 +52,7 @@ const About = () => {
               specializing in creating one-of-a-kind luxury dresses that
               transcend trends and celebrate timeless beauty.
             </p>
-            <p>
+            <p className="">
               Every garment we create is a masterpiece, meticulously designed to
               reflect the essence of the wearer’s unique personality. From the
               initial sketch to the final fitting, we pour our passion and
@@ -74,7 +74,7 @@ const About = () => {
               height={20}
               className=" h-7.5 w-7.5! dark:invert"
             />
-            <p className="text-[#3e4754] dark:text-white">
+            <p className="text-muted ">
               {" "}
               Fashion is the silent language of confidence, a canvas where
               individuality meets timeless elegance.

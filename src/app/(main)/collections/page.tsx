@@ -8,7 +8,7 @@ const Collection = () => {
   return (
     <main>
       <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-white">Collections</h1>
+        <h1 className="md:font-bold md:text-2xl text-basic">Collections</h1>
       </section>
       <section className="aseobi p-4">
         <div className="container p-4 m-auto">

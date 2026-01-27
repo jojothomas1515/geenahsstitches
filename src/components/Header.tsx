@@ -59,11 +59,11 @@ const Header = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 z-10`}
       >
-        <div className="bg-primary md:bg-primary/50  dark:bg-primary-dark md:dark:bg-primary-dark/50 md:backdrop-blur-sm w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10 md:rounded dark:text-white">
+        <div className="bg-primary md:bg-primary/50  dark:bg-primary-dark md:dark:bg-primary-dark/50 md:backdrop-blur-sm w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10 md:rounded text-basic">
           <div className="flex justify-center items-center md:justify-between w-full">
             <div className="logo-container  w-[200px]">
               <Link href={"/"}>
-                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:invert"/>
+                <Image src={Logo} alt="Geenah's Stitches Logo" className="invert-75"/>
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />

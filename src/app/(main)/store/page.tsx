@@ -2,7 +2,7 @@ const Store = () => {
   return (
     <main>
       <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-white">Store</h1>
+        <h1 className="md:font-bold md:text-2xl text-basic">Store</h1>
       </section>
     </main>
   );

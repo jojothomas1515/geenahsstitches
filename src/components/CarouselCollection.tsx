@@ -43,7 +43,7 @@ const CarouselCollection = () => {
         <button
           id="scroll-left"
           onClick={moveLeft}
-          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-white absolute inset-y-1/2 left-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 left-5 bg-[var(--primary)]
             w-8 h-8 right-auto cursor-pointer"
         >
           <FaArrowLeft />
@@ -51,7 +51,7 @@ const CarouselCollection = () => {
         <button
           id="scroll-right"
           onClick={moveRight}
-          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-white absolute inset-y-1/2 right-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 right-5 bg-[var(--primary)]
             w-8 h-8  cursor-pointer"
         >
           <FaArrowRight />

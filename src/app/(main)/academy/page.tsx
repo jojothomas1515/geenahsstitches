@@ -6,7 +6,7 @@ const Academy = () => {
   return (
     <main>
       <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-white">
+        <h1 className="md:font-bold md:text-2xl text-basic">
           Welcome to Geenah’s Stitches Academy – Where Fashion Futures Begin
         </h1>
       </section>

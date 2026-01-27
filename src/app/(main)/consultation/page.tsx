@@ -3,7 +3,7 @@ const Consultation = async () => {
   return (
     <main>
       <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-white">Book an appointment</h1>
+        <h1 className="md:font-bold md:text-2xl text-basic">Book an appointment</h1>
       </section>
       <section>
         <div className="container m-auto p-4 py-8 text-[#312e39]">
