@@ -7,7 +7,7 @@ import { FaFacebookSquare, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
 const About = () => {
   return (
-    <main>
+    <main className="bg-neutral dark:bg-neutral-dark md:pt-15">
       <section className="header">
         <div className="container flex flex-col items-center md:flex-row md:justify-around">
           <div className="flex flex-col gap-2 p-4 md:max-w-[400px] m-auto mt-2">
@@ -63,16 +63,18 @@ const About = () => {
         </div>
       </section>
       <section className="next">
-        <div className="container flex flex-col items-center md:flex-row md:justify-around">
-          <div className="p-4">
+        <div className="container flex flex-col  items-center md:flex-row md:justify-center w-full m-auto ">
+          <div
+            className={`p-4 shadow-md bg-secondary dark:bg-secondary-dark/80 rounded backdrop-blur-sm `}
+          >
             <Image
               src={QuoteIcon}
               alt="Quote icon"
               width={20}
               height={20}
-              className=" h-7.5 w-7.5!"
+              className=" h-7.5 w-7.5! dark:invert"
             />
-            <p className="text-[#3e4754]">
+            <p className="text-[#3e4754] dark:text-white">
               {" "}
               Fashion is the silent language of confidence, a canvas where
               individuality meets timeless elegance.
@@ -100,9 +102,13 @@ const About = () => {
         </div>
         <div className="container flex flex-col md:flex-row md:justify-between m-auto p-4 gap-3 pb-5">
           <h2 className="font-bold text-2xl">The Philosophy</h2>
-          <p className="md:w-[70%]">Our philosophy is rooted in understanding our clients on a profound level – their desires, dreams, and distinctive style. This enables us to craft garments that not only fit perfectly but also tell a story of individuality, confidence, and grace.</p>
+          <p className="md:w-[70%]">
+            Our philosophy is rooted in understanding our clients on a profound
+            level – their desires, dreams, and distinctive style. This enables
+            us to craft garments that not only fit perfectly but also tell a
+            story of individuality, confidence, and grace.
+          </p>
         </div>
-
       </section>
     </main>
   );

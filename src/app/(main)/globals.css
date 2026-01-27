@@ -12,26 +12,24 @@ img {
 }
 
 @layer components {
-.after-before-bar {
-  &::after, &::before {
-    content: "";
-    position:absolute;
-    top: 120%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    @apply bg-gray-600 rounded;
+  .after-before-bar {
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: 120%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      @apply bg-gray-200 dark:bg-black rounded;
+    }
 
+    &::before {
+      width: 30%;
+      @apply bg-black dark:bg-white rounded;
+      z-index: 1;
+    }
   }
-
-  &::before {
-    width:30%;
-    @apply bg-gray-50 rounded;
-    z-index: 1;
-  }
-
-  
-}
   .carousel {
     &::-webkit-scrollbar {
       display: none;
@@ -80,7 +78,7 @@ img {
     .content {
       display: flex;
       flex-direction: column;
-      gap:.5rem;
+      gap: 0.5rem;
     }
 
     h2 {
@@ -95,8 +93,8 @@ img {
       list-style-type: disc;
       @apply p-4;
       li {
-        font-size: .9rem;
-        color:#171717
+        font-size: 0.9rem;
+        color: #171717;
       }
     }
 
@@ -108,8 +106,7 @@ img {
       color: white;
       text-align: center;
 
-      transition:background-color 200ms ease-in-out;
-
+      transition: background-color 200ms ease-in-out;
 
       &:hover {
         background-color: #161616;
@@ -118,22 +115,19 @@ img {
   }
 
   .btn {
-    
-      display: block;
+    display: block;
 
-      @apply p-4;
-      background-color: black;
-      color: white;
-      text-align: center;
+    @apply p-4;
+    background-color: black;
+    color: white;
+    text-align: center;
 
-      transition:background-color 200ms ease-in-out;
+    transition: background-color 200ms ease-in-out;
 
-
-      &:hover {
-        background-color: #161616;
-      }
+    &:hover {
+      background-color: #161616;
     }
-  
+  }
 }
 
 :root {
@@ -142,9 +136,16 @@ img {
   --primary: #170d05;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  --color-primary: #f6f5f2;
+  --color-secondary: #f6f5f2;
+  --color-accent: #f3d0d7;
+  --color-neutral: #ffefef;
+  --color-primary-dark: #49243e;
+  --color-secondary-dark: #704264;
+  --color-accent-dark: #bb8493;
+  --color-neutral-dark: #dbafa0;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

@@ -19,7 +19,7 @@ const ImageCatalog = [
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="bg-neutral dark:bg-neutral-dark">
       <section
         className="h-[70lvh] sm:h-[90lvh] bg-no-repeat bg-bottom sm:bg-center bg-cover "
         style={{ backgroundImage: `url(/main.jpg)` }}
@@ -27,7 +27,7 @@ export default function Home() {
         <div className="h-full container"></div>
       </section>
 
-      <section className="welcome bg-white">
+      <section className="welcome bg-neutral dark:bg-neutral-dark">
         <div className="p-10">
           <h1 className="text-2xl text-center">
             WELCOME TO THE WORLD OF GEENAH&apos;S STITCHES
