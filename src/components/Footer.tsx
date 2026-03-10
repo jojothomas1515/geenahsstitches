@@ -21,15 +21,15 @@ const Footer = () => {
           <div className="flex flex-col gap-2  ">
             <div>
               <strong>Address:</strong>
-              <span> {process.env.ADDRESS ? process.env.ADDRESS : ""}</span>
+              <span> {process.env.NEXT_PUBLIC_ADDRESS ? process.env.NEXT_PUBLIC_ADDRESS : ""}</span>
             </div>
             <div>
               <strong>Phone:</strong>
-              <span> {process.env.PHONE ? process.env.PHONE : ""}</span>
+              <span> {process.env.NEXT_PUBLIC_PHONE ? process.env.NEXT_PUBLIC_PHONE : ""}</span>
             </div>
             <div>
               <strong>Email:</strong>
-              <span> {process.env.EMAIL ? process.env.EMAIL : ""}</span>
+              <span> {process.env.NEXT_PUBLIC_EMAIL ? process.env.NEXT_PUBLIC_EMAIL : ""}</span>
             </div>
             <div
               aria-describedby="Opening Time Container"
@@ -43,21 +43,21 @@ const Footer = () => {
             <div className="social-links flex flex-row gap-2 text-2xl">
               <Link
                 href={
-                  process.env.FACEBOOK_LINK ? process.env.FACEBOOK_LINK : "#"
+                  process.env.NEXT_PUBLIC_FACEBOOK_LINK ? process.env.NEXT_PUBLIC_FACEBOOK_LINK : "#"
                 }
               >
                 <FaFacebook />
               </Link>
               <Link
                 href={
-                  process.env.INSTAGRAM_LINK ? process.env.INSTAGRAM_LINK : "#"
+                  process.env.NEXT_PUBLIC_INSTAGRAM_LINK ? process.env.NEXT_PUBLIC_INSTAGRAM_LINK : "#"
                 }
               >
                 <FaInstagram />
               </Link>
 
               <Link
-                href={process.env.TIKTOK_LINK ? process.env.TIKTOK_LINK : "#"}
+                href={process.env.NEXT_PUBLIC_TIKTOK_LINK ? process.env.NEXT_PUBLIC_TIKTOK_LINK : "#"}
               >
                 <FaTiktok />
               </Link>
