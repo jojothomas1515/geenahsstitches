@@ -507,10 +507,6 @@ export type ProductUpdatecategoryInput = {
   push?: string | string[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type ProductCreateWithoutOrderItemsInput = {
   id?: string
   name: string

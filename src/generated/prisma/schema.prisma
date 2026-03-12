@@ -1,0 +1,200 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+enum Role {
+  ADMIN
+  STAFF
+  USER
+}
+
+enum AddressType {
+  BILLING
+  SHIPPING
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String       @id @default(uuid())
+  name        String       @db.VarChar
+  email       String       @unique @db.VarChar
+  phone       String       @unique @db.VarChar
+  role        Role         @default(USER)
+  creditCards CreditCard[]
+  addresses   Address[]
+  orders      Order[]
+  cart        Cart?
+  cartId      String       @unique
+
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Address {
+  id          String      @id @default(uuid())
+  addressType AddressType
+  street      String      @db.VarChar
+  city        String      @db.VarChar
+  state       String      @db.VarChar
+  zipCode     String      @db.VarChar
+  country     String      @db.VarChar
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String
+
+  @@index([userId])
+  @@map("addresses")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  orderStatus OrderStatus @default(PENDING)
+  orderDate   DateTime    @default(now())
+  totalAmount Int
+  orderItems  OrderItem[]
+
+  // paymentMethod PaymentMethod @default(CREDIT_CARD)
+  // paymentStatus PaymentStatus @default(PENDING)
+  @@index([userId])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  discount  Int     @default(0)
+  price     Int
+
+  @@index([orderId])
+  @@map("orderItems")
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cartItems CartItem[]
+
+  @@index([userId])
+  @@map("carts")
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  cartId    String
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+
+  @@index([productId, cartId])
+  @@map("cartItems")
+}
+
+model CreditCard {
+  id         String @id @default(uuid())
+  cardNumber String
+  cardHolder String
+  expiryDate String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  @@index([userId])
+  @@map("creditCards")
+}
+
+model Product {
+  id          String      @id @default(uuid())
+  name        String      @db.VarChar
+  price       Int
+  discount    Int         @default(0)
+  image       String      @db.VarChar
+  category    String[]    @db.VarChar
+  description String      @db.Text
+  quantity    Int
+  cartId      String?
+  orderItems  OrderItem[]
+  cartItems   CartItem[]
+
+  @@index([cartId, id])
+  @@map("products")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}

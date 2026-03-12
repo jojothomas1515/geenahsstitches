@@ -1,9 +1,14 @@
-import React from 'react';
+"use client"
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/public/geenah_stitches_logo_no_bg.png';
+import { login } from '@/actions/auth.actions';
+import { useActionState } from 'react';
+
 
 export default function LoginPage() {
+    const [state, formAction] = useActionState(login, { error: null });
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-background-dark p-4 sm:p-8 font-sans">
             <div className="w-full max-w-md bg-background-light rounded-2xl shadow-2xl overflow-hidden border border-background-dark transition-all">
@@ -25,7 +30,7 @@ export default function LoginPage() {
 
                 {/* Form Block in light background */}
                 <div className="px-8 py-8 space-y-5 bg-background">
-                    <form className="space-y-5">
+                    <form className="space-y-5" action={formAction}>
                         <div>
                             <label
                                 htmlFor="email"
@@ -41,6 +46,7 @@ export default function LoginPage() {
                                 required
                             />
                         </div>
+
 
                         <div>
                             <div className="flex items-center justify-between mb-1.5 px-1">
@@ -62,6 +68,7 @@ export default function LoginPage() {
                                 required
                             />
                         </div>
+
 
                         <div className="flex items-center pt-2 pl-1">
                             <input

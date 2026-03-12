@@ -3,6 +3,14 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
 
 enum Role {
   ADMIN
@@ -23,21 +31,11 @@ enum OrderStatus {
   CANCELLED
 }
 
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
-}
-
 model User {
   id          String       @id @default(uuid())
-  name        String       @db.VarChar()
-  email       String       @unique @db.VarChar()
-  phone       String       @unique @db.VarChar()
-  password    String       @db.VarChar()
+  name        String       @db.VarChar
+  email       String       @unique @db.VarChar
+  phone       String       @unique @db.VarChar
   role        Role         @default(USER)
   creditCards CreditCard[]
   addresses   Address[]
@@ -45,20 +43,29 @@ model User {
   cart        Cart?
   cartId      String       @unique
 
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  @@index([email])
   @@map("users")
 }
 
 model Address {
   id          String      @id @default(uuid())
   addressType AddressType
-  street      String      @db.VarChar()
-  city        String      @db.VarChar()
-  state       String      @db.VarChar()
-  zipCode     String      @db.VarChar()
-  country     String      @db.VarChar()
+  street      String      @db.VarChar
+  city        String      @db.VarChar
+  state       String      @db.VarChar
+  zipCode     String      @db.VarChar
+  country     String      @db.VarChar
   user        User        @relation(fields: [userId], references: [id])
   userId      String
 
+  @@index([userId])
   @@map("addresses")
 }
 
@@ -73,6 +80,7 @@ model Order {
 
   // paymentMethod PaymentMethod @default(CREDIT_CARD)
   // paymentStatus PaymentStatus @default(PENDING)
+  @@index([userId])
   @@map("orders")
 }
 
@@ -86,6 +94,7 @@ model OrderItem {
   discount  Int     @default(0)
   price     Int
 
+  @@index([orderId])
   @@map("orderItems")
 }
 
@@ -95,6 +104,7 @@ model Cart {
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   cartItems CartItem[]
 
+  @@index([userId])
   @@map("carts")
 }
 
@@ -106,6 +116,7 @@ model CartItem {
   product   Product @relation(fields: [productId], references: [id])
   quantity  Int
 
+  @@index([productId, cartId])
   @@map("cartItems")
 }
 
@@ -118,21 +129,71 @@ model CreditCard {
   user   User   @relation(fields: [userId], references: [id])
   userId String
 
+  @@index([userId])
   @@map("creditCards")
 }
 
 model Product {
   id          String      @id @default(uuid())
-  name        String      @db.VarChar()
+  name        String      @db.VarChar
   price       Int
   discount    Int         @default(0)
-  image       String      @db.VarChar()
-  category    String[]    @db.VarChar()
-  description String      @db.Text()
+  image       String      @db.VarChar
+  category    String[]    @db.VarChar
+  description String      @db.Text
   quantity    Int
   cartId      String?
   orderItems  OrderItem[]
   cartItems   CartItem[]
 
+  @@index([cartId, id])
   @@map("products")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
 }
