@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@/generated/prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 
 
-const connectionString = process.env.NODE_ENV === "production" ? `${process.env.DATABASE_URL}` : `${process.env.DATABASE_DEV_URL}`
+const connectionString = `${process.env.DATABASE_URL}`
 const adapter = new PrismaPg({ connectionString })
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 

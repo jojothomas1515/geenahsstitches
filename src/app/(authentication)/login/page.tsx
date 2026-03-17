@@ -5,9 +5,13 @@ import Logo from '@/public/geenah_stitches_logo_no_bg.png';
 import { login } from '@/actions/auth.actions';
 import { useActionState } from 'react';
 
+const initialState: { error: string | null } = {
+    error: null,
+}
+
 
 export default function LoginPage() {
-    const [state, formAction] = useActionState(login, { error: null });
+    const [state, formAction] = useActionState(login, initialState);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-background-dark p-4 sm:p-8 font-sans">

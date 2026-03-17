@@ -6,6 +6,19 @@ export const auth = betterAuth({
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),
+    databaseHooks: {
+        user: {
+            create: {
+                after: async (user) => {
+                    await prisma.cart.create({
+                        data: {
+                            userId: user.id,
+                        }
+                    })
+                }
+            }
+        }
+    },
     emailAndPassword: {
         enabled: true,
     },
@@ -17,7 +30,13 @@ export const auth = betterAuth({
                 defaultValue: "USER",
                 input: false,
             },
+            phone: {
+                type: "string",
+                required: true,
+                input: true,
+            },
         }
     }
 
 });
+

@@ -9,6 +9,6 @@ export default defineConfig({
 
   },
   datasource: {
-    url: env("NODE_ENV") === "production" ? env("DATABASE_URL") : env("DATABASE_DEV_URL"),
+    url: env("DATABASE_URL"),
   },
 });

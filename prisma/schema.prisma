@@ -4,7 +4,9 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
-  provider = "prisma-client"
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  importFileExtension = ""
 }
 
 datasource db {
@@ -31,19 +33,19 @@ enum OrderStatus {
 }
 
 model User {
-  id          String       @id @default(uuid())
-  name        String       @db.VarChar
-  email       String       @unique @db.VarChar
-  phone       String       @unique @db.VarChar
+  id          String       @id @default(uuid()) @db.VarChar(255)
+  name        String       @db.VarChar(255)
+  email       String       @unique @db.VarChar(255)
+  phone       String       @unique @db.VarChar(255)
   role        Role         @default(USER)
   creditCards CreditCard[]
   addresses   Address[]
   orders      Order[]
   cart        Cart?
-  cartId      String       @unique
+  cartId      String?      @unique @db.VarChar(255)
 
   emailVerified Boolean   @default(false)
-  image         String?
+  image         String?   @db.VarChar(255)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
@@ -54,23 +56,23 @@ model User {
 }
 
 model Address {
-  id          String      @id @default(uuid())
+  id          String      @id @default(uuid()) @db.VarChar(255)
   addressType AddressType
-  street      String      @db.VarChar
-  city        String      @db.VarChar
-  state       String      @db.VarChar
-  zipCode     String      @db.VarChar
-  country     String      @db.VarChar
+  street      String      @db.VarChar(255)
+  city        String      @db.VarChar(255)
+  state       String      @db.VarChar(255)
+  zipCode     String      @db.VarChar(255)
+  country     String      @db.VarChar(255)
   user        User        @relation(fields: [userId], references: [id])
-  userId      String
+  userId      String      @db.VarChar(255)
 
   @@index([userId])
   @@map("addresses")
 }
 
 model Order {
-  id          String      @id @default(uuid())
-  userId      String
+  id          String      @id @default(uuid()) @db.VarChar(255)
+  userId      String      @db.VarChar(255)
   user        User        @relation(fields: [userId], references: [id])
   orderStatus OrderStatus @default(PENDING)
   orderDate   DateTime    @default(now())
@@ -84,10 +86,10 @@ model Order {
 }
 
 model OrderItem {
-  id        String  @id @default(uuid())
-  orderId   String
+  id        String  @id @default(uuid()) @db.VarChar(255)
+  orderId   String  @db.VarChar(255)
   order     Order   @relation(fields: [orderId], references: [id])
-  productId String
+  productId String  @db.VarChar(255)
   product   Product @relation(fields: [productId], references: [id])
   quantity  Int
   discount  Int     @default(0)
@@ -98,8 +100,8 @@ model OrderItem {
 }
 
 model Cart {
-  id        String     @id @default(uuid())
-  userId    String     @unique
+  id        String     @id @default(uuid()) @db.VarChar(255)
+  userId    String     @unique @db.VarChar(255)
   user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   cartItems CartItem[]
 
@@ -108,10 +110,10 @@ model Cart {
 }
 
 model CartItem {
-  id        String  @id @default(uuid())
-  cartId    String
+  id        String  @id @default(uuid()) @db.VarChar(255)
+  cartId    String  @db.VarChar(255)
   cart      Cart    @relation(fields: [cartId], references: [id])
-  productId String
+  productId String  @db.VarChar(255)
   product   Product @relation(fields: [productId], references: [id])
   quantity  Int
 
@@ -120,28 +122,28 @@ model CartItem {
 }
 
 model CreditCard {
-  id         String @id @default(uuid())
-  cardNumber String
-  cardHolder String
-  expiryDate String
+  id         String @id @default(uuid()) @db.VarChar(255)
+  cardNumber String @db.VarChar(255)
+  cardHolder String @db.VarChar(255)
+  expiryDate String @db.VarChar(255)
 
   user   User   @relation(fields: [userId], references: [id])
-  userId String
+  userId String @db.VarChar(255)
 
   @@index([userId])
   @@map("creditCards")
 }
 
 model Product {
-  id          String      @id @default(uuid())
-  name        String      @db.VarChar
+  id          String      @id @default(uuid()) @db.VarChar(255)
+  name        String      @db.VarChar(255)
   price       Int
   discount    Int         @default(0)
-  image       String      @db.VarChar
-  category    String[]    @db.VarChar
+  image       String      @db.VarChar(255)
+  category    String[]    @db.VarChar(255)
   description String      @db.Text
   quantity    Int
-  cartId      String?
+  cartId      String?     @db.VarChar(255)
   orderItems  OrderItem[]
   cartItems   CartItem[]
 
@@ -150,14 +152,14 @@ model Product {
 }
 
 model Session {
-  id        String   @id
+  id        String   @id @db.VarChar(255)
   expiresAt DateTime
-  token     String
+  token     String   @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  ipAddress String?
-  userAgent String?
-  userId    String
+  ipAddress String?  @db.VarChar(255)
+  userAgent String?  @db.VarChar(255)
+  userId    String   @db.VarChar(255)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([token])
@@ -166,18 +168,18 @@ model Session {
 }
 
 model Account {
-  id                    String    @id
-  accountId             String
-  providerId            String
-  userId                String
+  id                    String    @id @db.VarChar(255)
+  accountId             String    @db.VarChar(255)
+  providerId            String    @db.VarChar(255)
+  userId                String    @db.VarChar(255)
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken           String?
-  refreshToken          String?
-  idToken               String?
+  accessToken           String?   @db.VarChar(255)
+  refreshToken          String?   @db.VarChar(255)
+  idToken               String?   @db.VarChar(255)
   accessTokenExpiresAt  DateTime?
   refreshTokenExpiresAt DateTime?
-  scope                 String?
-  password              String?
+  scope                 String?   @db.VarChar(255)
+  password              String?   @db.VarChar(255)
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 
@@ -186,9 +188,9 @@ model Account {
 }
 
 model Verification {
-  id         String   @id
-  identifier String
-  value      String
+  id         String   @id @db.VarChar(255)
+  identifier String   @db.VarChar(255)
+  value      String   @db.VarChar(255)
   expiresAt  DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
