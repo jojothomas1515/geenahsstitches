@@ -6,7 +6,7 @@ import Cat3 from "@/public/IMG_R_2348-scaled.jpg";
 import Cat4 from "@/public/Snapinsta.app_465564792_18136445497367481_4508641791635045191_n_1080.jpg";
 import Cat5 from "@/public/Snapinsta.app_468807924_18138671200367481_7220958232310374237_n_1080-820x1024.jpg";
 import Cat6 from "@/public/Snapinsta.app_468936096_18138678037367481_8269139110164864126_n_1080-819x1024.jpg";
-import CarouselCollection from "@/components/CarouselCollection";
+import CarouselCollection from "@/components/main/CarouselCollection";
 
 const ImageCatalog = [
   { src: Cat1, alt: "Catalog Image 1" },
@@ -35,11 +35,11 @@ export default function Home() {
           <h1 className="text-2xl text-center">
             WHERE EVERY PIECE IS MADE WITH LOVE
           </h1>
-         
+
         </div>
       </section>
 
-    
+
     </main>
   );
 }

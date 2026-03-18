@@ -1,7 +1,7 @@
 export default async function AdminDashboardPage() {
     return (
-        <div>
+        <main className="w-full h-full p-10">
             <h1>Admin Dashboard</h1>
-        </div>
+        </main>
     );
 }
