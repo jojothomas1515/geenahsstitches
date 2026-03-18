@@ -45,6 +45,7 @@ export default function LoginPage() {
                             <input
                                 id="email"
                                 type="email"
+                                name="email"
                                 className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                                 placeholder="name@example.com"
                                 required
@@ -67,6 +68,7 @@ export default function LoginPage() {
                             <input
                                 id="password"
                                 type="password"
+                                name="password"
                                 className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 required
@@ -78,12 +80,16 @@ export default function LoginPage() {
                             <input
                                 id="remember"
                                 type="checkbox"
+                                name="remember-me"
                                 className="h-4 w-4 bg-background border-background-dark rounded text-accent focus:ring-accent accent-accent transition-all cursor-pointer"
                             />
                             <label htmlFor="remember" className="ml-2 block text-sm text-muted cursor-pointer select-none">
                                 Remember me for 30 days
                             </label>
                         </div>
+                        {state.error && (
+                            <p className="text-red-500 text-sm mt-2">{state.error}</p>
+                        )}
 
                         <button
                             type="submit"

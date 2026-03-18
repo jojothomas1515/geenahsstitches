@@ -21,7 +21,7 @@ const registerSchema = z.object({
 });
 
 export async function login(state: { error: string | null }, formData: FormData) {
-    const data = loginSchema.safeParse(formData);
+    const data = loginSchema.safeParse(Object.fromEntries(formData.entries()));
     if (!data.success) {
         return { error: data.error.message };
     }
@@ -30,7 +30,7 @@ export async function login(state: { error: string | null }, formData: FormData)
             body: {
                 email: data.data.email,
                 password: data.data.password,
-                rememberMe: false,
+                rememberMe: formData.get("remember-me") === "on",
             },
         });
     } catch (error: unknown) {
@@ -55,7 +55,6 @@ export async function register(state: { error: string | null }, formData: FormDa
                 phone: data.data.phone,
                 password: data.data.password,
                 rememberMe: false,
-
             },
         });
     }
@@ -63,6 +62,5 @@ export async function register(state: { error: string | null }, formData: FormDa
         const message = error instanceof Error ? error.message : "Login failed";
         return { error: message };
     }
-
     return redirect("/");
 }
