@@ -31,7 +31,7 @@ export default function MobileNav({
           animate={{ y: "0%" }}
           transition={{ duration: 0.5 }}
           onClick={toggleNav}
-          className="md:hidden ml-auto rounded shadow p-2"
+          className="md:hidden rounded p-2"
         >
           {isOpen ? (
             <motion.svg
@@ -80,7 +80,7 @@ export default function MobileNav({
                     <motion.li
                       initial={{ x: "-80%" }}
                       animate={{ x: "0%" }}
-                      transition={{ duration: 0.3, delay: 0.1}}
+                      transition={{ duration: 0.3, delay: 0.1 }}
                       key={link.href}
                       className=""
                       onClick={toggleNav}

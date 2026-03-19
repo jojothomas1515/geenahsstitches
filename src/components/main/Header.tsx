@@ -7,6 +7,8 @@ import MobileNav from "./header/MobileNav";
 import DesktopNav from "./header/DesktopNav";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { Session } from "@/lib/auth";
+import { User, ShoppingCart } from "lucide-react";
 
 const NavLinks = [
   { name: "Home", href: "/" },
@@ -18,7 +20,8 @@ const NavLinks = [
   { name: "About", href: "/about" },
 ];
 
-const Header = () => {
+const Header = ({ session }: { session: Session | null }) => {
+
   const [isSrolled, setIsSrolled] = useState(false);
   // initial window scroll position is 0
   let prevY = 0;
@@ -59,14 +62,24 @@ const Header = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 z-10`}
       >
-        <div className="bg-primary md:bg-primary/50  dark:bg-primary-dark md:dark:bg-primary-dark/50 md:backdrop-blur-sm w-full px-5 md:px-20 py-5 sm:py-5 sm:px-10  shadow-md z-10 md:rounded text-basic">
-          <div className="flex justify-center items-center md:justify-between w-full">
+        <div className="bg-primary md:bg-primary/50  dark:bg-primary-dark md:dark:bg-primary-dark/50 md:backdrop-blur-sm w-full px-5 md:px-5 py-5 sm:py-5 sm:px-5  shadow-md z-10 md:rounded text-basic">
+          <div className="flex items-center md:justify-between w-full gap-2">
             <div className="logo-container  w-[200px]">
               <Link href={"/"}>
                 <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:invert-75" />
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />
+            {session && (
+              <div className="flex items-center gap-4 ml-auto">
+                <Link href="/cart">
+                  <ShoppingCart className="w-6 h-6" />
+                </Link>
+                <Link href="/profile">
+                  <User className="w-6 h-6" />
+                </Link>
+              </div>
+            )}
             <MobileNav NavLinks={NavLinks} />
           </div>
         </div>
