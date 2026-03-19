@@ -10,7 +10,7 @@ const navLinks = [
     { href: "/admin/dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
     { href: "/admin/dashboard/products", label: "Products", icon: <Package size={20} /> },
     { href: "/admin/dashboard/orders", label: "Orders", icon: <ShoppingCart size={20} /> },
-    { href: "/admin/dashboard/customers", label: "Customers", icon: <Users size={20} /> },
+    { href: "/admin/dashboard/users", label: "Users", icon: <Users size={20} /> },
 ];
 
 

@@ -1,0 +1,142 @@
+"use client";
+
+import { useState } from "react";
+import { Edit, Trash2, Search, Package } from "lucide-react";
+import Image from "next/image";
+
+interface Product {
+    id: string;
+    name: string;
+    price: number;
+    discount: number;
+    image: string;
+    category: string[];
+    description: string;
+    quantity: number;
+}
+
+interface ProductTableProps {
+    products: Product[];
+    onEdit: (product: Product) => void;
+    onDelete: (id: string) => void;
+}
+
+export default function ProductTable({ products, onEdit, onDelete }: ProductTableProps) {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+
+    return (
+        <div className="bg-background rounded-2xl shadow-sm overflow-hidden border border-background-dark">
+            <div className="p-6 border-b border-background-dark flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div className="relative w-full sm:w-64">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+                    <input
+                        type="text"
+                        placeholder="Search products..."
+                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-accent/50"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </div>
+                <div className="text-sm text-muted">
+                    Showing {filteredProducts.length} of {products.length} products
+                </div>
+            </div>
+
+            <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                    <thead>
+                        <tr className="text-muted border-b border-background-dark bg-background-light/50">
+                            <th className="py-4 px-6 font-medium">Product</th>
+                            <th className="py-4 px-6 font-medium">Category</th>
+                            <th className="py-4 px-6 font-medium">Price</th>
+                            <th className="py-4 px-6 font-medium">Quantity</th>
+                            <th className="py-4 px-6 font-medium text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-background-dark">
+                        {filteredProducts.length > 0 ? (
+                            filteredProducts.map((product) => (
+                                <tr key={product.id} className="hover:bg-background-light/30 transition-colors">
+                                    <td className="py-4 px-6">
+                                        <div className="flex items-center gap-3">
+                                            <div className="relative h-12 w-12 rounded-lg overflow-hidden border border-background-dark bg-background-light shrink-0">
+                                                {product.image ? (
+                                                    <Image
+                                                        src={product.image}
+                                                        alt={product.name}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="h-full w-full flex items-center justify-center text-muted">
+                                                        <Package className="h-6 w-6" />
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="font-medium text-basic truncate max-w-[200px]">
+                                                {product.name}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="py-4 px-6">
+                                        <div className="flex flex-wrap gap-1">
+                                            {product.category.map((cat, i) => (
+                                                <span key={i} className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-[10px] font-semibold">
+                                                    {cat}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </td>
+                                    <td className="py-4 px-6 text-basic font-medium">
+                                        {product.discount > 0 ? (
+                                            <div className="flex flex-col">
+                                                <span className="text-accent">₦{(product.price * (1 - product.discount / 100)).toLocaleString()}</span>
+                                                <span className="text-muted line-through text-[10px]">₦{product.price.toLocaleString()}</span>
+                                            </div>
+                                        ) : (
+                                            <span>₦{product.price.toLocaleString()}</span>
+                                        )}
+                                    </td>
+                                    <td className="py-4 px-6">
+                                        <span className={`font-medium ${product.quantity <= 5 ? 'text-red-500' : 'text-basic'}`}>
+                                            {product.quantity}
+                                        </span>
+                                    </td>
+                                    <td className="py-4 px-6 text-right">
+                                        <div className="flex justify-end gap-2">
+                                            <button
+                                                onClick={() => onEdit(product)}
+                                                className="p-2 rounded-lg hover:bg-accent/10 text-accent transition-colors"
+                                                title="Edit product"
+                                            >
+                                                <Edit className="h-4 w-4" />
+                                            </button>
+                                            <button
+                                                onClick={() => onDelete(product.id)}
+                                                className="p-2 rounded-lg hover:bg-red-50 text-red-500 transition-colors"
+                                                title="Delete product"
+                                            >
+                                                <Trash2 className="h-4 w-4" />
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan={5} className="py-12 text-center text-muted">
+                                    No products found matching your search.
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
