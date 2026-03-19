@@ -31,7 +31,7 @@ export default function MobileNav({
           animate={{ y: "0%" }}
           transition={{ duration: 0.5 }}
           onClick={toggleNav}
-          className="md:hidden rounded p-2"
+          className="lg:hidden rounded  p-2"
         >
           {isOpen ? (
             <motion.svg
@@ -68,7 +68,7 @@ export default function MobileNav({
             transition={{
               duration: 0.3,
             }}
-            className="md:hidden bg-secondary absolute w-full left-0 top-full -z-10"
+            className="lg:hidden bg-secondary absolute w-full left-0 top-full -z-10"
           >
             <ul
               className="container px-4 flex gap-2 flex-col py-4 overflow-hidden"

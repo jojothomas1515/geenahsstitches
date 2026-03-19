@@ -60,10 +60,24 @@ const Header = ({ session }: { session: Session | null }) => {
           y: isSrolled ? "-110%" : "0%",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`sticky md:fixed md:left-5 md:right-5 md:top-5 top-0 z-10`}
+        className={`sticky lg:fixed lg:left-5 lg:right-5 lg:top-5 top-0 z-10`}
       >
-        <div className="bg-primary md:bg-primary/50  dark:bg-primary-dark md:dark:bg-primary-dark/50 md:backdrop-blur-sm w-full px-5 md:px-5 py-5 sm:py-5 sm:px-5  shadow-md z-10 md:rounded text-basic">
-          <div className="flex items-center md:justify-between w-full gap-2">
+        {session && (
+          session.user.role === "ADMIN" && (<>
+            <div className="w-full bg-primary/75 text-basic p-2 py-1 lg:rounded flex items-center justify-center">
+              <p>You are currently logged in as an admin</p><Link href="/admin/dashboard" className="ml-2 underline">Go to admin dashboard</Link>
+            </div>
+          </>)
+          ||
+          session.user.role === "STAFF" && (<>
+            <div className="w-full bg-primary/75 text-basic p-2 py-1 lg:rounded flex items-center justify-center">
+              <p>You are currently logged in as a staff</p><Link href="/staff/dashboard" className="ml-2 underline">Go to admin dashboard</Link>
+            </div>
+          </>)
+
+        )}
+        <div className="bg-primary lg:bg-primary/50  dark:bg-primary-dark lg:dark:bg-primary-dark/50 lg:backdrop-blur-sm w-full px-5 lg:px-5 py-5 sm:py-5 sm:px-5  shadow-md z-10 lg:rounded text-basic">
+          <div className="flex items-center lg:justify-between w-full gap-2">
             <div className="logo-container  w-[200px]">
               <Link href={"/"}>
                 <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:invert-75" />
@@ -71,7 +85,7 @@ const Header = ({ session }: { session: Session | null }) => {
             </div>
             <DesktopNav NavLinks={NavLinks} />
             {session && (
-              <div className="flex items-center gap-4 ml-auto">
+              <div className="flex items-center gap-4 ml-auto lg:ml-0">
                 <Link href="/cart">
                   <ShoppingCart className="w-6 h-6" />
                 </Link>
