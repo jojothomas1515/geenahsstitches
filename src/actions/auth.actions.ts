@@ -3,6 +3,7 @@
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { headers } from "next/headers";
 
 const loginSchema = z.object({
     email: z.email(),
@@ -26,12 +27,15 @@ export async function login(state: { error: string | null }, formData: FormData)
         return { error: data.error.message };
     }
     try {
+        const rememberMe = formData.get("remember-me") === "on";
+        console.log(rememberMe);
         await auth.api.signInEmail({
             body: {
                 email: data.data.email,
                 password: data.data.password,
-                rememberMe: formData.get("remember-me") === "on",
+                rememberMe,
             },
+            headers: await headers(),
         });
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : "Login failed";

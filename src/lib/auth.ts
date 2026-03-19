@@ -36,6 +36,11 @@ export const auth = betterAuth({
                 input: true,
             },
         }
+    },
+
+    session: {
+        storeSessionInDatabase: true,
+        expiresIn: 60 * 60 * 24 * 7,
     }
 
 });

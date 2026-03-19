@@ -63,7 +63,7 @@ const Header = () => {
           <div className="flex justify-center items-center md:justify-between w-full">
             <div className="logo-container  w-[200px]">
               <Link href={"/"}>
-                <Image src={Logo} alt="Geenah's Stitches Logo" className="invert-75" />
+                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:invert-75" />
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />

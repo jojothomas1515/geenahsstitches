@@ -1,9 +1,23 @@
-import Image from "next/image"
-import Link from "next/link"
-import Logo from "@/public/geenah_stitches_logo_no_bg.png"
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "@/public/geenah_stitches_logo_no_bg.png";
 import { LayoutDashboard, Package, ShoppingCart, Users } from "lucide-react"
+import NavLink from "@/components/dashboard/admin/Header/NavLink";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-export default function AdminHeader() {
+const navLinks = [
+    { href: "/admin/dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
+    { href: "/admin/dashboard/products", label: "Products", icon: <Package size={20} /> },
+    { href: "/admin/dashboard/orders", label: "Orders", icon: <ShoppingCart size={20} /> },
+    { href: "/admin/dashboard/customers", label: "Customers", icon: <Users size={20} /> },
+];
+
+
+export default async function AdminHeader() {
+    const session = await auth.api.getSession({ headers: await headers() });
+    console.log(session)
+
     return (
         <header className="w-3/10  bg-background h-dvh p-5 ">
             <div className="w-full flex gap-10 p-5 flex-col mt-10">
@@ -13,10 +27,9 @@ export default function AdminHeader() {
 
 
                 <nav className="flex gap-5 flex-col">
-                    <Link href="/admin/dashboard" className="text-lg font-medium flex items-center gap-2"><LayoutDashboard size={20} /> Dashboard</Link>
-                    <Link href="/admin/dashboard/products" className="text-lg font-medium flex items-center gap-2"><Package size={20} /> Products</Link>
-                    <Link href="/admin/dashboard/orders" className="text-lg font-medium flex items-center gap-2"><ShoppingCart size={20} /> Orders</Link>
-                    <Link href="/admin/dashboard/customers" className="text-lg font-medium flex items-center gap-2"><Users size={20} /> Customers</Link>
+                    {navLinks.map((link) => (
+                        <NavLink key={link.href} href={link.href} label={link.label} icon={link.icon} />
+                    ))}
                 </nav>
             </div>
         </header>
