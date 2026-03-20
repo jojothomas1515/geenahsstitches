@@ -36,7 +36,7 @@ export default function StatCard({
             {href && (
                 <Link
                     href={href}
-                    className="text-sm font-medium bg-background-light text-basic rounded-lg px-4 py-2 text-center transition-colors duration-200 hover:bg-primary mt-auto"
+                    className="text-sm font-medium bg-background-light text-basic rounded-lg px-4 py-2 text-center transition-all duration-200 hover:bg-primary mt-auto shadow-sm hover:shadow-md hover:text-white/90 "
                 >
                     {linkLabel ?? "View All"}
                 </Link>
