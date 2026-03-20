@@ -26,7 +26,7 @@ export default async function AdminHeader() {
                 </div>
 
 
-                <nav className="flex gap-5 flex-col">
+                <nav className="flex gap-2 flex-col">
                     {navLinks.map((link) => (
                         <NavLink key={link.href} href={link.href} label={link.label} icon={link.icon} />
                     ))}
