@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
 import { LayoutDashboard, Package, ShoppingCart, Users } from "lucide-react"
-import NavLink from "@/components/dashboard/admin/Header/NavLink";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import Nav from "./Header/Nav";
 
 const navLinks = [
     { href: "/admin/dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
@@ -19,18 +19,13 @@ export default async function AdminHeader() {
     console.log(session)
 
     return (
-        <header className="w-3/10  bg-background h-dvh p-5 ">
-            <div className="w-full flex gap-10 p-5 flex-col mt-10">
+        <header className="w-full md:w-3/10  bg-background md:h-dvh h-fit p-5 " style={{ anchorName: "--header" }}>
+            <div className="w-full flex gap-10 md:p-5 md:flex-col md:justify-normal justify-between flex-row md:mt-10">
                 <div className="flex items-center gap-2">
                     <Link href={"/"}><Image src={Logo} alt="Logo" width={1000} height={1000} className="w-60!  dark:invert object-contain" /></Link>
                 </div>
 
-
-                <nav className="flex gap-2 flex-col">
-                    {navLinks.map((link) => (
-                        <NavLink key={link.href} href={link.href} label={link.label} icon={link.icon} />
-                    ))}
-                </nav>
+                <Nav navLinks={navLinks} />
             </div>
         </header>
     )
