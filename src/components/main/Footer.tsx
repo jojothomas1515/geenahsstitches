@@ -12,7 +12,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-basic">
+    <footer className="bg-background text-basic">
       <div className="container flex flex-col md:flex-row md:justify-between  px-4 py-6 gap-5  m-auto">
         <div className="get-in-touch flex flex-col gap-2 w-full md:w-1/2">
           <div className="w-full  relative after-before-bar mb-2">

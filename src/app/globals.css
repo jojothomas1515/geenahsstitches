@@ -143,8 +143,8 @@ img {
 
 :root {
   /* background */
-  --background: oklch(0.85 .055 339.41);
-  --background-dark: oklch(0.7 .055 339.41);
+  --background: oklch(0.9 .055 339.41);
+  --background-dark: oklch(0.85 .055 339.41);
   --background-light: oklch(.95 .055 339.41);
 
   /* text */

@@ -7,7 +7,7 @@ import { FaFacebookSquare, FaInstagramSquare, FaTiktok } from "react-icons/fa";
 
 const About = () => {
   return (
-    <main className="bg-neutral dark:bg-neutral-dark md:pt-15 text-basic">
+    <main className="bg-background-dark md:pt-15 text-basic">
       <section className="header">
         <div className="container flex flex-col items-center md:flex-row md:justify-around">
           <div className="flex flex-col gap-2 p-4 md:max-w-[400px] m-auto mt-2">
@@ -65,7 +65,7 @@ const About = () => {
       <section className="next">
         <div className="container flex flex-col  items-center md:flex-row md:justify-center w-full m-auto ">
           <div
-            className={`p-4 shadow-md bg-primary dark:bg-primary-dark/80 rounded backdrop-blur-sm `}
+            className={`p-4 shadow-md bg-background dark:bg-primary-dark/80 rounded backdrop-blur-sm `}
           >
             <Image
               src={QuoteIcon}
