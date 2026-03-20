@@ -65,7 +65,7 @@ const About = () => {
       <section className="next">
         <div className="container flex flex-col  items-center md:flex-row md:justify-center w-full m-auto ">
           <div
-            className={`p-4 shadow-md bg-secondary dark:bg-secondary-dark/80 rounded backdrop-blur-sm `}
+            className={`p-4 shadow-md bg-primary dark:bg-primary-dark/80 rounded backdrop-blur-sm `}
           >
             <Image
               src={QuoteIcon}

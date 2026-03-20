@@ -112,7 +112,7 @@ export default function AdminOrdersPage() {
                         </div>
                         <div>
                             <p className="text-xs font-bold text-muted uppercase tracking-wider">Total Revenue</p>
-                            <p className="text-2xl font-bold text-basic text-accent">₦{stats.revenue.toLocaleString()}</p>
+                            <p className="text-2xl font-bold text-primary">₦{stats.revenue.toLocaleString()}</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ export default function AdminOrdersPage() {
                     <div className="flex bg-background border border-background-dark rounded-xl p-1 overflow-x-auto max-w-full">
                         <button
                             onClick={() => setStatusFilter("ALL")}
-                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${statusFilter === "ALL" ? 'bg-accent text-white shadow-md' : 'text-muted hover:text-basic'}`}
+                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${statusFilter === "ALL" ? 'bg-primary text-white shadow-md' : 'text-muted hover:text-basic'}`}
                         >
                             All Orders
                         </button>
@@ -133,7 +133,7 @@ export default function AdminOrdersPage() {
                             <button
                                 key={status}
                                 onClick={() => setStatusFilter(status)}
-                                className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${statusFilter === status ? 'bg-accent text-white shadow-md' : 'text-muted hover:text-basic'}`}
+                                className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${statusFilter === status ? 'bg-primary text-white shadow-md' : 'text-muted hover:text-basic'}`}
                             >
                                 {status.charAt(0) + status.slice(1).toLowerCase()}
                             </button>
@@ -144,7 +144,7 @@ export default function AdminOrdersPage() {
                 {/* Main Table */}
                 {isLoading ? (
                     <div className="h-64 flex flex-col items-center justify-center bg-background rounded-2xl border border-background-dark">
-                        <Loader2 className="h-10 w-10 text-accent animate-spin mb-4" />
+                        <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
                         <p className="text-muted font-medium">Loading orders details...</p>
                     </div>
                 ) : (

@@ -68,7 +68,7 @@ export default function MobileNav({
             transition={{
               duration: 0.3,
             }}
-            className="lg:hidden bg-secondary absolute w-full left-0 top-full -z-10"
+            className="lg:hidden bg-primary absolute w-full left-0 top-full -z-10"
           >
             <ul
               className="container px-4 flex gap-2 flex-col py-4 overflow-hidden"

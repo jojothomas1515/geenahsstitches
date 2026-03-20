@@ -37,7 +37,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                     <input
                         type="text"
                         placeholder="Search products..."
-                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-accent/50"
+                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-primary/50"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -86,7 +86,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                     <td className="py-4 px-6">
                                         <div className="flex flex-wrap gap-1">
                                             {product.category.map((cat, i) => (
-                                                <span key={i} className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-[10px] font-semibold">
+                                                <span key={i} className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-semibold">
                                                     {cat}
                                                 </span>
                                             ))}
@@ -95,7 +95,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                     <td className="py-4 px-6 text-basic font-medium">
                                         {product.discount > 0 ? (
                                             <div className="flex flex-col">
-                                                <span className="text-accent">₦{(product.price * (1 - product.discount / 100)).toLocaleString()}</span>
+                                                <span className="text-primary">₦{(product.price * (1 - product.discount / 100)).toLocaleString()}</span>
                                                 <span className="text-muted line-through text-[10px]">₦{product.price.toLocaleString()}</span>
                                             </div>
                                         ) : (
@@ -111,7 +111,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                         <div className="flex justify-end gap-2">
                                             <button
                                                 onClick={() => onEdit(product)}
-                                                className="p-2 rounded-lg hover:bg-accent/10 text-accent transition-colors"
+                                                className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
                                                 title="Edit product"
                                             >
                                                 <Edit className="h-4 w-4" />

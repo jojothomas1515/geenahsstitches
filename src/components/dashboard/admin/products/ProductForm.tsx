@@ -63,7 +63,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="name"
                             type="text"
                             defaultValue={product?.name}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.name ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.name ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="e.g. Traditional Nigerian Dashiki"
                             required
                         />
@@ -80,7 +80,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="price"
                             type="number"
                             defaultValue={product?.price}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.price ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.price ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="5000"
                             required
                             min="1"
@@ -98,7 +98,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="discount"
                             type="number"
                             defaultValue={product?.discount ?? 0}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.discount ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.discount ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="0"
                             min="0"
                             max="100"
@@ -116,7 +116,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="quantity"
                             type="number"
                             defaultValue={product?.quantity}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.quantity ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.quantity ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="10"
                             required
                             min="0"
@@ -134,7 +134,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="category"
                             type="text"
                             defaultValue={product?.category.join(", ")}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.category ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.category ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="Women, Native, Dress"
                             required
                         />
@@ -153,7 +153,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                                 name="image"
                                 type="url"
                                 defaultValue={product?.image}
-                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-background border ${state.errors?.image ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-background border ${state.errors?.image ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                                 placeholder="https://example.com/image.jpg"
                                 required
                             />
@@ -171,7 +171,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                             name="description"
                             defaultValue={product?.description}
                             rows={4}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.description ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.description ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none`}
                             placeholder="Describe the product details, fabric, and care instructions..."
                             required
                         ></textarea>
@@ -196,7 +196,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex-[2] py-3.5 px-4 rounded-xl font-bold bg-accent text-white hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                         {product ? "Save Changes" : "Create Product"}

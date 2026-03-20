@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 
 
 export default async function MainLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {

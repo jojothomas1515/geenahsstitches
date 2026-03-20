@@ -29,11 +29,11 @@ export default async function AdminDashboardPage() {
                     linkLabel="Manage Products"
                 />
                 <StatCard
-                    title="Total Customers"
+                    title="Total Users"
                     value={stats.totalUsers}
                     icon={Users}
-                    href="/admin/dashboard/customers"
-                    linkLabel="View Customers"
+                    href="/admin/dashboard/users"
+                    linkLabel="Manage Users"
                 />
                 <StatCard
                     title="Pending Orders"

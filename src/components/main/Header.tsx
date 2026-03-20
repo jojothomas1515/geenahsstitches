@@ -84,16 +84,16 @@ const Header = ({ session }: { session: Session | null }) => {
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />
-            {session && (
-              <div className="flex items-center gap-4 ml-auto lg:ml-0">
-                <Link href="/cart">
-                  <ShoppingCart className="w-6 h-6" />
-                </Link>
-                <Link href="/profile">
-                  <User className="w-6 h-6" />
-                </Link>
-              </div>
-            )}
+
+            <div className="flex items-center gap-4 ml-auto lg:ml-0">
+              <Link href="/cart">
+                <ShoppingCart className="w-6 h-6" />
+              </Link>
+              <Link href="/account" style={{ anchorName: "--account" }}>
+                <User className="w-6 h-6" />
+              </Link>
+            </div>
+
             <MobileNav NavLinks={NavLinks} />
           </div>
         </div>

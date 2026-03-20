@@ -82,7 +82,7 @@ export default function AdminProductsPage() {
                     </div>
                     <button
                         onClick={handleAddProduct}
-                        className="flex items-center gap-2 px-6 py-3 bg-accent text-white font-bold rounded-xl shadow-lg shadow-accent/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
                     >
                         <Plus className="h-5 w-5" />
                         Add New Product
@@ -92,7 +92,7 @@ export default function AdminProductsPage() {
                 {/* Stats Summary */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
                     <div className="bg-background p-6 rounded-2xl shadow-sm border border-background-dark flex items-center gap-4">
-                        <div className="h-12 w-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center">
+                        <div className="h-12 w-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
                             <Package className="h-6 w-6" />
                         </div>
                         <div>
@@ -125,7 +125,7 @@ export default function AdminProductsPage() {
                 {/* Main Table */}
                 {isLoading ? (
                     <div className="h-64 flex flex-col items-center justify-center bg-background rounded-2xl border border-background-dark">
-                        <Loader2 className="h-10 w-10 text-accent animate-spin mb-4" />
+                        <Loader2 className="h-10 w-10 text-primary animate-spin mb-4" />
                         <p className="text-muted font-medium">Loading products...</p>
                     </div>
                 ) : (

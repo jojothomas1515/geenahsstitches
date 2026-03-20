@@ -4,7 +4,6 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { headers } from "next/headers";
-import { cookies } from "next/headers";
 
 const loginSchema = z.object({
     email: z.email(),
@@ -23,13 +22,16 @@ const registerSchema = z.object({
 });
 
 export async function login(state: { error: string | null }, formData: FormData) {
+    const header = await headers()
+    const url = header.get("referer") as string
+    const newUrl = new URL(url)
+    const referrer = newUrl.searchParams.get("referrer")
     const data = loginSchema.safeParse(Object.fromEntries(formData.entries()));
     if (!data.success) {
         return { error: data.error.message };
     }
     try {
         const rememberMe = formData.get("remember-me") === "on";
-        console.log(rememberMe);
         const res = await auth.api.signInEmail({
             body: {
                 email: data.data.email,
@@ -37,13 +39,12 @@ export async function login(state: { error: string | null }, formData: FormData)
                 rememberMe,
             },
             headers: await headers(),
-            asResponse: true
         });
     } catch (error: unknown) {
         const message = error instanceof Error ? error.message : "Login failed";
         return { error: message };
     }
-    return redirect("/");
+    return redirect(referrer || "/");
 }
 
 

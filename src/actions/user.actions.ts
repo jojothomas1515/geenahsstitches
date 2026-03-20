@@ -4,8 +4,17 @@ import { prisma } from "@/lib/prisma";
 import { Role } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { auth } from "@/lib/auth";
 
-const UserSchema = z.object({
+const CreateUserSchema = z.object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().min(10, "Phone number must be at least 10 characters"),
+    role: z.nativeEnum(Role),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+const UpdateUserSchema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 characters"),
@@ -20,6 +29,7 @@ export type UserActionState = {
         email?: string[];
         phone?: string[];
         role?: string[];
+        password?: string[];
     };
 };
 
@@ -43,9 +53,10 @@ export async function createUser(prevState: UserActionState, formData: FormData)
         email: formData.get("email"),
         phone: formData.get("phone"),
         role: formData.get("role"),
+        password: formData.get("password"),
     };
 
-    const validatedFields = UserSchema.safeParse(rawData);
+    const validatedFields = CreateUserSchema.safeParse(rawData);
 
     if (!validatedFields.success) {
         return {
@@ -53,16 +64,34 @@ export async function createUser(prevState: UserActionState, formData: FormData)
         };
     }
 
+    const { name, email, phone, role, password } = validatedFields.data;
+
     try {
-        await prisma.user.create({
-            data: validatedFields.data,
+        // 1. Create account with better-auth
+        await auth.api.signUpEmail({
+            body: {
+                name,
+                email,
+                phone,
+                password,
+                rememberMe: false,
+            },
         });
+
+        // 2. Update role if not default USER
+        if (role !== "USER") {
+            await prisma.user.update({
+                where: { email },
+                data: { role },
+            });
+        }
 
         revalidatePath("/admin/dashboard/users");
         return { success: true };
     } catch (error) {
-        console.error("Database Error:", error);
-        return { error: "Failed to create user. Email or phone might already exist." };
+        console.error("Auth/Database Error:", error);
+        const message = error instanceof Error ? error.message : "Failed to create user. Email or phone might already exist.";
+        return { error: message };
     }
 }
 
@@ -74,7 +103,7 @@ export async function updateUser(id: string, prevState: UserActionState, formDat
         role: formData.get("role"),
     };
 
-    const validatedFields = UserSchema.safeParse(rawData);
+    const validatedFields = UpdateUserSchema.safeParse(rawData);
 
     if (!validatedFields.success) {
         return {

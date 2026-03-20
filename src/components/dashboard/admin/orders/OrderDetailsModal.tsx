@@ -52,7 +52,7 @@ export default function OrderDetailsModal({ orderId, onClose }: { orderId: strin
         return (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
                 <div className="bg-background rounded-2xl p-12 flex flex-col items-center">
-                    <Loader2 className="h-8 w-8 text-accent animate-spin mb-4" />
+                    <Loader2 className="h-8 w-8 text-primary animate-spin mb-4" />
                     <p className="text-muted text-sm font-medium">Loading order details...</p>
                 </div>
             </div>
@@ -112,7 +112,7 @@ export default function OrderDetailsModal({ orderId, onClose }: { orderId: strin
                                 </div>
                                 <div className="pt-3 border-t border-background-dark flex justify-between">
                                     <span className="text-sm font-bold text-basic">Final Total</span>
-                                    <span className="text-lg font-bold text-accent">₦{order.totalAmount.toLocaleString()}</span>
+                                    <span className="text-lg font-bold text-primary">₦{order.totalAmount.toLocaleString()}</span>
                                 </div>
                             </div>
                         </div>

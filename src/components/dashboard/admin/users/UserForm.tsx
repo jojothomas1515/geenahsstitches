@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect } from "react";
-import { X, Loader2, User, Mail, Phone, Shield } from "lucide-react";
+import { X, Loader2, User, Mail, Phone, Shield, Lock } from "lucide-react";
 import { createUser, updateUser, type UserActionState } from "@/actions/user.actions";
 import { Role } from "@/generated/prisma/enums";
 
@@ -53,7 +53,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                 <div className="space-y-5">
                     {/* Name */}
                     <div>
-                        <label htmlFor="name" className="block text-sm font-semibold text-basic mb-1.5 pl-1 flex items-center gap-2">
+                        <label htmlFor="name" className="flex text-sm font-semibold text-basic mb-1.5 pl-1 items-center gap-2">
                             <User className="h-3.5 w-3.5 text-muted" /> Full Name
                         </label>
                         <input
@@ -61,7 +61,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                             name="name"
                             type="text"
                             defaultValue={user?.name}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.name ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.name ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="John Doe"
                             required
                         />
@@ -70,7 +70,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
 
                     {/* Email */}
                     <div>
-                        <label htmlFor="email" className="block text-sm font-semibold text-basic mb-1.5 pl-1 flex items-center gap-2">
+                        <label htmlFor="email" className="flex text-sm font-semibold text-basic mb-1.5 pl-1 items-center gap-2">
                             <Mail className="h-3.5 w-3.5 text-muted" /> Email Address
                         </label>
                         <input
@@ -78,7 +78,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                             name="email"
                             type="email"
                             defaultValue={user?.email}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.email ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.email ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="john@example.com"
                             required
                         />
@@ -87,7 +87,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
 
                     {/* Phone */}
                     <div>
-                        <label htmlFor="phone" className="block text-sm font-semibold text-basic mb-1.5 pl-1 flex items-center gap-2">
+                        <label htmlFor="phone" className="flex text-sm font-semibold text-basic mb-1.5 pl-1 items-center gap-2">
                             <Phone className="h-3.5 w-3.5 text-muted" /> Phone Number
                         </label>
                         <input
@@ -95,7 +95,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                             name="phone"
                             type="tel"
                             defaultValue={user?.phone}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.phone ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.phone ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                             placeholder="+234 800 000 0000"
                             required
                         />
@@ -104,14 +104,14 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
 
                     {/* Role */}
                     <div>
-                        <label htmlFor="role" className="block text-sm font-semibold text-basic mb-1.5 pl-1 flex items-center gap-2">
+                        <label htmlFor="role" className="flex text-sm font-semibold text-basic mb-1.5 pl-1 items-center gap-2">
                             <Shield className="h-3.5 w-3.5 text-muted" /> Account Role
                         </label>
                         <select
                             id="role"
                             name="role"
                             defaultValue={user?.role || "USER"}
-                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.role ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none cursor-pointer`}
+                            className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.role ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none cursor-pointer`}
                         >
                             {Object.values(Role).map((role) => (
                                 <option key={role} value={role}>{role}</option>
@@ -119,6 +119,24 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                         </select>
                         {state.errors?.role && <p className="text-red-500 text-xs mt-1 pl-1">{state.errors.role[0]}</p>}
                     </div>
+
+                    {/* Password - Only for new users */}
+                    {!user && (
+                        <div>
+                            <label htmlFor="password" className="flex text-sm font-semibold text-basic mb-1.5 pl-1 items-center gap-2">
+                                <Lock className="h-3.5 w-3.5 text-muted" /> Password
+                            </label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                className={`w-full px-4 py-3 rounded-xl bg-background border ${state.errors?.password ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
+                                placeholder="••••••••"
+                                required={!user}
+                            />
+                            {state.errors?.password && <p className="text-red-500 text-xs mt-1 pl-1">{state.errors.password[0]}</p>}
+                        </div>
+                    )}
                 </div>
 
                 {state.error && (
@@ -139,7 +157,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex-[2] py-3.5 px-4 rounded-xl font-bold bg-accent text-white hover:opacity-90 transition-all shadow-lg shadow-accent/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                         {user ? "Update User" : "Create Account"}

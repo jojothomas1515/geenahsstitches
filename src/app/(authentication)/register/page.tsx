@@ -46,7 +46,7 @@ export default function RegisterPage() {
                                 id="name"
                                 name="name"
                                 type="text"
-                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="Jane Doe"
                                 required
                             />
@@ -63,7 +63,7 @@ export default function RegisterPage() {
                                 id="email"
                                 name="email"
                                 type="email"
-                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="name@example.com"
                                 required
                             />
@@ -80,7 +80,7 @@ export default function RegisterPage() {
                                 id="phone"
                                 name="phone"
                                 type="tel"
-                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="+1 (555) 000-0000"
                                 required
                             />
@@ -97,7 +97,7 @@ export default function RegisterPage() {
                                 id="password"
                                 name="password"
                                 type="password"
-                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 required
                             />
@@ -114,7 +114,7 @@ export default function RegisterPage() {
                                 id="confirmPassword"
                                 name="confirmPassword"
                                 type="password"
-                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 rounded-xl bg-background-light border border-background-dark text-basic placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 placeholder="••••••••"
                                 required
                             />

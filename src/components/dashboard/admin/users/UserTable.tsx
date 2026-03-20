@@ -45,7 +45,7 @@ export default function UserTable({ users, onEdit, onDelete }: UserTableProps) {
                     <input
                         type="text"
                         placeholder="Search users..."
-                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
+                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -73,7 +73,7 @@ export default function UserTable({ users, onEdit, onDelete }: UserTableProps) {
                                 <tr key={user.id} className="hover:bg-background-light/30 transition-colors">
                                     <td className="py-4 px-6">
                                         <div className="flex items-center gap-3">
-                                            <div className="h-10 w-10 rounded-full bg-accent/10 border border-background-dark flex items-center justify-center text-accent">
+                                            <div className="h-10 w-10 rounded-full bg-primary/10 border border-background-dark flex items-center justify-center text-primary">
                                                 <User className="h-5 w-5" />
                                             </div>
                                             <div className="font-medium text-basic truncate max-w-[150px]">
@@ -113,7 +113,7 @@ export default function UserTable({ users, onEdit, onDelete }: UserTableProps) {
                                         <div className="flex justify-end gap-2">
                                             <button
                                                 onClick={() => onEdit(user)}
-                                                className="p-2 rounded-lg hover:bg-accent/10 text-accent transition-colors"
+                                                className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
                                                 title="Edit User"
                                             >
                                                 <Edit className="h-4 w-4" />

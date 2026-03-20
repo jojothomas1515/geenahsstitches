@@ -26,7 +26,7 @@ export default function NotFound() {
           <h1 className="text-8xl md:text-9xl font-black mb-4 tracking-tighter text-primary">
             404
           </h1>
-          <div className="w-20 h-1 bg-accent mx-auto mb-8 rounded-full" />
+          <div className="w-20 h-1 bg-primary mx-auto mb-8 rounded-full" />
 
           <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
             Lost in the threads?

@@ -42,7 +42,7 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                     <input
                         type="text"
                         placeholder="Search orders, customers..."
-                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-accent/50"
+                        className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-primary/50"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -98,7 +98,7 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                                         <div className="flex justify-end gap-2">
                                             <button
                                                 onClick={() => onViewDetails(order.id)}
-                                                className="p-2 rounded-lg hover:bg-accent/10 text-accent transition-colors"
+                                                className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
                                                 title="View Details"
                                             >
                                                 <Eye className="h-4 w-4" />
@@ -119,7 +119,7 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                                                             <button
                                                                 key={status}
                                                                 onClick={() => onUpdateStatus(order.id, status)}
-                                                                className={`text-left px-3 py-2 text-xs rounded-lg transition-colors ${order.orderStatus === status ? 'bg-accent/10 text-accent font-bold' : 'hover:bg-background-dark text-muted hover:text-basic'}`}
+                                                                className={`text-left px-3 py-2 text-xs rounded-lg transition-colors ${order.orderStatus === status ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-background-dark text-muted hover:text-basic'}`}
                                                             >
                                                                 {status}
                                                             </button>
