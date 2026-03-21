@@ -11,7 +11,7 @@ const s3Client = new S3Client({
 });
 
 export async function uploadToBucket(file: File) {
-    const url = process.env.S3_PUBLIC_URL + "/" + process.env.S3_BUCKET_NAME + "/" + file.name;
+    const url = process.env.S3_PUBLIC_ENDPOINT + "/" + process.env.S3_BUCKET_NAME + "/" + file.name;
     const buffer = Buffer.from(await file.arrayBuffer());
     const params = {
         Bucket: process.env.S3_BUCKET_NAME!,
