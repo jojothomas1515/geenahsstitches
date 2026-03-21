@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Edit, Trash2, Search, Package } from "lucide-react";
+import { Edit, Trash2, Search, Package, Eye } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import type { ProductTableProps } from "@/interfaces";
 
 export default function ProductTable({ products, onEdit, onDelete }: ProductTableProps) {
@@ -93,6 +94,13 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                     </td>
                                     <td className="py-4 px-6 text-right">
                                         <div className="flex justify-end gap-2">
+                                            <Link
+                                                href={`/admin/dashboard/products/${product.id}`}
+                                                className="p-2 rounded-lg hover:bg-blue-50 text-blue-500 transition-colors"
+                                                title="View product"
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                            </Link>
                                             <button
                                                 onClick={() => onEdit(product)}
                                                 className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"

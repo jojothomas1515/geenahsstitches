@@ -28,6 +28,18 @@ export async function getProducts() {
     }
 }
 
+export async function getProductById(id: string) {
+    try {
+        return await prisma.product.findUnique({
+            where: { id },
+            include: { productImages: true },
+        });
+    } catch (error) {
+        console.error("Failed to fetch product:", error);
+        return null;
+    }
+}
+
 export async function createProduct(prevState: ProductActionState, formData: FormData): Promise<ProductActionState> {
     const rawData = {
         name: formData.get("name"),
