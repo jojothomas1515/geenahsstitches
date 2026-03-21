@@ -59,6 +59,7 @@ export const ModelName = {
   CartItem: 'CartItem',
   CreditCard: 'CreditCard',
   Product: 'Product',
+  ProductImage: 'ProductImage',
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification'
@@ -167,7 +168,6 @@ export const ProductScalarFieldEnum = {
   name: 'name',
   price: 'price',
   discount: 'discount',
-  image: 'image',
   category: 'category',
   description: 'description',
   quantity: 'quantity',
@@ -175,6 +175,18 @@ export const ProductScalarFieldEnum = {
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const ProductImageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  url: 'url',
+  productId: 'productId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProductImageScalarFieldEnum = (typeof ProductImageScalarFieldEnum)[keyof typeof ProductImageScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {

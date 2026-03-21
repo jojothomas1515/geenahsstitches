@@ -135,20 +135,33 @@ model CreditCard {
 }
 
 model Product {
-  id          String      @id @default(uuid()) @db.VarChar(255)
-  name        String      @db.VarChar(255)
-  price       Int
-  discount    Int         @default(0)
-  image       String      @db.VarChar(255)
-  category    String[]    @db.VarChar(255)
-  description String      @db.Text
-  quantity    Int
-  cartId      String?     @db.VarChar(255)
-  orderItems  OrderItem[]
-  cartItems   CartItem[]
+  id            String         @id @default(uuid()) @db.VarChar(255)
+  name          String         @db.VarChar(255)
+  price         Int
+  discount      Int            @default(0)
+  category      String[]       @db.VarChar(255)
+  description   String         @db.Text
+  quantity      Int
+  cartId        String?        @db.VarChar(255)
+  orderItems    OrderItem[]
+  cartItems     CartItem[]
+  productImages ProductImage[]
 
   @@index([cartId, id])
   @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(uuid()) @db.VarChar(255)
+  name      String   @db.VarChar(255)
+  url       String   @db.VarChar(255)
+  productId String   @db.VarChar(255)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+  @@map("product_images")
 }
 
 model Session {

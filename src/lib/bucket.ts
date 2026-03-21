@@ -3,6 +3,7 @@ import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client
 const s3Client = new S3Client({
     endpoint: process.env.S3_ENDPOINT,
     region: process.env.S3_REGION,
+    forcePathStyle: true,
     credentials: {
         accessKeyId: process.env.S3_ACCESS_KEY_ID!,
         secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
@@ -10,16 +11,18 @@ const s3Client = new S3Client({
 });
 
 export async function uploadToBucket(file: File) {
-    const url = process.env.S3_ENDPOINT + "/" + process.env.S3_BUCKET_NAME + "/" + file.name;
+    const url = process.env.S3_PUBLIC_URL + "/" + process.env.S3_BUCKET_NAME + "/" + file.name;
+    const buffer = Buffer.from(await file.arrayBuffer());
     const params = {
         Bucket: process.env.S3_BUCKET_NAME!,
         Key: file.name,
-        Body: file,
+        Body: buffer,
+        ContentType: file.type,
     };
     const command = new PutObjectCommand(params);
     const response = await s3Client.send(command);
     if (response.$metadata.httpStatusCode === 200) {
-        return url;
+        return { url, key: file.name };
     }
     return null;
 }

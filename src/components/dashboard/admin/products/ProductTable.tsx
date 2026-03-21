@@ -4,15 +4,21 @@ import { useState } from "react";
 import { Edit, Trash2, Search, Package } from "lucide-react";
 import Image from "next/image";
 
+interface ProductImage {
+    id: string;
+    name: string;
+    url: string;
+}
+
 interface Product {
     id: string;
     name: string;
     price: number;
     discount: number;
-    image: string;
     category: string[];
     description: string;
     quantity: number;
+    productImages: ProductImage[];
 }
 
 interface ProductTableProps {
@@ -65,9 +71,9 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                     <td className="py-4 px-6">
                                         <div className="flex items-center gap-3">
                                             <div className="relative h-12 w-12 rounded-lg overflow-hidden border border-background-dark bg-background-light shrink-0">
-                                                {product.image ? (
+                                                {product.productImages.length > 0 ? (
                                                     <Image
-                                                        src={product.image}
+                                                        src={product.productImages[0].url}
                                                         alt={product.name}
                                                         fill
                                                         className="object-cover"

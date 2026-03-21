@@ -1,18 +1,25 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
-import { X, Loader2, Image as ImageIcon } from "lucide-react";
+import { useActionState, useEffect, useState, useRef } from "react";
+import { X, Loader2, Upload, Trash2 } from "lucide-react";
 import { createProduct, updateProduct, type ProductActionState } from "@/actions/product.actions";
+import Image from "next/image";
+
+interface ProductImage {
+    id: string;
+    name: string;
+    url: string;
+}
 
 interface Product {
     id: string;
     name: string;
     price: number;
     discount: number;
-    image: string;
     category: string[];
     description: string;
     quantity: number;
+    productImages: ProductImage[];
 }
 
 interface ProductFormProps {
@@ -24,17 +31,60 @@ interface ProductFormProps {
 const initialState: ProductActionState = {};
 
 export default function ProductForm({ product, onClose, onSuccess }: ProductFormProps) {
-    const action = product 
-        ? updateProduct.bind(null, product.id) 
+    const action = product
+        ? updateProduct.bind(null, product.id)
         : createProduct;
 
     const [state, formAction, isPending] = useActionState(action, initialState);
+
+    // Track new files selected for upload
+    const [newFiles, setNewFiles] = useState<File[]>([]);
+    // Track existing images marked for deletion (when editing)
+    const [deletedImageIds, setDeletedImageIds] = useState<string[]>([]);
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (state.success) {
             onSuccess();
         }
     }, [state.success, onSuccess]);
+
+    const handleFilesSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setNewFiles(prev => [...prev, ...Array.from(e.target.files!)]);
+        }
+        // Reset input so the same file can be re-selected
+        if (fileInputRef.current) fileInputRef.current.value = "";
+    };
+
+    const removeNewFile = (index: number) => {
+        setNewFiles(prev => prev.filter((_, i) => i !== index));
+    };
+
+    const markExistingImageForDeletion = (imageId: string) => {
+        setDeletedImageIds(prev => [...prev, imageId]);
+    };
+
+    const restoreExistingImage = (imageId: string) => {
+        setDeletedImageIds(prev => prev.filter(id => id !== imageId));
+    };
+
+    // Existing images minus those marked for deletion
+    const visibleExistingImages = product?.productImages.filter(img => !deletedImageIds.includes(img.id)) ?? [];
+    const markedForDeletion = product?.productImages.filter(img => deletedImageIds.includes(img.id)) ?? [];
+
+    // Custom submit handler to inject files + deletedImages into FormData
+    const handleSubmit = (formData: FormData) => {
+        // Append new image files
+        for (const file of newFiles) {
+            formData.append("images", file);
+        }
+        // Append deleted image IDs as JSON
+        formData.set("deletedImages", JSON.stringify(deletedImageIds));
+
+        formAction(formData);
+    };
 
     return (
         <div className="bg-background-light rounded-2xl shadow-2xl overflow-hidden border border-background-dark max-w-2xl w-full max-h-[90vh] flex flex-col">
@@ -43,7 +93,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                     <h2 className="text-xl font-bold text-basic">{product ? "Edit Product" : "Add New Product"}</h2>
                     <p className="text-sm text-muted">Fill in the product details below</p>
                 </div>
-                <button 
+                <button
                     onClick={onClose}
                     className="p-2 hover:bg-background-dark rounded-full transition-colors text-muted hover:text-basic"
                 >
@@ -51,7 +101,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                 </button>
             </div>
 
-            <form action={formAction} className="p-8 space-y-6 overflow-y-auto">
+            <form action={handleSubmit} className="p-8 space-y-6 overflow-y-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="md:col-span-2">
@@ -141,24 +191,105 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                         {state.errors?.category && <p className="text-red-500 text-xs mt-1 pl-1">{state.errors.category[0]}</p>}
                     </div>
 
-                    {/* Image URL */}
+                    {/* Product Images */}
                     <div className="md:col-span-2">
-                        <label htmlFor="image" className="block text-sm font-semibold text-basic mb-2 pl-1">
-                            Image URL
+                        <label className="block text-sm font-semibold text-basic mb-2 pl-1">
+                            Product Images
                         </label>
-                        <div className="relative">
-                            <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted" />
-                            <input
-                                id="image"
-                                name="image"
-                                type="url"
-                                defaultValue={product?.image}
-                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-background border ${state.errors?.image ? 'border-red-500' : 'border-background-dark'} text-basic focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
-                                placeholder="https://example.com/image.jpg"
-                                required
-                            />
-                        </div>
-                        {state.errors?.image && <p className="text-red-500 text-xs mt-1 pl-1">{state.errors.image[0]}</p>}
+
+                        {/* Existing images (edit mode) */}
+                        {visibleExistingImages.length > 0 && (
+                            <div className="mb-3">
+                                <p className="text-xs text-muted mb-2 pl-1">Current images</p>
+                                <div className="flex flex-wrap gap-3">
+                                    {visibleExistingImages.map(img => (
+                                        <div key={img.id} className="relative group">
+                                            <div className="h-20 w-20 rounded-lg overflow-hidden border border-background-dark">
+                                                <Image src={img.url} alt={img.name} width={80} height={80} className="object-cover h-full w-full" />
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => markExistingImageForDeletion(img.id)}
+                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                title="Remove image"
+                                            >
+                                                <X className="h-3 w-3" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Images marked for deletion (with undo) */}
+                        {markedForDeletion.length > 0 && (
+                            <div className="mb-3 p-3 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
+                                <p className="text-xs text-red-600 dark:text-red-400 mb-2 font-medium">Marked for removal (will be deleted on save)</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {markedForDeletion.map(img => (
+                                        <button
+                                            key={img.id}
+                                            type="button"
+                                            onClick={() => restoreExistingImage(img.id)}
+                                            className="flex items-center gap-1 px-2 py-1 text-xs rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+                                            title="Click to undo"
+                                        >
+                                            <Trash2 className="h-3 w-3" />
+                                            {img.name}
+                                            <span className="underline ml-1">Undo</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* New file previews */}
+                        {newFiles.length > 0 && (
+                            <div className="mb-3">
+                                <p className="text-xs text-muted mb-2 pl-1">New images to upload</p>
+                                <div className="flex flex-wrap gap-3">
+                                    {newFiles.map((file, i) => (
+                                        <div key={i} className="relative group">
+                                            <div className="h-20 w-20 rounded-lg overflow-hidden border border-background-dark bg-background">
+                                                <Image
+                                                    src={URL.createObjectURL(file)}
+                                                    alt={file.name}
+                                                    width={80}
+                                                    height={80}
+                                                    className="object-cover h-full w-full"
+                                                />
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => removeNewFile(i)}
+                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                title="Remove"
+                                            >
+                                                <X className="h-3 w-3" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* File picker button */}
+                        <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="w-full flex items-center justify-center gap-2 px-4 py-4 rounded-xl border-2 border-dashed border-background-dark hover:border-primary/50 text-muted hover:text-basic transition-all bg-background"
+                        >
+                            <Upload className="h-5 w-5" />
+                            <span className="text-sm font-medium">Click to add images</span>
+                        </button>
+                        <input
+                            ref={fileInputRef}
+                            type="file"
+                            multiple
+                            accept="image/*"
+                            className="hidden"
+                            onChange={handleFilesSelected}
+                        />
                     </div>
 
                     {/* Description */}
