@@ -165,6 +165,17 @@ export interface DashboardStats {
     recentOrders: RecentOrder[];
 }
 
+export interface StaffDashboardStats {
+    totalProducts: number;
+    pendingOrders: number;
+    processingOrders: number;
+    shippedOrders: number;
+    completedOrders: number;
+    cancelledOrders: number;
+    totalRevenue: number;
+    recentOrders: RecentOrder[];
+}
+
 export interface StatCardProps {
     title: string;
     value: number | string;
