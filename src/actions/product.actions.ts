@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { uploadToBucket, deleteObject } from "@/lib/bucket";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import type { ProductActionState } from "@/interfaces";
 
 const ProductSchema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -14,18 +15,6 @@ const ProductSchema = z.object({
     quantity: z.coerce.number().min(0, "Quantity cannot be negative"),
 });
 
-export type ProductActionState = {
-    error?: string;
-    success?: boolean;
-    errors?: {
-        name?: string[];
-        price?: string[];
-        discount?: string[];
-        category?: string[];
-        description?: string[];
-        quantity?: string[];
-    };
-};
 
 export async function getProducts() {
     try {

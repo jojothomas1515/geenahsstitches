@@ -1,24 +1,9 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import type { DashboardStats } from "@/interfaces";
 
-export interface DashboardStats {
-    totalProducts: number;
-    totalUsers: number;
-    pendingOrders: number;
-    processingOrders: number;
-    shippedOrders: number;
-    completedOrders: number;
-    cancelledOrders: number;
-    totalRevenue: number;
-    recentOrders: {
-        id: string;
-        userName: string;
-        totalAmount: number;
-        orderStatus: string;
-        orderDate: Date;
-    }[];
-}
+
 
 export async function getDashboardStats(): Promise<DashboardStats> {
     try {

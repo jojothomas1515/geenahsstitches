@@ -1,33 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X, Loader2, Package, MapPin, User, Calendar, CreditCard } from "lucide-react";
+import { X, Loader2, Package, User, CreditCard } from "lucide-react";
 import { getOrderById } from "@/actions/order.actions";
 import OrderStatusBadge from "./OrderStatusBadge";
-
-interface OrderItem {
-    id: string;
-    quantity: number;
-    price: number;
-    discount: number;
-    product: {
-        name: string;
-        image: string;
-    };
-}
-
-interface OrderDetails {
-    id: string;
-    orderDate: Date;
-    totalAmount: number;
-    orderStatus: any;
-    user: {
-        name: string;
-        email: string;
-        phone: string;
-    };
-    orderItems: OrderItem[];
-}
+import type { OrderDetails } from "@/interfaces";
 
 export default function OrderDetailsModal({ orderId, onClose }: { orderId: string, onClose: () => void }) {
     const [order, setOrder] = useState<OrderDetails | null>(null);

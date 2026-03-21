@@ -6,20 +6,7 @@ import { getOrders, updateOrderStatus } from "@/actions/order.actions";
 import OrderTable from "@/components/dashboard/admin/orders/OrderTable";
 import OrderDetailsModal from "@/components/dashboard/admin/orders/OrderDetailsModal";
 import { OrderStatus } from "@/generated/prisma/enums";
-
-interface Order {
-    id: string;
-    orderDate: Date;
-    totalAmount: number;
-    orderStatus: OrderStatus;
-    user: {
-        name: string;
-        email: string;
-    };
-    _count: {
-        orderItems: number;
-    };
-}
+import type { Order } from "@/interfaces";
 
 export default function AdminOrdersPage() {
     const [orders, setOrders] = useState<Order[]>([]);

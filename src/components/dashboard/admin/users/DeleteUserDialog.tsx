@@ -3,13 +3,7 @@
 import { useState } from "react";
 import { AlertTriangle, Loader2, UserX } from "lucide-react";
 import { deleteUser } from "@/actions/user.actions";
-
-interface DeleteUserDialogProps {
-    userId: string | null;
-    userName: string | null;
-    onClose: () => void;
-    onSuccess: () => void;
-}
+import type { DeleteUserDialogProps } from "@/interfaces";
 
 export default function DeleteUserDialog({ userId, userName, onClose, onSuccess }: DeleteUserDialogProps) {
     const [isDeleting, setIsDeleting] = useState(false);

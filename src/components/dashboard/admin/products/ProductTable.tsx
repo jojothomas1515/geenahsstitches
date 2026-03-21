@@ -3,29 +3,7 @@
 import { useState } from "react";
 import { Edit, Trash2, Search, Package } from "lucide-react";
 import Image from "next/image";
-
-interface ProductImage {
-    id: string;
-    name: string;
-    url: string;
-}
-
-interface Product {
-    id: string;
-    name: string;
-    price: number;
-    discount: number;
-    category: string[];
-    description: string;
-    quantity: number;
-    productImages: ProductImage[];
-}
-
-interface ProductTableProps {
-    products: Product[];
-    onEdit: (product: Product) => void;
-    onDelete: (id: string) => void;
-}
+import type { ProductTableProps } from "@/interfaces";
 
 export default function ProductTable({ products, onEdit, onDelete }: ProductTableProps) {
     const [searchQuery, setSearchQuery] = useState("");

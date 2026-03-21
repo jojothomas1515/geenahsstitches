@@ -5,6 +5,7 @@ import { Role } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
+import type { UserActionState } from "@/interfaces";
 
 const CreateUserSchema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -21,17 +22,7 @@ const UpdateUserSchema = z.object({
     role: z.nativeEnum(Role),
 });
 
-export type UserActionState = {
-    error?: string;
-    success?: boolean;
-    errors?: {
-        name?: string[];
-        email?: string[];
-        phone?: string[];
-        role?: string[];
-        password?: string[];
-    };
-};
+
 
 export async function getUsers() {
     try {

@@ -1,14 +1,5 @@
-import { LucideIcon } from "lucide-react";
 import Link from "next/link";
-
-interface StatCardProps {
-    title: string;
-    value: number | string;
-    icon: LucideIcon;
-    href?: string;
-    linkLabel?: string;
-    formatAsCurrency?: boolean;
-}
+import type { StatCardProps } from "@/interfaces";
 
 export default function StatCard({
     title,

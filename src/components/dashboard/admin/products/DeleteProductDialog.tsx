@@ -3,13 +3,7 @@
 import { useState } from "react";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import { deleteProduct } from "@/actions/product.actions";
-
-interface DeleteProductDialogProps {
-    productId: string | null;
-    productName: string | null;
-    onClose: () => void;
-    onSuccess: () => void;
-}
+import type { DeleteProductDialogProps } from "@/interfaces";
 
 export default function DeleteProductDialog({ productId, productName, onClose, onSuccess }: DeleteProductDialogProps) {
     const [isDeleting, setIsDeleting] = useState(false);

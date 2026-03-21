@@ -6,19 +6,7 @@ import { getUsers } from "@/actions/user.actions";
 import UserTable from "@/components/dashboard/admin/users/UserTable";
 import UserForm from "@/components/dashboard/admin/users/UserForm";
 import DeleteUserDialog from "@/components/dashboard/admin/users/DeleteUserDialog";
-import { Role } from "@/generated/prisma/enums";
-
-interface AppUser {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
-    role: Role;
-    createdAt: Date;
-    _count: {
-        orders: number;
-    };
-}
+import type { AppUser } from "@/interfaces";
 
 export default function AdminUsersPage() {
     const [users, setUsers] = useState<AppUser[]>([]);

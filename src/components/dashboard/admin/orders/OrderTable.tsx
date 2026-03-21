@@ -1,29 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Eye, MoreVertical, RefreshCw } from "lucide-react";
+import { Search, Eye, RefreshCw } from "lucide-react";
 import OrderStatusBadge from "./OrderStatusBadge";
 import { OrderStatus } from "@/generated/prisma/enums";
-
-interface Order {
-    id: string;
-    orderDate: Date;
-    totalAmount: number;
-    orderStatus: OrderStatus;
-    user: {
-        name: string;
-        email: string;
-    };
-    _count: {
-        orderItems: number;
-    };
-}
-
-interface OrderTableProps {
-    orders: Order[];
-    onViewDetails: (id: string) => void;
-    onUpdateStatus: (id: string, status: OrderStatus) => void;
-}
+import type { OrderTableProps } from "@/interfaces";
 
 export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: OrderTableProps) {
     const [searchQuery, setSearchQuery] = useState("");

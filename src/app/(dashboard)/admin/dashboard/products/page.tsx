@@ -6,23 +6,7 @@ import { getProducts } from "@/actions/product.actions";
 import ProductTable from "@/components/dashboard/admin/products/ProductTable";
 import ProductForm from "@/components/dashboard/admin/products/ProductForm";
 import DeleteProductDialog from "@/components/dashboard/admin/products/DeleteProductDialog";
-
-interface ProductImage {
-    id: string;
-    name: string;
-    url: string;
-}
-
-interface Product {
-    id: string;
-    name: string;
-    price: number;
-    discount: number;
-    category: string[];
-    description: string;
-    quantity: number;
-    productImages: ProductImage[];
-}
+import type { Product } from "@/interfaces";
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);

@@ -2,22 +2,9 @@
 
 import { useActionState, useEffect } from "react";
 import { X, Loader2, User, Mail, Phone, Shield, Lock } from "lucide-react";
-import { createUser, updateUser, type UserActionState } from "@/actions/user.actions";
+import { createUser, updateUser } from "@/actions/user.actions";
 import { Role } from "@/generated/prisma/enums";
-
-interface AppUser {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
-    role: Role;
-}
-
-interface UserFormProps {
-    user?: AppUser;
-    onClose: () => void;
-    onSuccess: () => void;
-}
+import type { UserActionState, UserFormProps } from "@/interfaces";
 
 const initialState: UserActionState = {};
 

@@ -2,31 +2,9 @@
 
 import { useActionState, useEffect, useState, useRef } from "react";
 import { X, Loader2, Upload, Trash2 } from "lucide-react";
-import { createProduct, updateProduct, type ProductActionState } from "@/actions/product.actions";
+import { createProduct, updateProduct } from "@/actions/product.actions";
+import type { ProductActionState, ProductFormProps } from "@/interfaces";
 import Image from "next/image";
-
-interface ProductImage {
-    id: string;
-    name: string;
-    url: string;
-}
-
-interface Product {
-    id: string;
-    name: string;
-    price: number;
-    discount: number;
-    category: string[];
-    description: string;
-    quantity: number;
-    productImages: ProductImage[];
-}
-
-interface ProductFormProps {
-    product?: Product;
-    onClose: () => void;
-    onSuccess: () => void;
-}
 
 const initialState: ProductActionState = {};
 

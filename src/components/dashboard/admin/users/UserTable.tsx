@@ -3,24 +3,7 @@
 import { useState } from "react";
 import { Search, Edit, Trash2, Shield, User, Mail, Phone } from "lucide-react";
 import { Role } from "@/generated/prisma/enums";
-
-interface AppUser {
-    id: string;
-    name: string;
-    email: string;
-    phone: string;
-    role: Role;
-    createdAt: Date;
-    _count: {
-        orders: number;
-    };
-}
-
-interface UserTableProps {
-    users: AppUser[];
-    onEdit: (user: AppUser) => void;
-    onDelete: (id: string) => void;
-}
+import type { UserTableProps } from "@/interfaces";
 
 const roleStyles: Record<Role, string> = {
     ADMIN: "bg-red-100 text-red-800 border-red-200",

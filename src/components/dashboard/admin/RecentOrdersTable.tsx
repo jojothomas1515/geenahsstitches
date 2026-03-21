@@ -1,10 +1,4 @@
-interface RecentOrder {
-    id: string;
-    userName: string;
-    totalAmount: number;
-    orderStatus: string;
-    orderDate: Date;
-}
+import type { RecentOrder } from "@/interfaces";
 
 const statusStyles: Record<string, string> = {
     PENDING: "bg-yellow-100 text-yellow-800",
