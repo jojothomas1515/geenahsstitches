@@ -184,3 +184,33 @@ export interface StatCardProps {
     linkLabel?: string;
     formatAsCurrency?: boolean;
 }
+
+
+// ── Collection ───────────────────────────────────────────────────────────────
+
+export interface Collection {
+    id: string;
+    name: string;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+    products: Product[];
+}
+
+export type CollectionActionState = {
+    error?: string;
+    success?: boolean;
+    errors?: {
+        name?: string[];
+        description?: string[];
+    };
+}
+
+export type CollectionProductActionState = {
+    error?: string;
+    success?: boolean;
+    errors?: {
+        collectionId?: string[];
+        productId?: string[];
+    }
+}
