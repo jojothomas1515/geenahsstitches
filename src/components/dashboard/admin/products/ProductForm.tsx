@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const initialState: ProductActionState = {};
 
-export default function ProductForm({ product, onClose, onSuccess }: ProductFormProps) {
+export default function ProductForm({ product, initialCollectionId, onClose, onSuccess }: ProductFormProps) {
     const action = product
         ? updateProduct.bind(null, product.id)
         : createProduct;
@@ -60,6 +60,11 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
         }
         // Append deleted image IDs as JSON
         formData.set("deletedImages", JSON.stringify(deletedImageIds));
+
+        // Append initialCollectionId if present (for direct creation in collection)
+        if (initialCollectionId) {
+            formData.set("collectionId", initialCollectionId);
+        }
 
         formAction(formData);
     };

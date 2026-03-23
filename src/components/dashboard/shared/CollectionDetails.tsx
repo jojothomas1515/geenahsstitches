@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import { removeFromCollection } from "@/actions/collection.actions";
 import AddProductToCollectionForm from "./collections/AddProductToCollectionForm";
+import ProductForm from "../admin/products/ProductForm";
 import type { Collection } from "@/interfaces";
 
 interface CollectionDetailsProps {
@@ -16,6 +17,7 @@ interface CollectionDetailsProps {
 export default function CollectionDetails({ collection, backUrl }: CollectionDetailsProps) {
     const [isPending, startTransition] = useTransition();
     const [showAddModal, setShowAddModal] = useState(false);
+    const [showCreateModal, setShowCreateModal] = useState(false);
 
     const handleRemoveProduct = (productId: string) => {
         if (confirm("Are you sure you want to remove this product from the collection?")) {
@@ -48,13 +50,22 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
                     </div>
                 </div>
 
-                <button
-                    onClick={() => setShowAddModal(true)}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5 text-sm"
-                >
-                    <Plus className="h-4 w-4" />
-                    Manage Products
-                </button>
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={() => setShowAddModal(true)}
+                        className="flex items-center gap-2 px-5 py-2.5 bg-background border border-background-dark text-muted font-bold rounded-xl hover:text-basic transition-all text-sm"
+                    >
+                        <Plus className="h-4 w-4" />
+                        Manage Products
+                    </button>
+                    <button
+                        onClick={() => setShowCreateModal(true)}
+                        className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5 text-sm"
+                    >
+                        <Plus className="h-4 w-4" />
+                        Add New Product
+                    </button>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -154,8 +165,19 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
                         onClose={() => setShowAddModal(false)}
                         onSuccess={() => {
                             setShowAddModal(false);
-                            // revalidatePath in the action should handle the data refresh 
-                            // as this page is a server component's child
+                        }}
+                    />
+                </div>
+            )}
+
+            {/* Create Product Modal */}
+            {showCreateModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                    <ProductForm 
+                        initialCollectionId={collection.id}
+                        onClose={() => setShowCreateModal(false)}
+                        onSuccess={() => {
+                            setShowCreateModal(false);
                         }}
                     />
                 </div>

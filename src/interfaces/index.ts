@@ -18,10 +18,12 @@ export interface Product {
     description: string;
     quantity: number;
     productImages: ProductImage[];
+    collections?: Collection[];
 }
 
 export interface ProductFormProps {
     product?: Product;
+    initialCollectionId?: string;
     onClose: () => void;
     onSuccess: () => void;
 }

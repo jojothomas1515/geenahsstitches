@@ -20,7 +20,7 @@ export async function getProducts() {
     try {
         return await prisma.product.findMany({
             orderBy: { name: "asc" },
-            include: { productImages: true },
+            include: { productImages: true, collections: true },
         });
     } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -62,10 +62,18 @@ export async function createProduct(prevState: ProductActionState, formData: For
     const imageFiles = formData.getAll("images") as File[];
     const validImages = imageFiles.filter(f => f.size > 0);
 
+    // Extract collectionId for direct addition
+    const collectionId = formData.get("collectionId") as string | null;
+
     try {
         // Create the product first
         const product = await prisma.product.create({
-            data: validatedFields.data,
+            data: {
+                ...validatedFields.data,
+                collections: collectionId ? {
+                    connect: { id: collectionId }
+                } : undefined
+            },
         });
 
         // Upload images to S3 and create ProductImage records

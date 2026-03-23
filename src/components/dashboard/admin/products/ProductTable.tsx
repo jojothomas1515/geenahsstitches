@@ -38,6 +38,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                         <tr className="text-muted border-b border-background-dark bg-background-light/50">
                             <th className="py-4 px-6 font-medium">Product</th>
                             <th className="py-4 px-6 font-medium">Category</th>
+                            <th className="py-4 px-6 font-medium">Collections</th>
                             <th className="py-4 px-6 font-medium">Price</th>
                             <th className="py-4 px-6 font-medium">Quantity</th>
                             <th className="py-4 px-6 font-medium text-right">Actions</th>
@@ -75,6 +76,19 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                                     {cat}
                                                 </span>
                                             ))}
+                                        </div>
+                                    </td>
+                                    <td className="py-4 px-6">
+                                        <div className="flex flex-wrap gap-1">
+                                            {product.collections && product.collections.length > 0 ? (
+                                                product.collections.map((col, i) => (
+                                                    <span key={i} className="px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-semibold border border-blue-100">
+                                                        {col.name}
+                                                    </span>
+                                                ))
+                                            ) : (
+                                                <span className="text-muted text-[10px] italic">None</span>
+                                            )}
                                         </div>
                                     </td>
                                     <td className="py-4 px-6 text-basic font-medium">
@@ -121,7 +135,7 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                             ))
                         ) : (
                             <tr>
-                                <td colSpan={5} className="py-12 text-center text-muted">
+                                <td colSpan={6} className="py-12 text-center text-muted">
                                     No products found matching your search.
                                 </td>
                             </tr>

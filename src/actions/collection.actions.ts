@@ -11,7 +11,7 @@ const CollectionSchema = z.object({
 
 const CollectionProductSchema = z.object({
     collectionId: z.string().min(1, "Collection ID is required"),
-    productId: z.array(z.string()).min(1, "Product ID is required"),
+    productId: z.string().min(1, "Product ID is required"),
 });
 
 const CollectionProductsSchema = z.object({
