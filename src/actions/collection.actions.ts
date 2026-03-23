@@ -1,3 +1,4 @@
+"use server";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -96,7 +97,7 @@ export async function removeFromCollection(prevState: CollectionProductActionSta
     }
 
     try {
-        const collection = await prisma.collection.update({
+        await prisma.collection.update({
             where: {
                 id: validatedFields.data.collectionId,
             },
@@ -134,13 +135,13 @@ export async function addManyToCollection(prevState: CollectionProductActionStat
     }
 
     try {
-        const collection = await prisma.collection.update({
+        await prisma.collection.update({
             where: {
                 id: validatedFields.data.collectionId,
             },
             data: {
                 products: {
-                    connect: validatedFields.data.productsId.map((id) => ({
+                    set: validatedFields.data.productsId.map((id) => ({
                         id,
                     })),
                 },
@@ -156,3 +157,81 @@ export async function addManyToCollection(prevState: CollectionProductActionStat
 }
 
 
+export async function getCollections() {
+    try {
+        const collections = await prisma.collection.findMany({
+            include: {
+                _count: {
+                    select: { products: true }
+                }
+            },
+            orderBy: {
+                createdAt: "desc"
+            }
+        });
+        return collections;
+    } catch (error) {
+        console.error("Database Error:", error);
+        throw new Error("Failed to fetch collections.");
+    }
+}
+
+export async function deleteCollection(id: string) {
+    try {
+        await prisma.collection.delete({
+            where: { id },
+        });
+        revalidatePath("/admin/dashboard/collections");
+        return { success: true };
+    } catch (error) {
+        console.error("Database Error:", error);
+        return { error: "Failed to delete collection." };
+    }
+}
+
+export async function getCollectionById(id: string) {
+    try {
+        const collection = await prisma.collection.findUnique({
+            where: { id },
+            include: {
+                products: {
+                    include: {
+                        productImages: true
+                    }
+                }
+            }
+        });
+        return collection;
+    } catch (error) {
+        console.error("Database Error:", error);
+        throw new Error("Failed to fetch collection.");
+    }
+}
+
+export async function updateCollection(id: string, prevState: CollectionActionState, formData: FormData): Promise<CollectionActionState> {
+    const rawData = {
+        name: formData.get("name"),
+        description: formData.get("description"),
+    };
+
+    const validatedFields = CollectionSchema.safeParse(rawData);
+
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+        };
+    }
+
+    try {
+        await prisma.collection.update({
+            where: { id },
+            data: validatedFields.data,
+        });
+
+        revalidatePath("/admin/dashboard/collections");
+        return { success: true };
+    } catch (error) {
+        console.error("Database Error:", error);
+        return { error: "Failed to update collection." };
+    }
+}

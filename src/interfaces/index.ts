@@ -214,3 +214,30 @@ export type CollectionProductActionState = {
         productId?: string[];
     }
 }
+
+export interface CollectionTableProps {
+    collections: (Collection & { _count: { products: number } })[];
+    onEdit: (collection: Collection) => void;
+    onDelete: (id: string) => void;
+    onManageProducts: (collection: Collection) => void;
+    baseUrl?: string;
+}
+
+export interface CollectionFormProps {
+    collection?: Collection;
+    onClose: () => void;
+    onSuccess: () => void;
+}
+
+export interface DeleteCollectionDialogProps {
+    collectionId: string | null;
+    collectionName: string | null;
+    onClose: () => void;
+    onSuccess: () => void;
+}
+
+export interface AddProductToCollectionFormProps {
+    collection: Collection;
+    onClose: () => void;
+    onSuccess: () => void;
+}

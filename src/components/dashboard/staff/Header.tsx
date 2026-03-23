@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
-import { LayoutDashboard, Package, ShoppingCart } from "lucide-react"
+import { LayoutDashboard, Package, ShoppingCart, Layers } from "lucide-react"
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Nav from "./Header/Nav";
@@ -11,6 +11,7 @@ const navLinks = [
     { href: "/staff/dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} /> },
     { href: "/staff/dashboard/products", label: "Products", icon: <Package size={20} /> },
     { href: "/staff/dashboard/orders", label: "Orders", icon: <ShoppingCart size={20} /> },
+    { href: "/staff/dashboard/collections", label: "Collections", icon: <Layers size={20} /> },
 ];
 
 
