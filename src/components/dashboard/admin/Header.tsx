@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
-import { LayoutDashboard, Package, ShoppingCart, Users, Layers, LogOut } from "lucide-react"
+import { LayoutDashboard, Package, ShoppingCart, Users, Layers } from "lucide-react"
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Nav from "./Header/Nav";
@@ -34,7 +34,7 @@ export default async function AdminHeader() {
 
     if (session.user.role === "ADMIN") {
         return (
-            <header className="w-full md:w-80 bg-background/40 backdrop-blur-2xl border-r border-background-light/20 md:h-dvh h-fit p-8 flex flex-col">
+            <header className="w-full md:w-80 bg-background border-r border-background-dark md:h-screen h-fit p-8 flex flex-col">
                 <div className="flex flex-col gap-12 h-full">
                     {/* Logo Section */}
                     <div className="flex items-center justify-center md:justify-start">
@@ -50,7 +50,7 @@ export default async function AdminHeader() {
 
                     {/* User Profile Section */}
                     <div className="mt-auto pt-8 border-t border-background-light/20">
-                        <div className="flex items-center gap-4 bg-background-light/30 p-4 rounded-3xl border border-background-light/10">
+                        <div className="flex items-center gap-4 bg-background-light/50 p-4 rounded-2xl border border-background-dark">
                             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
                                 {session.user.name.charAt(0)}
                             </div>

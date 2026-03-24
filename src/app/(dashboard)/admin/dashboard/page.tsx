@@ -1,112 +1,89 @@
 import { getDashboardStats } from "@/actions/dashboard.actions";
 import StatCard from "@/components/dashboard/admin/StatCard";
 import RecentOrdersTable from "@/components/dashboard/admin/RecentOrdersTable";
-import {
-    DollarSign,
-    ArrowUpRight,
-} from "lucide-react";
 
 export default async function AdminDashboardPage() {
     const stats = await getDashboardStats();
 
     return (
-        <main className="w-full h-dvh p-8 md:p-12 overflow-y-auto bg-background-dark/5">
-            <header className="mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="flex flex-col gap-2">
-                    <h1 className="text-4xl font-black text-basic tracking-tight">Executive Dashboard</h1>
-                    <p className="text-muted font-medium opacity-80">Real-time overview of your sewing empire&apos;s performance.</p>
-                </div>
-                <div className="flex items-center gap-3">
-                    <div className="px-6 py-3 bg-background/60 backdrop-blur-md border border-background-light/20 rounded-2xl flex items-center gap-3 shadow-sm">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        <span className="text-xs font-bold text-basic tracking-widest uppercase">Live Metrics</span>
-                    </div>
-                </div>
-            </header>
+        <main className="w-full h-screen p-6 md:p-10 overflow-y-auto bg-background-light/30">
+            <div className="max-w-7xl mx-auto">
+                <header className="mb-10">
+                    <h1 className="text-3xl font-bold text-basic mb-2">Dashboard Overview</h1>
+                    <p className="text-muted">Welcome back! Here&apos;s what&apos;s happening with your store today.</p>
+                </header>
 
-            {/* Primary stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <StatCard
-                    title="Total Products"
-                    value={stats.totalProducts}
-                    icon="Package"
-                    href="/admin/dashboard/products"
-                    linkLabel="Manage Inventory"
-                />
-                <StatCard
-                    title="Total Users"
-                    value={stats.totalUsers}
-                    icon="Users"
-                    href="/admin/dashboard/users"
-                    linkLabel="Manage Clients"
-                />
-                <StatCard
-                    title="Active Orders"
-                    value={stats.pendingOrders}
-                    icon="Clock"
-                    href="/admin/dashboard/orders"
-                    linkLabel="Process Orders"
-                />
-                <StatCard
-                    title="Completed"
-                    value={stats.completedOrders}
-                    icon="CheckCircle"
-                    href="/admin/dashboard/orders"
-                    linkLabel="View History"
-                />
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                {/* Recent orders */}
-                <div className="lg:col-span-2">
-                    <RecentOrdersTable orders={stats.recentOrders} />
+                {/* Main Stats Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                    <StatCard
+                        title="Total Revenue"
+                        value={stats.totalRevenue}
+                        icon="Package"
+                        formatAsCurrency
+                    />
+                    <StatCard
+                        title="Total Products"
+                        value={stats.totalProducts}
+                        icon="Package"
+                        href="/admin/dashboard/products"
+                        linkLabel="View Inventory"
+                    />
+                    <StatCard
+                        title="Total Users"
+                        value={stats.totalUsers}
+                        icon="Users"
+                        href="/admin/dashboard/users"
+                        linkLabel="View Customers"
+                    />
+                    <StatCard
+                        title="Active Orders"
+                        value={stats.pendingOrders}
+                        icon="Clock"
+                        href="/admin/dashboard/orders"
+                        linkLabel="View Orders"
+                    />
                 </div>
 
-                {/* Secondary stats & Analytics */}
-                <div className="flex flex-col gap-6">
-                    <div className="bg-primary p-8 rounded-[2.5rem] text-white shadow-[0_20px_40px_rgba(var(--primary-rgb),0.2)] relative overflow-hidden group">
-                        <div className="absolute -right-4 -top-4 w-32 h-32 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
-                        <div className="relative z-10 flex flex-col gap-6">
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-black uppercase tracking-[0.2em] opacity-80">Total Revenue</span>
-                                <DollarSign size={24} className="opacity-60" />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-4xl font-black tracking-tighter">₦{stats.totalRevenue.toLocaleString()}</span>
-                                <span className="text-[10px] font-bold opacity-60 mt-1 uppercase tracking-widest">Lifetime Earnings</span>
-                            </div>
-                            <button className="mt-4 w-full py-4 bg-white/20 backdrop-blur-md rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-white/30 transition-colors flex items-center justify-center gap-2">
-                                Financial Report <ArrowUpRight size={14} />
-                            </button>
-                        </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Recent Orders Table */}
+                    <div className="lg:col-span-2">
+                        <RecentOrdersTable orders={stats.recentOrders} />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-background/60 backdrop-blur-xl border border-background-light/20 p-6 rounded-3xl">
-                            <div className="flex flex-col gap-1">
-                                <span className="text-[10px] font-black text-muted uppercase tracking-widest opacity-60">In Processing</span>
-                                <span className="text-2xl font-black text-basic">{stats.processingOrders}</span>
+                    {/* Order Status Breakdown */}
+                    <div className="space-y-6">
+                        <div className="bg-background border border-background-dark rounded-2xl p-6 shadow-sm">
+                            <h2 className="text-sm font-bold text-muted uppercase tracking-wider mb-6">Order Summary</h2>
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-sm text-muted">Processing</span>
+                                    <span className="text-sm font-bold text-basic">{stats.processingOrders}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-sm text-muted">Shipped</span>
+                                    <span className="text-sm font-bold text-basic">{stats.shippedOrders}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-sm text-muted">Completed</span>
+                                    <span className="text-sm font-bold text-basic">{stats.completedOrders}</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-sm text-muted">Cancelled</span>
+                                    <span className="text-sm font-bold text-rose-500">{stats.cancelledOrders}</span>
+                                </div>
+                                <div className="pt-4 border-t border-background-dark flex items-center justify-between">
+                                    <span className="text-sm font-bold text-basic">Total Orders</span>
+                                    <span className="text-sm font-bold text-basic">{stats.totalOrders}</span>
+                                </div>
                             </div>
                         </div>
-                        <div className="bg-background/60 backdrop-blur-xl border border-background-light/20 p-6 rounded-3xl">
-                            <div className="flex flex-col gap-1">
-                                <span className="text-[10px] font-black text-muted uppercase tracking-widest opacity-60">On The Way</span>
-                                <span className="text-2xl font-black text-basic">{stats.shippedOrders}</span>
+
+                        <div className="bg-primary text-white rounded-2xl p-6 shadow-lg shadow-primary/20">
+                            <h2 className="text-sm font-bold uppercase tracking-wider opacity-80 mb-2">Success Rate</h2>
+                            <div className="text-3xl font-bold mb-1">
+                                {stats.totalOrders > 0 ? Math.round((stats.completedOrders / stats.totalOrders) * 100) : 0}%
                             </div>
-                        </div>
-                        <div className="bg-background/60 backdrop-blur-xl border border-background-light/20 p-6 rounded-3xl">
-                            <div className="flex flex-col gap-1">
-                                <span className="text-[10px] font-black text-muted uppercase tracking-widest opacity-60">Cancelled</span>
-                                <span className="text-2xl font-black text-rose-500">{stats.cancelledOrders}</span>
-                            </div>
-                        </div>
-                        <div className="bg-background/60 backdrop-blur-xl border border-background-light/20 p-6 rounded-3xl">
-                            <div className="flex flex-col gap-1">
-                                <span className="text-[10px] font-black text-muted uppercase tracking-widest opacity-60">Success Rate</span>
-                                <span className="text-2xl font-black text-emerald-500">
-                                    {stats.totalOrders > 0 ? Math.round((stats.completedOrders / stats.totalOrders) * 100) : 0}%
-                                </span>
-                            </div>
+                            <p className="text-xs opacity-70">Percentage of completed orders relative to total volume.</p>
                         </div>
                     </div>
                 </div>
