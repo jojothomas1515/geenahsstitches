@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/geenah_stitches_logo_no_bg.png";
-import { LayoutDashboard, Package, ShoppingCart, Layers } from "lucide-react"
+import { LayoutDashboard, Package, ShoppingCart, Layers, LogOut } from "lucide-react"
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Nav from "../admin/Header/Nav";
+import { logout } from "@/actions/auth.actions";
 import { redirect } from "next/navigation";
 
 const navLinks = [
@@ -49,7 +50,7 @@ export default async function StaffHeader() {
                     </div>
 
                     {/* User Profile Section */}
-                    <div className="mt-auto pt-8 border-t border-background-light/20">
+                    <div className="mt-auto pt-8 border-t border-background-light/20 hidden md:flex flex-col gap-4">
                         <div className="flex items-center gap-4 bg-background-light/50 p-4 rounded-2xl border border-background-dark">
                             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
                                 {session.user.name.charAt(0)}
@@ -59,6 +60,16 @@ export default async function StaffHeader() {
                                 <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{session.user.role}</span>
                             </div>
                         </div>
+
+                        <form action={logout}>
+                            <button
+                                type="submit"
+                                className="w-full flex items-center gap-3 px-4 py-3 text-sm font-bold text-muted hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-all duration-200 group"
+                            >
+                                <LogOut size={18} className="group-hover:translate-x-1 transition-transform" />
+                                <span>Log Out</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </header>

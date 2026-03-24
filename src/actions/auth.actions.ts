@@ -32,7 +32,7 @@ export async function login(state: { error: string | null }, formData: FormData)
     }
     try {
         const rememberMe = formData.get("remember-me") === "on";
-        const res = await auth.api.signInEmail({
+        await auth.api.signInEmail({
             body: {
                 email: data.data.email,
                 password: data.data.password,
@@ -70,4 +70,11 @@ export async function register(state: { error: string | null }, formData: FormDa
         return { error: message };
     }
     return redirect("/");
+}
+
+export async function logout() {
+    await auth.api.signOut({
+        headers: await headers(),
+    });
+    return redirect("/login");
 }
