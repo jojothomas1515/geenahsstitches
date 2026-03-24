@@ -30,9 +30,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                 )}
                 <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover/product:opacity-100 transition-opacity" />
             </div>
-            <div className="p-4">
-                <h5 className="font-bold text-basic truncate mb-1">{product.name}</h5>
-                <p className="text-primary font-black">₦{product.price.toLocaleString()}</p>
+            <div className="p-5 space-y-3">
+                <h5 className="text-[10px] font-black text-basic/40 uppercase tracking-widest truncate">{product.name}</h5>
+                <div className="flex justify-between items-end">
+                    <p className="text-xl font-black text-basic leading-none tracking-tighter">₦{product.price.toLocaleString()}</p>
+                    <div className="w-8 h-px bg-primary/30 group-hover/product:w-12 transition-all duration-700" />
+                </div>
             </div>
         </Link>
     );

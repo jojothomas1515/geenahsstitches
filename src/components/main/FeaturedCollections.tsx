@@ -13,15 +13,15 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
     if (collections.length === 0) return null;
 
     return (
-        <section className="py-20 bg-neutral/30 dark:bg-neutral-dark/30">
+        <section className="py-20 bg-background-dark">
             <div className="container mx-auto px-4 sm:px-10">
                 <div className="flex justify-between items-end mb-12">
                     <div>
                         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-3">Curated Selection</h2>
                         <h3 className="text-4xl font-black text-basic leading-tight">Our Collections</h3>
                     </div>
-                    <Link 
-                        href="/collections" 
+                    <Link
+                        href="/collections"
                         className="group flex items-center gap-2 text-sm font-bold text-muted hover:text-primary transition-colors mb-2"
                     >
                         View All Collections
@@ -43,7 +43,7 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
                                     <p className="text-muted leading-relaxed line-clamp-4 italic">
                                         &quot;{collection.description}&quot;
                                     </p>
-                                    <Link 
+                                    <Link
                                         href={`/collections/${collection.id}`}
                                         className="inline-flex items-center gap-3 px-8 py-4 bg-basic text-white font-bold hover:bg-basic/90 transition-all shadow-xl shadow-basic/10 hover:-translate-y-1"
                                     >
@@ -68,7 +68,7 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
                                     </div>
                                 </div>
                             </div>
-                            
+
                             {/* Divider for next collection */}
                             {index < collections.length - 1 && (
                                 <div className="h-px w-full bg-linear-to-r from-transparent via-background-dark to-transparent mt-20" />

@@ -159,7 +159,7 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
 
             {/* Add Product Modal */}
             {showAddModal && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
                     <AddProductToCollectionForm 
                         collection={collection}
                         onClose={() => setShowAddModal(false)}
@@ -172,7 +172,7 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
 
             {/* Create Product Modal */}
             {showCreateModal && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
                     <ProductForm 
                         initialCollectionId={collection.id}
                         onClose={() => setShowCreateModal(false)}

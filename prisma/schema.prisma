@@ -148,6 +148,9 @@ model Product {
   productImages ProductImage[]
   collections   Collection[]
 
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
   @@index([cartId, id])
   @@map("products")
 }

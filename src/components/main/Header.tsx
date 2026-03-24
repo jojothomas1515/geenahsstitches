@@ -63,34 +63,40 @@ const Header = ({ session }: { session: Session | null }) => {
         className={`sticky lg:fixed lg:left-5 lg:right-5 lg:top-5 top-0 z-10`}
       >
         {session && (
-          session.user.role === "ADMIN" && (<>
-            <div className="w-full bg-primary/75 text-basic p-2 py-1 lg:rounded flex items-center justify-center">
-              <p>You are currently logged in as an admin</p><Link href="/admin/dashboard" className="ml-2 underline">Go to admin dashboard</Link>
+          session.user.role === "ADMIN" && (
+            <div className="w-full bg-primary text-white p-3 lg:rounded-t flex items-center justify-center text-[10px] font-bold uppercase tracking-widest">
+              <p>LoggedIn: ADMIN</p>
+              <Link href="/admin/dashboard" className="ml-4 underline hover:text-white/80 transition-colors">
+                Control Panel
+              </Link>
             </div>
-          </>)
+          )
           ||
-          session.user.role === "STAFF" && (<>
-            <div className="w-full bg-primary/75 text-basic p-2 py-1 lg:rounded flex items-center justify-center">
-              <p>You are currently logged in as a staff</p><Link href="/staff/dashboard" className="ml-2 underline">Go to admin dashboard</Link>
+          session.user.role === "STAFF" && (
+            <div className="w-full bg-primary text-white p-3 lg:rounded-t flex items-center justify-center text-[10px] font-bold uppercase tracking-widest">
+              <p>LoggedIn: STAFF</p>
+              <Link href="/staff/dashboard" className="ml-4 underline hover:text-white/80 transition-colors">
+                Staff Dashboard
+              </Link>
             </div>
-          </>)
-
+          )
         )}
-        <div className="bg-primary lg:bg-primary/50  dark:bg-primary-dark lg:dark:bg-primary-dark/50 lg:backdrop-blur-sm w-full px-5 lg:px-5 py-5 sm:py-5 sm:px-5  shadow-md z-10 lg:rounded text-basic">
-          <div className="flex items-center lg:justify-between w-full gap-2">
-            <div className="logo-container  w-[200px]">
+        <div className="bg-background/80 lg:backdrop-blur-xl border border-background-dark/30 w-full px-8 py-5 shadow-2xl shadow-basic/5 lg:rounded-b text-basic">
+          <div className="flex items-center lg:justify-between w-full gap-8">
+            <div className="logo-container w-[180px] group transition-all duration-500 hover:scale-105">
               <Link href={"/"}>
-                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:invert-75" />
+                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:brightness-200" />
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />
 
-            <div className="flex items-center gap-4 ml-auto lg:ml-0">
-              <Link href="/cart">
-                <ShoppingCart className="w-6 h-6" />
+            <div className="flex items-center gap-6 ml-auto lg:ml-0">
+              <Link href="/cart" className="relative group">
+                <ShoppingCart className="w-5 h-5 group-hover:text-primary transition-colors" />
+                <span className="absolute -top-2 -right-2 bg-primary text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">0</span>
               </Link>
-              <Link href="/account" style={{ anchorName: "--account" }}>
-                <User className="w-6 h-6" />
+              <Link href="/account" className="group">
+                <User className="w-5 h-5 group-hover:text-primary transition-colors" />
               </Link>
             </div>
 

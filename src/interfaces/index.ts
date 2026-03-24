@@ -1,4 +1,3 @@
-import { LucideIcon } from "lucide-react";
 import { Role, OrderStatus } from "@/generated/prisma/enums";
 
 // ── Product ─────────────────────────────────────────────────────────────────
@@ -181,7 +180,7 @@ export interface StaffDashboardStats {
 export interface StatCardProps {
     title: string;
     value: number | string;
-    icon: LucideIcon;
+    icon: string;
     href?: string;
     linkLabel?: string;
     formatAsCurrency?: boolean;

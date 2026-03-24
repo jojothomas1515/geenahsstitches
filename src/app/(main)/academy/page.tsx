@@ -4,184 +4,148 @@ import Link from "next/link";
 
 const Academy = () => {
   return (
-    <main>
-      <section className="header bg-black p-5">
-        <h1 className="md:font-bold md:text-2xl text-basic">
-          Welcome to Geenah’s Stitches Academy – Where Fashion Futures Begin
-        </h1>
-      </section>
-      <section className="sign p-4">
-        <div className="container m-auto h-60">
-          <Image
-            className={"h-full object-contain"}
-            src={SignImage}
-            alt={"signature"}
-          />
-        </div>
-      </section>
-      <section className="content p-4">
-        <div className="container m-auto flex flex-col gap-10">
-          <p>
-            Geenah’s Stitches Academy is not just a private vocational school;
-            it’s a gateway to unlocking creativity, mastering craftsmanship, and
-            stepping confidently into the dynamic world of fashion. Dedicated to
-            providing students with a comprehensive education, our academy is a
-            nurturing ground where budding designers and fashion enthusiasts
-            transform their passion into a thriving career.
-          </p>
-          <p>
-            Our mission is clear and unwavering: to cultivate the next
-            generation of fashion professionals by equipping them with the
-            skills, knowledge, and creativity required to excel in the
-            ever-evolving fashion industry. From the fundamentals of design and
-            fabric selection to the intricacies of pattern-making, sewing
-            techniques, and industry-standard finishing, our curriculum fosters
-            innovation while building a strong foundation in fashion.
-          </p>
-          <p>
-            At Geenah’s Stitches Academy, learning goes beyond the classroom. We
-            emphasize hands-on experience, enabling students to work on
-            real-world projects, gain confidence in their craft, and understand
-            the business side of fashion design. Whether you’re dreaming of
-            becoming a designer, starting your own brand, or simply exploring
-            the art of fashion, our academy is committed to turning those dreams
-            into reality.
-          </p>
-
-          <h1 className="text-xl font-bold">Upcoming Batch Details</h1>
-
-          <p>
-            We are thrilled to announce that the next batch at Geenah’s Stitches
-            Academy will begin soon. Now is the perfect time to take the first
-            step toward building your future in fashion design.
+    <main className="bg-background-dark min-h-screen">
+      <section className="bg-basic text-white py-20 px-10">
+        <div className="container mx-auto">
+          <h1 className="text-5xl font-black mb-4 tracking-tighter uppercase leading-none">Academy</h1>
+          <p className="text-xl text-white/50 italic font-medium max-w-xl">
+             Where Fashion Futures Begin. Master the art of couture with expert guidance.
           </p>
         </div>
       </section>
-      <section className="packages p-4">
-        <div className="container m-auto p-4 flex flex-col md:flex-row md:flex-wrap gap-4 justify-between">
-          <div className="consultation-card bg-red-100">
-            <div className="content">
-              <h2>BEGINNER CLASS</h2>
-              <h4>6-MONTHS PERIOD</h4>
-              <hr />
-              <ul>
-                <li>Introduction to Fashion Design</li>
-                <li>Taking Accurate Measurements.</li>
-                <li>Machine Operation and Handling.</li>
-                <li>Textile and Fabric Knowledge.</li>
-                <li>Fashion Sketching and Illustration.</li>
-                <li>
-                  Pattern drafting (Basic Body, Princess dart, Burstsier).
-                </li>
-                <li>
-                  Constructing basic garments (Skirt, Blouse, Trouser, Sleeves).
-                </li>
-                <li>Sewing Techniques.</li>
-                <li>
-                  Creating Different Designs (bringing out creativity in you).
-                </li>
-                <li>Fashion Business Fundamentals.</li>
-                <li>Practical and theory included in all course.</li>
-              </ul>
+
+      <section className="py-24 px-6 sm:px-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="relative group overflow-hidden border border-background-dark shadow-2xl">
+              <Image
+                className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                src={SignImage}
+                alt="Academy Signature"
+              />
+              <div className="absolute inset-x-8 bottom-8 bg-basic/90 backdrop-blur-md p-6 border border-white/10">
+                 <p className="text-white text-[10px] font-black uppercase tracking-[0.4em] text-center">Excellence in Craft</p>
+              </div>
             </div>
-            <Link href="#">₦800000</Link>
+
+            <div className="space-y-8">
+              <div className="inline-block px-4 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
+                Philosophy
+              </div>
+              <h2 className="text-5xl font-black text-basic uppercase tracking-tighter leading-tight">Master the Art <br /> of Couture</h2>
+              <div className="space-y-6 text-muted text-lg leading-relaxed italic border-l-4 border-primary/20 pl-8">
+                <p>
+                  Geenah’s Stitches Academy is a gateway to unlocking creativity, mastering craftsmanship, and
+                  stepping confidently into the dynamic world of fashion.
+                </p>
+                <p>
+                  Our mission is to cultivate the next generation of fashion professionals by equipping them with the
+                  skills, knowledge, and creativity required to excel in the ever-evolving industry.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="consultation-card bg-green-100">
-            <div className="content">
-              <h2>UPGRADE CLASS</h2>
-              <h4>3-MONTHS PERIOD</h4>
-              <hr />
-              <ul>
-                <li>Introduction to Intermediate Course.</li>
-                <li>Taking Accurate Measurements.</li>
-                <li>Pattern Drafting.</li>
-                <li>Zip Bulge Elimination.</li>
-                <li>
-                  Corsetry (Three parts cup Corset, Victorian Corset, Mesh
-                  Corset – Victorian & Cup).
-                </li>
-                <li>Sewing Techniques.</li>
-                <li>How to Cut a Perfect Mermaid Skirt.</li>
-                <li>How to Create Designs.</li>
-                <li>Beading and Embellishment.</li>
-                <li>Business Class.</li>
-                <li>
-                  Practical and theoretical aspects are included in all courses.
-                </li>
-              </ul>
+          <div className="mt-40 space-y-16">
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl font-black text-basic uppercase tracking-tighter">Curriculum & Programs</h2>
+              <p className="text-muted italic max-w-2xl mx-auto font-medium">
+                Comprehensive training modules designed for every stage of your fashion journey.
+              </p>
             </div>
-            <Link href="#">₦600000</Link>
-          </div>
-          <div className="consultation-card bg-blue-100">
-            <div className="content">
-              <h2>ADVANCE CLASS</h2>
-              <h4>1-MONTH PERIOD</h4>
-              <hr />
-              <ul>
-                <li>Introduction to Advanced Course.</li>
-                <li>Taking Accurate Measurements.</li>
-                <li>Pattern drafting.</li>
-                <li>
-                  Corsetry (Victorian Corset, Three-part cup corset – Mesh).
-                </li>
-                <li>Sewing Techniques.</li>
-                <li>Business Class.</li>
-                <li>Practical and theoretical are included in all courses</li>
-              </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Beginner */}
+              <div className="group bg-background border border-background-dark p-10 flex flex-col justify-between hover:border-primary/50 transition-all shadow-2xl shadow-basic/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 -rotate-45 translate-x-10 -translate-y-10" />
+                <div className="space-y-6">
+                  <div className="pb-6 border-b border-background-dark">
+                    <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-2">Beginner</h2>
+                    <h3 className="text-xl font-bold text-basic leading-tight">Foundation Class</h3>
+                    <p className="text-[10px] font-bold text-muted uppercase tracking-widest mt-2">6 Months Duration</p>
+                  </div>
+                  <ul className="space-y-3 text-sm text-muted">
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Fashion Design Fundamentals</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Accurate Measurements</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Pattern Drafting & Sketching</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Basic Garment Construction</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Machine Operation</li>
+                  </ul>
+                </div>
+                <div className="mt-12 pt-8 border-t border-background-dark">
+                   <p className="text-2xl font-black text-basic">₦800,000</p>
+                   <p className="text-[10px] text-muted uppercase font-bold tracking-widest mt-1">Full Certification</p>
+                </div>
+              </div>
+
+              {/* Upgrade */}
+              <div className="group bg-basic text-white p-10 flex flex-col justify-between -translate-y-2 relative shadow-2xl shadow-primary/20">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/20 -rotate-45 translate-x-12 -translate-y-12" />
+                <div className="space-y-6">
+                  <div className="pb-6 border-b border-white/10">
+                    <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-2">Upgrade</h2>
+                    <h3 className="text-xl font-bold leading-tight">Intermediate Mastery</h3>
+                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mt-2">3 Months Duration</p>
+                  </div>
+                  <ul className="space-y-3 text-sm text-white/70">
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Advanced Pattern Drafting</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Specialized Corsetry Techniques</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Mermaid Silhouette Perfection</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Beading & Embellishments</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Custom Creation Process</li>
+                  </ul>
+                </div>
+                <div className="mt-12 pt-8 border-t border-white/10">
+                   <p className="text-2xl font-black text-white">₦600,000</p>
+                   <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest mt-1">Skill Elevation</p>
+                </div>
+              </div>
+
+              {/* Advance */}
+              <div className="group bg-background border border-background-dark p-10 flex flex-col justify-between hover:border-primary/50 transition-all shadow-2xl shadow-basic/5 relative overflow-hidden">
+                 <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 -rotate-45 translate-x-10 -translate-y-10" />
+                 <div className="space-y-6">
+                  <div className="pb-6 border-b border-background-dark">
+                    <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-2">Advanced</h2>
+                    <h3 className="text-xl font-bold text-basic leading-tight">Master Class</h3>
+                    <p className="text-[10px] font-bold text-muted uppercase tracking-widest mt-2">1 Month Period</p>
+                  </div>
+                  <ul className="space-y-3 text-sm text-muted">
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> High-End Corsetry & Structure</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Advanced Pattern Manipulations</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Couture Finishing Techniques</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Fashion Business Strategy</li>
+                    <li className="flex gap-3"><span className="text-primary font-bold">/</span> Portfolio Refinement</li>
+                  </ul>
+                </div>
+                <div className="mt-12 pt-8 border-t border-background-dark">
+                   <p className="text-2xl font-black text-basic">₦300,000</p>
+                   <p className="text-[10px] text-muted uppercase font-bold tracking-widest mt-1">Couture Excellence</p>
+                </div>
+              </div>
             </div>
-            <Link href="#">₦300000</Link>
           </div>
         </div>
       </section>
-      <section className="p-4">
-        <div className="container p-4 m-auto flex gap-3 flex-col">
-          <p>
-            The program at Geenah’s Stitches Academy is designed to cater to
-            different durations, allowing flexibility for our students.
-            Additionally, there is a one-time <strong>Registration Fee</strong>{" "}
-            of <strong>₦50,000</strong>.
-          </p>
-          <p>
-            Our programs are designed to cater to various schedules, ensuring
-            that you receive the best possible training at your own pace. With
-            experienced instructors, a well-equipped learning environment, and a
-            focus on personalized attention, we ensure that every student’s
-            journey is unique and transformative.
-          </p>
-          <p>
-            Don’t wait to start building the career you’ve always dreamed of.
-            Join Geenah’s Stitches Academy and become part of a legacy of
-            excellence in fashion education. Let’s design your future, one
-            stitch at a time.
-          </p>
-          <p>
-            Affordable student accommodation is available at an extra cost.{" "}
-            <i>T&C apply.</i>
-          </p>
 
-          <strong className="p-5">
-            <i>Certificate & Graduation on Completion</i>
-          </strong>
-
-          <h2 className="text-2xl font-bold">
-            Your Fashion Journey Starts Here
-          </h2>
-
-          <p>
-            Turn your passion for fashion into a rewarding career with Geenah’s
-            Stitches Academy. Join our upcoming batch starting February 3rd and
-            gain the skills, knowledge, and creativity needed to thrive in the
-            fashion industry. With expert guidance and hands-on experience, your
-            dream of becoming a fashion professional is just a step away.
-          </p>
-
-          <Link
-            className="btn"
-            href="https://paystack.shop/pay/geenahs-stitches-academy"
-          >
-            REGISTER NOW
-          </Link>
+      <section className="py-40 bg-background-dark border-t border-background-dark">
+        <div className="container mx-auto px-6 max-w-4xl text-center space-y-12">
+          <div className="space-y-4">
+             <h4 className="text-[10px] font-black tracking-[0.5em] text-primary uppercase">Enroll Now</h4>
+             <h2 className="text-5xl font-black text-basic uppercase tracking-tighter leading-tight">Your Fashion Journey Begins February 3rd</h2>
+             <p className="text-muted italic max-w-2xl mx-auto leading-relaxed">
+               Turn your passion into a rewarding career. Join our upcoming batch and gain the skills needed to thrive in the world of high-fashion.
+             </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <Link href="https://paystack.shop/pay/geenahs-stitches-academy" className="px-12 py-5 bg-primary text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-basic transition-all shadow-2xl shadow-primary/20">
+              Register Now
+            </Link>
+            <p className="text-[10px] text-muted font-bold uppercase tracking-widest">
+              Registration Fee: ₦50,000 <br />
+              Accommodation Available
+            </p>
+          </div>
         </div>
       </section>
     </main>
