@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import FeaturedCollections from "@/components/main/FeaturedCollections";
 import { Collection } from "@/interfaces";
+import Link from "next/link";
 
 export default async function Home() {
   const collections = await prisma.collection.findMany({
@@ -42,12 +43,12 @@ export default async function Home() {
               </span>
             </h1>
             <div className="pt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in">
-               <a href="/store" className="group relative px-10 py-5 bg-white text-basic font-black uppercase text-sm tracking-widest overflow-hidden transition-all hover:bg-primary hover:text-white">
-                  <span className="relative z-10 italic">Shop Collection</span>
-               </a>
-               <a href="/collections" className="px-10 py-5 border border-white/30 text-white font-black uppercase text-sm tracking-widest hover:bg-white/10 transition-all backdrop-blur-sm">
-                  View Catalog
-               </a>
+                <Link href="/store" className="group relative px-10 py-5 bg-white text-basic font-black uppercase text-sm tracking-widest overflow-hidden transition-all hover:bg-primary hover:text-white">
+                   <span className="relative z-10 italic">Shop Collection</span>
+                </Link>
+                <Link href="/collections" className="px-10 py-5 border border-white/30 text-white font-black uppercase text-sm tracking-widest hover:bg-white/10 transition-all backdrop-blur-sm">
+                   View Catalog
+                </Link>
             </div>
           </div>
         </div>

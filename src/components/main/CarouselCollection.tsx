@@ -6,7 +6,7 @@ import Cat4 from "@/public/Snapinsta.app_465564792_18136445497367481_45086417916
 import Cat5 from "@/public/Snapinsta.app_468807924_18138671200367481_7220958232310374237_n_1080-820x1024.jpg";
 import Cat6 from "@/public/Snapinsta.app_468936096_18138678037367481_8269139110164864126_n_1080-819x1024.jpg";
 import Image from "next/image";
-import { MouseEvent } from "react";
+import { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const ImageCatalog = [
@@ -19,20 +19,23 @@ const ImageCatalog = [
 ];
 
 const CarouselCollection = () => {
-  function moveLeft(ev: MouseEvent<HTMLButtonElement>) {
-    const carousel = ev.currentTarget.parentElement
-      ?.lastChild as HTMLDivElement;
-    const imageItem = carousel.firstChild as HTMLImageElement;
-    if (!(carousel.scrollLeft <= 0))
-      carousel.scrollBy({ left: -(imageItem.width + 2) });
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  function moveLeft() {
+    if (carouselRef.current) {
+      const carousel = carouselRef.current;
+      const imageItem = carousel.firstChild as HTMLImageElement;
+      if (!(carousel.scrollLeft <= 0))
+        carousel.scrollBy({ left: -(imageItem.width + 2) });
+    }
   }
-  function moveRight(ev: MouseEvent<HTMLButtonElement>) {
-    const carousel = ev.currentTarget.parentElement
-      ?.lastChild as HTMLDivElement;
-    const imageItem = carousel.firstChild as HTMLImageElement;
-    console.log("scrollWidth", carousel.scrollWidth);
-    if (!(carousel.scrollLeft + imageItem.width >= carousel.scrollWidth))
-      carousel.scrollBy({ left: imageItem.width + 2 });
+  function moveRight() {
+    if (carouselRef.current) {
+      const carousel = carouselRef.current;
+      const imageItem = carousel.firstChild as HTMLImageElement;
+      if (!(carousel.scrollLeft + imageItem.width >= carousel.scrollWidth))
+        carousel.scrollBy({ left: imageItem.width + 2 });
+    }
   }
   return (
     <section className="collection h-[80vh] bg-white 
@@ -43,7 +46,7 @@ const CarouselCollection = () => {
         <button
           id="scroll-left"
           onClick={moveLeft}
-          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 left-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl  flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 left-5 bg-(--primary)
             w-8 h-8 right-auto cursor-pointer"
         >
           <FaArrowLeft />
@@ -51,12 +54,12 @@ const CarouselCollection = () => {
         <button
           id="scroll-right"
           onClick={moveRight}
-          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 right-5 bg-[var(--primary)]
+          className="rounded-2xl font-bolder text-2xl   flex justify-center items-center shadow shadow-amber-100 text-basic absolute inset-y-1/2 right-5 bg-(--primary)
             w-8 h-8  cursor-pointer"
         >
           <FaArrowRight />
         </button>
-        <div className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-black overflow-y-hidden">
+        <div ref={carouselRef} className=" carousel h-max flex overflow-x-auto scroll-smooth border-8 border-black overflow-y-hidden">
           {ImageCatalog.map((image) => {
             return <Image src={image.src} alt={image.alt} key={image.alt} />;
           })}

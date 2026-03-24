@@ -34,7 +34,7 @@ export async function createCollection(prevState: CollectionActionState, formDat
     }
 
     try {
-        const collection = await prisma.collection.create({
+        await prisma.collection.create({
             data: validatedFields.data,
         });
 
@@ -61,7 +61,7 @@ export async function addToCollection(prevState: CollectionProductActionState, f
     }
 
     try {
-        const collection = await prisma.collection.update({
+        await prisma.collection.update({
             where: {
                 id: validatedFields.data.collectionId,
             },

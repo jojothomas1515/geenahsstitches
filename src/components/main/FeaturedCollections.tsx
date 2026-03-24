@@ -57,7 +57,7 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
                                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                                         {collection.products.length > 0 ? (
                                             collection.products.slice(0, 3).map((product) => (
-                                                <ProductCard key={product.id} product={product as any} />
+                                                <ProductCard key={product.id} product={product} />
                                             ))
                                         ) : (
                                             <div className="col-span-full py-12 text-center bg-background border border-background-dark border-dashed">

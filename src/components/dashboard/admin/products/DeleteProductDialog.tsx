@@ -39,7 +39,7 @@ export default function DeleteProductDialog({ productId, productName, onClose, o
                     
                     <h3 className="text-xl font-bold text-basic mb-2">Delete Product?</h3>
                     <p className="text-muted text-sm px-4">
-                        Are you sure you want to delete <span className="font-semibold text-basic">"{productName}"</span>? 
+                        Are you sure you want to delete <span className="font-semibold text-basic">&quot;{productName}&quot;</span>? 
                         This action cannot be undone and will remove it from the catalog.
                     </p>
 

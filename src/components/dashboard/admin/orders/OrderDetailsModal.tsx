@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { X, Loader2, Package, User, CreditCard } from "lucide-react";
+import Image from "next/image";
 import { getOrderById } from "@/actions/order.actions";
 import OrderStatusBadge from "./OrderStatusBadge";
 import type { OrderDetails } from "@/interfaces";
@@ -15,7 +16,7 @@ export default function OrderDetailsModal({ orderId, onClose }: { orderId: strin
             setIsLoading(true);
             try {
                 const data = await getOrderById(orderId);
-                setOrder(data as any);
+                setOrder(data);
             } catch (error) {
                 console.error("Failed to fetch order details:", error);
             } finally {
@@ -116,11 +117,14 @@ export default function OrderDetailsModal({ orderId, onClose }: { orderId: strin
                                             <td className="py-4 px-5">
                                                 <div className="flex items-center gap-3">
                                                     {item.product.image && (
-                                                        <img 
-                                                            src={item.product.image} 
-                                                            alt={item.product.name}
-                                                            className="h-10 w-10 rounded-lg object-cover border border-background-dark"
-                                                        />
+                                                        <div className="relative h-10 w-10 shrink-0">
+                                                            <Image 
+                                                                src={item.product.image} 
+                                                                alt={item.product.name}
+                                                                fill
+                                                                className="rounded-lg object-cover border border-background-dark"
+                                                            />
+                                                        </div>
                                                     )}
                                                     <span className="font-medium text-basic">{item.product.name}</span>
                                                 </div>

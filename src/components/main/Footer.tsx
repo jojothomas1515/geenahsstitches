@@ -6,7 +6,6 @@ import {
   FaCcVisa,
   FaFacebook,
   FaInstagram,
-  FaTwitter,
   FaTiktok,
 } from "react-icons/fa";
 

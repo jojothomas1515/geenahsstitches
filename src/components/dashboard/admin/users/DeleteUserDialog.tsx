@@ -39,7 +39,7 @@ export default function DeleteUserDialog({ userId, userName, onClose, onSuccess 
                     
                     <h3 className="text-xl font-bold mb-2">Delete User Account?</h3>
                     <p className="text-muted text-sm px-4">
-                        Are you sure you want to delete <span className="font-semibold text-basic">"{userName}"</span>? 
+                        Are you sure you want to delete <span className="font-semibold text-basic">&quot;{userName}&quot;</span>? 
                         This action will permanently remove their account and all associated data.
                     </p>
 

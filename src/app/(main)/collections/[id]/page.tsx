@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/main/ProductCard";
 import { notFound } from "next/navigation";
 import { Package } from "lucide-react";
+import { Product } from "@/interfaces";
 
 interface CollectionDetailPageProps {
     params: {
@@ -68,7 +69,7 @@ export default async function CollectionDetailPage({ params }: CollectionDetailP
                     {collection.products.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                             {collection.products.map((product) => (
-                                <ProductCard key={product.id} product={product as any} />
+                                <ProductCard key={product.id} product={product as Product} />
                             ))}
                         </div>
                     ) : (

@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Session } from "@/lib/auth";
 import { User, ShoppingCart } from "lucide-react";
+import { useThrottle } from "@/hooks/use-throttle";
 
 const NavLinks = [
   { name: "Home", href: "/" },
@@ -26,27 +27,27 @@ const Header = ({ session }: { session: Session | null }) => {
   const [isFloating, setIsFloating] = useState(false);
   const prevY = useRef(0);
 
+  const throttledHandleScroll = useThrottle(() => {
+    const currentY = window.scrollY;
+
+    // Toggle floating state based on scroll position (e.g., 100px)
+    setIsFloating(currentY > 100);
+
+    if (currentY - prevY.current >= 70) {
+      setIsSrolled(true);
+    } else if (currentY - prevY.current <= -70 || currentY <= 80) {
+      setIsSrolled(false);
+    }
+
+    if (Math.abs(currentY - prevY.current) >= 70 || currentY <= 80) {
+      prevY.current = currentY;
+    }
+  }, 100);
+
   useEffect(() => {
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-
-      // Toggle floating state based on scroll position (e.g., 50px)
-      setIsFloating(currentY > 100);
-
-      if (currentY - prevY.current >= 70) {
-        setIsSrolled(true);
-      } else if (currentY - prevY.current <= -70 || currentY <= 80) {
-        setIsSrolled(false);
-      }
-
-      if (Math.abs(currentY - prevY.current) >= 70 || currentY <= 80) {
-        prevY.current = currentY;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", throttledHandleScroll);
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
+  }, [throttledHandleScroll]);
 
   return (
     <>

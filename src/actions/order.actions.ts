@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { OrderStatus } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
+import type { OrderDetails } from "@/interfaces";
 
 export async function getOrders() {
     try {
@@ -33,19 +34,37 @@ export async function updateOrderStatus(orderId: string, status: OrderStatus) {
     }
 }
 
-export async function getOrderById(orderId: string) {
+export async function getOrderById(orderId: string): Promise<OrderDetails | null> {
     try {
-        return await prisma.order.findUnique({
+        const order = await prisma.order.findUnique({
             where: { id: orderId },
             include: {
                 user: true,
                 orderItems: {
                     include: {
-                        product: true,
+                        product: {
+                            include: {
+                                productImages: true,
+                            },
+                        },
                     },
                 },
             },
         });
+
+        if (!order) return null;
+
+        // Map the result to match the OrderDetails interface
+        return {
+            ...order,
+            orderItems: order.orderItems.map((item) => ({
+                ...item,
+                product: {
+                    name: item.product.name,
+                    image: item.product.productImages[0]?.url || "",
+                },
+            })),
+        };
     } catch (error) {
         console.error("Failed to fetch order details:", error);
         return null;
