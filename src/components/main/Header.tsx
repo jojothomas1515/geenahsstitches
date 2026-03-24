@@ -60,7 +60,7 @@ const Header = ({ session }: { session: Session | null }) => {
           y: isSrolled ? "-110%" : "0%",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`sticky lg:fixed lg:left-5 lg:right-5 lg:top-5 top-0 z-10`}
+        className={`sticky lg:fixed lg:left-5 lg:right-5 lg:top-5 top-0 z-50`}
       >
         {session && (
           session.user.role === "ADMIN" && (
@@ -81,11 +81,11 @@ const Header = ({ session }: { session: Session | null }) => {
             </div>
           )
         )}
-        <div className="bg-background/80 lg:backdrop-blur-xl border border-background-dark/30 w-full px-8 py-5 shadow-2xl shadow-basic/5 lg:rounded-b text-basic">
+        <div className="bg-background lg:bg-background/50 lg:backdrop-blur-xl border border-background-dark/0 w-full px-8 py-5 shadow-2xl shadow-basic/5 lg:rounded-b text-basic">
           <div className="flex items-center lg:justify-between w-full gap-8">
             <div className="logo-container w-[180px] group transition-all duration-500 hover:scale-105">
               <Link href={"/"}>
-                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:brightness-200" />
+                <Image src={Logo} alt="Geenah's Stitches Logo" className="dark:brightness-100 dark:invert" />
               </Link>
             </div>
             <DesktopNav NavLinks={NavLinks} />
