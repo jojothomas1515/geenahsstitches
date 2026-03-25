@@ -54,13 +54,15 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
 
                                 {/* Products Grid/List */}
                                 <div className="lg:w-2/3 w-full">
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                                    <div className="flex overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-6 pb-4 sm:pb-0 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 w-screen sm:w-auto">
                                         {(collection.products || []).length > 0 ? (
                                             (collection.products || []).slice(0, 3).map((product) => (
-                                                <ProductCard key={product.id} product={product} />
+                                                <div key={product.id} className="snap-start shrink-0 w-[80vw] sm:w-auto">
+                                                    <ProductCard product={product} />
+                                                </div>
                                             ))
                                         ) : (
-                                            <div className="col-span-full py-12 text-center bg-background border border-background-dark border-dashed">
+                                            <div className="col-span-full py-12 text-center bg-background border border-background-dark border-dashed w-full shrink-0">
                                                 <Package size={40} className="text-muted mx-auto mb-3 opacity-20" />
                                                 <p className="text-muted text-sm italic">New products coming soon to this collection...</p>
                                             </div>
