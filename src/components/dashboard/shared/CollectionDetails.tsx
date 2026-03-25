@@ -87,7 +87,7 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
                                 <ShoppingBag className="h-4 w-4 text-muted" />
                                 <span className="text-muted">Total Products:</span>
                                 <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-bold text-xs">
-                                    {collection.products.length} Items
+                                    {(collection.products || []).length} Items
                                 </span>
                             </div>
                         </div>
@@ -103,9 +103,9 @@ export default function CollectionDetails({ collection, backUrl }: CollectionDet
                         </h2>
                     </div>
 
-                    {collection.products.length > 0 ? (
+                    {(collection.products || []).length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {collection.products.map((product) => (
+                            {(collection.products || []).map((product) => (
                                 <div
                                     key={product.id}
                                     className="bg-background p-4 rounded-xl border border-background-dark shadow-sm flex gap-4 hover:border-primary/50 transition-colors group"

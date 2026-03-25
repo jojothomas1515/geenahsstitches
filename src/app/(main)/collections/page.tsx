@@ -38,13 +38,13 @@ export default async function CollectionsPage() {
                 <div className="relative">
                    <div className="absolute -inset-4 bg-primary/5 -z-10 blur-2xl opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-1000" />
                    <div className="grid grid-cols-2 gap-6">
-                    {collection.products.length > 0 ? (
+                    {(collection.products || []).length > 0 ? (
                       <>
                         <div className="aspect-3/4 relative border border-background-dark/50 overflow-hidden shadow-2xl shadow-basic/10">
-                          {collection.products[0]?.productImages[0] ? (
+                          {(collection.products || [])[0]?.productImages[0] ? (
                             <Image
-                              src={collection.products[0].productImages[0].url}
-                              alt={collection.products[0].name}
+                              src={(collection.products || [])[0].productImages[0].url}
+                              alt={(collection.products || [])[0].name}
                               fill
                               className="object-cover group-hover/gallery:scale-110 transition-transform duration-[2s] ease-out"
                             />
@@ -56,10 +56,10 @@ export default async function CollectionsPage() {
                         </div>
                         <div className="space-y-6">
                           <div className="aspect-square relative border border-background-dark/50 overflow-hidden shadow-xl shadow-basic/5">
-                            {collection.products[1]?.productImages[0] ? (
+                            {(collection.products || [])[1]?.productImages[0] ? (
                               <Image
-                                src={collection.products[1].productImages[0].url}
-                                alt={collection.products[1].name}
+                                src={(collection.products || [])[1].productImages[0].url}
+                                alt={(collection.products || [])[1].name}
                                 fill
                                 className="object-cover group-hover/gallery:scale-105 transition-transform duration-[1.5s] ease-out"
                               />
@@ -70,10 +70,10 @@ export default async function CollectionsPage() {
                             )}
                           </div>
                           <div className="aspect-3/4 relative border border-background-dark/50 overflow-hidden shadow-2xl shadow-basic/10">
-                            {collection.products[2]?.productImages[0] ? (
+                            {(collection.products || [])[2]?.productImages[0] ? (
                               <Image
-                                src={collection.products[2].productImages[0].url}
-                                alt={collection.products[2].name}
+                                src={(collection.products || [])[2].productImages[0].url}
+                                alt={(collection.products || [])[2].name}
                                 fill
                                 className="object-cover group-hover/gallery:scale-110 transition-transform duration-1000"
                               />
@@ -114,7 +114,7 @@ export default async function CollectionsPage() {
                      <div className="flex-1 h-px bg-background-dark" />
                   </h3>
                   <div className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide">
-                     {collection.products.map(product => (
+                     {(collection.products || []).map(product => (
                        <div key={product.id} className="min-w-[120px] space-y-3 group/prod">
                          <div className="aspect-3/4 relative border border-background-dark overflow-hidden transition-all group-hover/prod:border-primary/50">
                             {product.productImages[0] && (

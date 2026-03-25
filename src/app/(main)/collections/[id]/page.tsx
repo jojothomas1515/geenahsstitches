@@ -58,7 +58,7 @@ export default async function CollectionDetailPage({ params }: CollectionDetailP
                     <div className="flex justify-between items-center mb-16 border-b border-background-dark pb-8">
                         <div>
                             <p className="text-muted font-bold text-sm tracking-widest uppercase">
-                                {collection.products.length} Products Found
+                                {(collection.products || []).length} Products Found
                             </p>
                         </div>
                         <div className="flex gap-4">
@@ -66,9 +66,9 @@ export default async function CollectionDetailPage({ params }: CollectionDetailP
                         </div>
                     </div>
 
-                    {collection.products.length > 0 ? (
+                    {(collection.products || []).length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            {collection.products.map((product) => (
+                            {(collection.products || []).map((product) => (
                                 <ProductCard key={product.id} product={product as Product} />
                             ))}
                         </div>

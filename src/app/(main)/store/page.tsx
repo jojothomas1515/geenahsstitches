@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@/generated/prisma";
+import { Prisma } from "@/generated/prisma/client";
 import ProductCard from "@/components/main/ProductCard";
 import CatalogFilters from "@/components/main/CatalogFilters";
 import Pagination from "@/components/main/Pagination";
