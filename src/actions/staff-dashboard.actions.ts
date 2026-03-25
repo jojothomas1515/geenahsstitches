@@ -7,6 +7,7 @@ export async function getStaffDashboardStats(): Promise<StaffDashboardStats> {
     try {
         const [
             totalProducts,
+            totalOrders,
             pendingOrders,
             processingOrders,
             shippedOrders,
@@ -16,6 +17,7 @@ export async function getStaffDashboardStats(): Promise<StaffDashboardStats> {
             recentOrders,
         ] = await Promise.all([
             prisma.product.count(),
+            prisma.order.count(),
             prisma.order.count({ where: { orderStatus: "PENDING" } }),
             prisma.order.count({ where: { orderStatus: "PROCESSING" } }),
             prisma.order.count({ where: { orderStatus: "SHIPPED" } }),
@@ -31,6 +33,7 @@ export async function getStaffDashboardStats(): Promise<StaffDashboardStats> {
 
         return {
             totalProducts,
+            totalOrders,
             pendingOrders,
             processingOrders,
             shippedOrders,
@@ -49,6 +52,7 @@ export async function getStaffDashboardStats(): Promise<StaffDashboardStats> {
         console.error("Failed to fetch staff dashboard stats:", error);
         return {
             totalProducts: 0,
+            totalOrders: 0,
             pendingOrders: 0,
             processingOrders: 0,
             shippedOrders: 0,

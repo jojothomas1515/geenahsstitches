@@ -157,6 +157,7 @@ export interface RecentOrder {
 export interface DashboardStats {
     totalProducts: number;
     totalUsers: number;
+    totalOrders: number;
     pendingOrders: number;
     processingOrders: number;
     shippedOrders: number;
@@ -168,6 +169,7 @@ export interface DashboardStats {
 
 export interface StaffDashboardStats {
     totalProducts: number;
+    totalOrders: number;
     pendingOrders: number;
     processingOrders: number;
     shippedOrders: number;
@@ -195,7 +197,7 @@ export interface Collection {
     description: string;
     createdAt: Date;
     updatedAt: Date;
-    products: Product[];
+    products?: Product[];
 }
 
 export type CollectionActionState = {

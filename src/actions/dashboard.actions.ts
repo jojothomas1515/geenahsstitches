@@ -10,6 +10,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
         const [
             totalProducts,
             totalUsers,
+            totalOrders,
             pendingOrders,
             processingOrders,
             shippedOrders,
@@ -20,6 +21,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
         ] = await Promise.all([
             prisma.product.count(),
             prisma.user.count(),
+            prisma.order.count(),
             prisma.order.count({ where: { orderStatus: "PENDING" } }),
             prisma.order.count({ where: { orderStatus: "PROCESSING" } }),
             prisma.order.count({ where: { orderStatus: "SHIPPED" } }),
@@ -36,6 +38,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
         return {
             totalProducts,
             totalUsers,
+            totalOrders,
             pendingOrders,
             processingOrders,
             shippedOrders,
@@ -55,6 +58,7 @@ export async function getDashboardStats(): Promise<DashboardStats> {
         return {
             totalProducts: 0,
             totalUsers: 0,
+            totalOrders: 0,
             pendingOrders: 0,
             processingOrders: 0,
             shippedOrders: 0,
