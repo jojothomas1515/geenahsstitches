@@ -45,7 +45,7 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
                                     </p>
                                     <Link
                                         href={`/collections/${collection.id}`}
-                                        className="inline-flex items-center gap-3 px-8 py-4 bg-basic text-white font-bold hover:bg-basic/90 transition-all shadow-xl shadow-basic/10 hover:-translate-y-1"
+                                        className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-xl shadow-primary/10 hover:-translate-y-1"
                                     >
                                         Explore Collection
                                         <ChevronRight size={18} />
