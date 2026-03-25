@@ -173,7 +173,7 @@ img {
   --text-color: oklch(.1 0 0);
 
   /* primary */
-  --primary: oklch(0.3203 0.0677 339.41);
+  --primary: oklch(0.7203 0.0677 339.41);
 }
 
 @media (prefers-color-scheme: dark) {
