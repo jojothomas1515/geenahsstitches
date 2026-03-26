@@ -87,7 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button
                 disabled={product.quantity === 0}
-                className="flex-1 flex items-center justify-center gap-3 bg-background-light hover:bg-primary text-white py-5 px-8 font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-primary/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-basic disabled:cursor-not-allowed group"
+                className="flex-1 flex items-center justify-center gap-3 bg-background-light hover:bg-primary text-basic py-5 px-8 font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-primary/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-basic disabled:cursor-not-allowed group"
               >
                 <ShoppingBag size={20} className="group-hover:-rotate-12 transition-transform" />
                 Add to Cart
