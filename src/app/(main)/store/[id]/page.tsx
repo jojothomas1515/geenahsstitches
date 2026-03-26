@@ -1,7 +1,7 @@
 import { getProductById } from "@/actions/product.actions";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, ShoppingBag, Truck, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShoppingBag, ShieldCheck } from "lucide-react";
 import ProductGallery from "@/components/main/ProductGallery";
 
 interface ProductPageProps {
@@ -87,23 +87,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button
                 disabled={product.quantity === 0}
-                className="flex-1 flex items-center justify-center gap-3 bg-basic hover:bg-primary text-white py-5 px-8 font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-primary/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-basic disabled:cursor-not-allowed group"
+                className="flex-1 flex items-center justify-center gap-3 bg-background-light hover:bg-primary text-white py-5 px-8 font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-primary/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-basic disabled:cursor-not-allowed group"
               >
                 <ShoppingBag size={20} className="group-hover:-rotate-12 transition-transform" />
                 Add to Cart
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-background p-6 border border-background-light">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-primary/10 text-primary rounded-full shrink-0">
-                  <Truck size={20} />
-                </div>
-                <div>
-                  <h4 className="text-xs font-black text-basic uppercase tracking-wider mb-1">Fast Delivery</h4>
-                  <p className="text-[10px] text-muted leading-tight">Nationwide delivery within 2-5 business days</p>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 gap-6 bg-background p-6 border border-background-light">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-primary/10 text-primary rounded-full shrink-0">
                   <ShieldCheck size={20} />
