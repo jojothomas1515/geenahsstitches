@@ -20,10 +20,10 @@ export default async function CollectionsPage() {
 
   return (
     <main className="bg-background-dark min-h-screen">
-      <section className="header bg-basic text-white py-20 px-10">
+      <section className="header bg-background-light text-basic py-20 px-10">
         <div className="container mx-auto">
           <h1 className="text-5xl font-black mb-4 tracking-tighter uppercase">Our Collections</h1>
-          <p className="text-xl text-white/70 italic font-medium max-w-2xl">
+          <p className="text-xl text-basic/70 italic font-medium max-w-2xl">
             Explore our curated selections of bespoke fashion, where every piece tells a story of elegance and tradition.
           </p>
         </div>
@@ -129,7 +129,7 @@ export default async function CollectionsPage() {
 
                 <Link 
                   href={`/collections/${collection.id}`} 
-                  className="inline-flex items-center gap-6 px-12 py-5 bg-basic text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-primary transition-all shadow-2xl shadow-primary/10 group"
+                  className="inline-flex items-center gap-6 px-12 py-5 bg-background-light text-basic font-black uppercase text-xs tracking-[0.2em] hover:bg-primary transition-all shadow-2xl shadow-primary/10 group"
                 >
                   DISCOVER THE FULL SERIES
                   <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />

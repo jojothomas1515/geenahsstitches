@@ -25,7 +25,7 @@ export default function AdminNotFound() {
         <div className="w-full flex flex-col gap-3">
             <Link 
               href="/admin/dashboard"
-              className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:opacity-90 active:scale-[0.98] transition-all shadow-xl shadow-primary/20 justify-center h-16 w-full"
+              className="flex items-center gap-3 bg-primary text-basic px-8 py-4 rounded-2xl font-bold hover:opacity-90 active:scale-[0.98] transition-all shadow-xl shadow-primary/20 justify-center h-16 w-full"
             >
               <LayoutDashboard size={20} />
               <span>Back to Dashboard</span>

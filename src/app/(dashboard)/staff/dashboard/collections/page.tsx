@@ -67,7 +67,7 @@ export default function StaffCollectionsPage() {
                     </div>
                     <button
                         onClick={handleCreate}
-                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-basic font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
                     >
                         <Plus className="h-5 w-5" />
                         New Collection
@@ -99,7 +99,7 @@ export default function StaffCollectionsPage() {
                         </p>
                         <button
                             onClick={handleCreate}
-                            className="bg-primary text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2"
+                            className="bg-primary text-basic px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2"
                         >
                             <Plus className="h-5 w-5" />
                             Create your first collection

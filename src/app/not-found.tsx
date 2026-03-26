@@ -38,7 +38,7 @@ export default function NotFound() {
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Link
               href="/"
-              className="flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-primary/20 group h-14 min-w-[200px] justify-center"
+              className="flex items-center gap-2 bg-primary text-basic px-8 py-4 rounded-full font-bold hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-primary/20 group h-14 min-w-[200px] justify-center"
             >
               <Home size={20} className="group-hover:-translate-y-0.5 transition-transform" />
               <span>Back to Home</span>

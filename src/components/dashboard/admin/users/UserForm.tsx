@@ -144,7 +144,7 @@ export default function UserForm({ user, onClose, onSuccess }: UserFormProps) {
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-basic hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                         {user ? "Update User" : "Create Account"}

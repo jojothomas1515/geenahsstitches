@@ -61,18 +61,18 @@ const Header = ({ session }: { session: Session | null }) => {
       >
         {session && (
           session.user.role === "ADMIN" && (
-            <div className={`w-full bg-primary text-white p-3 ${isFloating ? "lg:rounded-t" : ""} flex items-center justify-center text-[10px] font-bold uppercase tracking-widest transition-all duration-500`}>
+            <div className={`w-full bg-primary text-basic p-3 ${isFloating ? "lg:rounded-t" : ""} flex items-center justify-center text-[10px] font-bold uppercase tracking-widest transition-all duration-500`}>
               <p>LoggedIn: ADMIN</p>
-              <Link href="/admin/dashboard" className="ml-4 underline hover:text-white/80 transition-colors">
+              <Link href="/admin/dashboard" className="ml-4 underline hover:text-basic/80 transition-colors">
                 Control Panel
               </Link>
             </div>
           )
           ||
           session.user.role === "STAFF" && (
-            <div className={`w-full bg-primary text-white p-3 ${isFloating ? "lg:rounded-t" : ""} flex items-center justify-center text-[10px] font-bold uppercase tracking-widest transition-all duration-500`}>
+            <div className={`w-full bg-primary text-basic p-3 ${isFloating ? "lg:rounded-t" : ""} flex items-center justify-center text-[10px] font-bold uppercase tracking-widest transition-all duration-500`}>
               <p>LoggedIn: STAFF</p>
-              <Link href="/staff/dashboard" className="ml-4 underline hover:text-white/80 transition-colors">
+              <Link href="/staff/dashboard" className="ml-4 underline hover:text-basic/80 transition-colors">
                 Staff Dashboard
               </Link>
             </div>
@@ -90,7 +90,7 @@ const Header = ({ session }: { session: Session | null }) => {
             <div className="flex items-center gap-6 ml-auto lg:ml-0">
               <Link href="/cart" className="relative group">
                 <ShoppingCart className="w-5 h-5 group-hover:text-primary transition-colors" />
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">0</span>
+                <span className="absolute -top-2 -right-2 bg-primary text-basic text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">0</span>
               </Link>
               <Link href="/account" className="group">
                 <User className="w-5 h-5 group-hover:text-primary transition-colors" />

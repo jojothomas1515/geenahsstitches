@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         >
             <div className="relative aspect-3/4 overflow-hidden bg-background-light">
                 {product.discount > 0 && (
-                    <div className="absolute top-2 right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 z-10">
+                    <div className="absolute top-2 right-2 bg-red-500 text-basic text-[10px] font-bold px-2 py-1 z-10">
                         -{product.discount}%
                     </div>
                 )}

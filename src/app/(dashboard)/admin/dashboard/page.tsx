@@ -78,7 +78,7 @@ export default async function AdminDashboardPage() {
                             </div>
                         </div>
 
-                        <div className="bg-primary text-white rounded-2xl p-6 shadow-lg shadow-primary/20">
+                        <div className="bg-primary text-basic rounded-2xl p-6 shadow-lg shadow-primary/20">
                             <h2 className="text-sm font-bold uppercase tracking-wider opacity-80 mb-2">Success Rate</h2>
                             <div className="text-3xl font-bold mb-1">
                                 {stats.totalOrders > 0 ? Math.round((stats.completedOrders / stats.totalOrders) * 100) : 0}%

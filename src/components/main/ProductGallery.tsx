@@ -25,7 +25,7 @@ export default function ProductGallery({ images, productName, discount = 0 }: Pr
             <div className="hidden lg:flex flex-col gap-4 w-full">
                 <div className="relative aspect-3/4 w-full bg-background border border-background-light shadow-2xl overflow-hidden group">
                     {hasDiscount && (
-                        <div className="absolute top-4 right-4 bg-red-500 text-white font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
+                        <div className="absolute top-4 right-4 bg-red-500 text-basic font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
                             -{discount}% OFF
                         </div>
                     )}
@@ -76,7 +76,7 @@ export default function ProductGallery({ images, productName, discount = 0 }: Pr
                      images.map((img, idx) => (
                          <div key={idx} className="snap-center shrink-0 w-[85vw] sm:w-full relative aspect-3/4 border border-background-light shadow-xl overflow-hidden">
                              {hasDiscount && idx === 0 && (
-                                 <div className="absolute top-4 right-4 bg-red-500 text-white font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
+                                 <div className="absolute top-4 right-4 bg-red-500 text-basic font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
                                      -{discount}% OFF
                                  </div>
                              )}
@@ -92,7 +92,7 @@ export default function ProductGallery({ images, productName, discount = 0 }: Pr
                  ) : (
                      <div className="snap-center shrink-0 w-[85vw] sm:w-full relative aspect-3/4 bg-background border border-background-light shadow-2xl overflow-hidden flex flex-col items-center justify-center text-muted/30">
                          {hasDiscount && (
-                             <div className="absolute top-4 right-4 bg-red-500 text-white font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
+                             <div className="absolute top-4 right-4 bg-red-500 text-basic font-black text-xs px-3 py-1.5 uppercase tracking-widest z-10 shadow-lg">
                                  -{discount}% OFF
                              </div>
                          )}

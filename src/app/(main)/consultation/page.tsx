@@ -2,10 +2,10 @@ import Link from "next/link";
 const Consultation = async () => {
   return (
     <main className="bg-background-dark min-h-screen">
-      <section className="bg-basic text-white py-20 px-10">
+      <section className="bg-background-light text-basic py-20 px-10">
         <div className="container mx-auto">
           <h1 className="text-5xl font-black mb-4 tracking-tighter uppercase leading-none">Consultation</h1>
-          <p className="text-xl text-white/50 italic font-medium max-w-xl">
+          <p className="text-xl text-basic/50 italic font-medium max-w-xl">
              Our bespoke designs start with a conversation. Let&apos;s bring your vision to life.
           </p>
         </div>
@@ -56,27 +56,27 @@ const Consultation = async () => {
                   </ul>
                 </div>
                 <Link href="https://paystack.shop/pay/geenahsstitches-standard-consultation" 
-                      className="mt-12 block py-5 bg-basic text-white text-center font-black uppercase text-xs tracking-widest hover:bg-primary transition-colors">
+                      className="mt-12 block py-5 bg-background-light text-basic text-center font-black uppercase text-xs tracking-widest hover:bg-primary transition-colors">
                   ₦35,000
                 </Link>
               </div>
 
               {/* Premium */}
-              <div className="group bg-basic text-white p-10 flex flex-col justify-between -translate-y-2 relative shadow-2xl shadow-primary/20">
+              <div className="group bg-background-light text-basic p-10 flex flex-col justify-between -translate-y-2 relative shadow-2xl shadow-primary/20">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 text-[8px] font-black uppercase tracking-widest">Most Popular</div>
                 <div className="space-y-6">
                   <div className="pb-6 border-b border-white/10">
                     <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-2">Premium</h2>
                     <h3 className="text-xl font-bold leading-tight">Style, Fabric & Fit</h3>
                   </div>
-                  <ul className="space-y-4 text-sm text-white/70">
+                  <ul className="space-y-4 text-sm text-basic/70">
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Personalized style assessment</li>
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Collaborative design process</li>
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Precise professional measurements</li>
                   </ul>
                 </div>
                 <Link href="https://paystack.shop/pay/geenahs-stitches-premium-consultation"
-                      className="mt-12 block py-5 bg-primary text-white text-center font-black uppercase text-xs tracking-widest hover:bg-white hover:text-basic transition-all">
+                      className="mt-12 block py-5 bg-primary text-basic text-center font-black uppercase text-xs tracking-widest hover:bg-white hover:text-basic transition-all">
                   ₦70,000
                 </Link>
               </div>
@@ -95,7 +95,7 @@ const Consultation = async () => {
                   </ul>
                 </div>
                 <Link href="https://paystack.shop/pay/geenahs-stitches-bridal-consultation"
-                      className="mt-12 block py-5 bg-basic text-white text-center font-black uppercase text-xs tracking-widest hover:bg-primary transition-colors">
+                      className="mt-12 block py-5 bg-background-light text-basic text-center font-black uppercase text-xs tracking-widest hover:bg-primary transition-colors">
                   ₦100,000
                 </Link>
               </div>
@@ -113,7 +113,7 @@ const Consultation = async () => {
                If you’ve already envisioned your perfect piece, we’re ready to bring it to life. Contact us directly to share your design and start the crafting process.
              </p>
           </div>
-          <Link href={"/contact"} className="inline-block px-12 py-5 bg-primary text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-basic transition-all shadow-2xl shadow-primary/20">
+          <Link href={"/contact"} className="inline-block px-12 py-5 bg-primary text-basic font-black uppercase text-xs tracking-[0.2em] hover:bg-background-light transition-all shadow-2xl shadow-primary/20">
             Send Your Vision
           </Link>
         </div>

@@ -85,7 +85,7 @@ export default function CollectionForm({ collection, onClose, onSuccess }: Colle
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex-1 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-1 py-3.5 px-4 rounded-xl font-bold bg-primary text-basic hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                         {collection ? "Save Changes" : "Create"}

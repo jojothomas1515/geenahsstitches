@@ -188,7 +188,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                                             <button
                                                 type="button"
                                                 onClick={() => markExistingImageForDeletion(img.id)}
-                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-basic rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                                                 title="Remove image"
                                             >
                                                 <X className="h-3 w-3" />
@@ -240,7 +240,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                                             <button
                                                 type="button"
                                                 onClick={() => removeNewFile(i)}
-                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                                className="absolute -top-2 -right-2 p-1 bg-red-500 text-basic rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                                                 title="Remove"
                                             >
                                                 <X className="h-3 w-3" />
@@ -305,7 +305,7 @@ export default function ProductForm({ product, onClose, onSuccess }: ProductForm
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-basic hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                         {product ? "Save Changes" : "Create Product"}

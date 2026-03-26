@@ -65,7 +65,7 @@ export default async function StorePage({ searchParams }: StorePageProps) {
 
   return (
     <main className="bg-background-dark min-h-screen">
-      <section className="bg-basic text-white py-40 px-6 sm:px-10 relative overflow-hidden">
+      <section className="bg-background-light text-basic py-40 px-6 sm:px-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/4 h-full bg-primary/20 -skew-x-12 translate-x-1/2" />
         <div className="container mx-auto relative">
             <div className="space-y-6">
@@ -73,7 +73,7 @@ export default async function StorePage({ searchParams }: StorePageProps) {
                    Boutique
                 </div>
                 <h1 className="text-7xl sm:text-9xl font-black mb-4 tracking-tighter uppercase leading-[0.85]">Store <br /> <span className="text-primary">Catalog</span></h1>
-                <p className="text-xl sm:text-2xl text-white/50 italic font-medium max-w-xl border-l-4 border-primary pl-8">
+                <p className="text-xl sm:text-2xl text-basic/50 italic font-medium max-w-xl border-l-4 border-primary pl-8">
                     Explore our complete range of artisanal fashion, tailored to perfection.
                 </p>
             </div>

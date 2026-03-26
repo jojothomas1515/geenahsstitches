@@ -7,7 +7,7 @@ function NavLink({ href, label, icon }: { href: string; label: string; icon: Rea
     const pathname = usePathname();
     const isActive = pathname === href;
     return (
-        <Link href={href} className={`text-lg font-medium flex items-center gap-2 p-2 rounded-md ${isActive ? "bg-primary text-white" : ""}`}>{icon} {label}</Link>
+        <Link href={href} className={`text-lg font-medium flex items-center gap-2 p-2 rounded-md ${isActive ? "bg-primary text-basic" : ""}`}>{icon} {label}</Link>
     )
 }
 

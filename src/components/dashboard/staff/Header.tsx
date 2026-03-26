@@ -52,7 +52,7 @@ export default async function StaffHeader() {
                     {/* User Profile Section */}
                     <div className="mt-auto pt-8 border-t border-background-light/20 hidden md:flex flex-col gap-4">
                         <div className="flex items-center gap-4 bg-background-light/50 p-4 rounded-2xl border border-background-dark">
-                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-basic font-bold text-lg">
                                 {session.user.name.charAt(0)}
                             </div>
                             <div className="flex flex-col overflow-hidden">

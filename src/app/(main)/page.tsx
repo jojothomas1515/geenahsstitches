@@ -33,20 +33,20 @@ export default async function Home() {
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <div className="space-y-6 max-w-4xl mx-auto">
-            <p className="text-white/80 font-bold uppercase tracking-[0.4em] text-xs sm:text-sm animate-fade-in-down">
+            <p className="text-basic/80 font-bold uppercase tracking-[0.4em] text-xs sm:text-sm animate-fade-in-down">
               The Art of Bespoke Tailoring
             </p>
-            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter uppercase animate-fade-in-up">
+            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black text-basic leading-[0.85] tracking-tighter uppercase animate-fade-in-up">
               Geenah&apos;s <br />
               <span className="text-transparent border-t-white/30 border-t pt-4" style={{ WebkitTextStroke: '1px white' }}>
                 Stitches
               </span>
             </h1>
             <div className="pt-12 flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in">
-                <Link href="/store" className="group relative px-10 py-5 bg-white text-basic font-black uppercase text-sm tracking-widest overflow-hidden transition-all hover:bg-primary hover:text-white">
+                <Link href="/store" className="group relative px-10 py-5 bg-white text-basic font-black uppercase text-sm tracking-widest overflow-hidden transition-all hover:bg-primary hover:text-basic">
                    <span className="relative z-10 italic">Shop Collection</span>
                 </Link>
-                <Link href="/collections" className="px-10 py-5 border border-white/30 text-white font-black uppercase text-sm tracking-widest hover:bg-white/10 transition-all backdrop-blur-sm">
+                <Link href="/collections" className="px-10 py-5 border border-white/30 text-basic font-black uppercase text-sm tracking-widest hover:bg-white/10 transition-all backdrop-blur-sm">
                    View Catalog
                 </Link>
             </div>

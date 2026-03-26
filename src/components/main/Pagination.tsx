@@ -40,7 +40,7 @@ export default function Pagination({ totalPages, currentPage }: PaginationProps)
                         onClick={() => goToPage(page)}
                         className={`w-12 h-12 flex items-center justify-center border font-black text-xs transition-all ${
                             currentPage === page 
-                                ? "bg-basic text-white border-basic" 
+                                ? "bg-background-light text-basic border-basic" 
                                 : "bg-neutral dark:bg-neutral-dark border-background-dark hover:border-primary/30"
                         }`}
                     >

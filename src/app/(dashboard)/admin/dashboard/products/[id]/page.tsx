@@ -82,7 +82,7 @@ export default function AdminProductViewPage() {
                     <p className="text-muted mb-6">The product you&apos;re looking for doesn&apos;t exist or has been removed.</p>
                     <button
                         onClick={() => router.push("/admin/dashboard/products")}
-                        className="px-6 py-3 bg-primary text-white font-bold rounded-xl hover:opacity-90 transition-all"
+                        className="px-6 py-3 bg-primary text-basic font-bold rounded-xl hover:opacity-90 transition-all"
                     >
                         Back to Products
                     </button>
@@ -124,13 +124,13 @@ export default function AdminProductViewPage() {
                                         <>
                                             <button
                                                 onClick={prevImage}
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all backdrop-blur-sm"
+                                                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 text-basic rounded-full transition-all backdrop-blur-sm"
                                             >
                                                 <ChevronLeft className="h-5 w-5" />
                                             </button>
                                             <button
                                                 onClick={nextImage}
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all backdrop-blur-sm"
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-black/40 hover:bg-black/60 text-basic rounded-full transition-all backdrop-blur-sm"
                                             >
                                                 <ChevronRight className="h-5 w-5" />
                                             </button>
@@ -146,7 +146,7 @@ export default function AdminProductViewPage() {
                                         </>
                                     )}
                                     {product.discount > 0 && (
-                                        <div className="absolute top-4 left-4 px-3 py-1.5 bg-red-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                        <div className="absolute top-4 left-4 px-3 py-1.5 bg-red-500 text-basic text-xs font-bold rounded-full shadow-lg">
                                             -{product.discount}% OFF
                                         </div>
                                     )}
@@ -263,7 +263,7 @@ export default function AdminProductViewPage() {
                         <div className="flex gap-4 pt-2">
                             <button
                                 onClick={() => setIsFormOpen(true)}
-                                className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20"
+                                className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold bg-primary text-basic hover:opacity-90 transition-all shadow-lg shadow-primary/20"
                             >
                                 <Edit className="h-4 w-4" />
                                 Edit Product

@@ -135,7 +135,7 @@ export default function AddProductToCollectionForm({ collection, onClose, onSucc
                                     </div>
                                     <div className={`h-6 w-6 rounded-full flex items-center justify-center border transition-colors ${
                                         isSelected 
-                                            ? 'bg-primary border-primary text-white' 
+                                            ? 'bg-primary border-primary text-basic' 
                                             : 'border-background-dark text-transparent'
                                     }`}>
                                         <Check className="h-3.5 w-3.5" />
@@ -173,7 +173,7 @@ export default function AddProductToCollectionForm({ collection, onClose, onSucc
                         <button
                             type="submit"
                             disabled={isPending}
-                            className="py-2.5 px-6 rounded-xl font-bold bg-primary text-white hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
+                            className="py-2.5 px-6 rounded-xl font-bold bg-primary text-basic hover:opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 disabled:opacity-50"
                         >
                             {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
                             Update Collection

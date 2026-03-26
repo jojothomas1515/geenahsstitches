@@ -5,10 +5,10 @@ import Link from "next/link";
 const Academy = () => {
   return (
     <main className="bg-background-dark min-h-screen">
-      <section className="bg-basic text-white py-20 px-10">
+      <section className="bg-background-light text-basic py-20 px-10">
         <div className="container mx-auto">
           <h1 className="text-5xl font-black mb-4 tracking-tighter uppercase leading-none">Academy</h1>
-          <p className="text-xl text-white/50 italic font-medium max-w-xl">
+          <p className="text-xl text-basic/50 italic font-medium max-w-xl">
              Where Fashion Futures Begin. Master the art of couture with expert guidance.
           </p>
         </div>
@@ -23,8 +23,8 @@ const Academy = () => {
                 src={SignImage}
                 alt="Academy Signature"
               />
-              <div className="absolute inset-x-8 bottom-8 bg-basic/90 backdrop-blur-md p-6 border border-white/10">
-                 <p className="text-white text-[10px] font-black uppercase tracking-[0.4em] text-center">Excellence in Craft</p>
+              <div className="absolute inset-x-8 bottom-8 bg-background-light/90 backdrop-blur-md p-6 border border-white/10">
+                 <p className="text-basic text-[10px] font-black uppercase tracking-[0.4em] text-center">Excellence in Craft</p>
               </div>
             </div>
 
@@ -79,15 +79,15 @@ const Academy = () => {
               </div>
 
               {/* Upgrade */}
-              <div className="group bg-basic text-white p-10 flex flex-col justify-between -translate-y-2 relative shadow-2xl shadow-primary/20">
+              <div className="group bg-background-light text-basic p-10 flex flex-col justify-between -translate-y-2 relative shadow-2xl shadow-primary/20">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/20 -rotate-45 translate-x-12 -translate-y-12" />
                 <div className="space-y-6">
                   <div className="pb-6 border-b border-white/10">
                     <h2 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-2">Upgrade</h2>
                     <h3 className="text-xl font-bold leading-tight">Intermediate Mastery</h3>
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mt-2">3 Months Duration</p>
+                    <p className="text-[10px] font-bold text-basic/40 uppercase tracking-widest mt-2">3 Months Duration</p>
                   </div>
-                  <ul className="space-y-3 text-sm text-white/70">
+                  <ul className="space-y-3 text-sm text-basic/70">
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Advanced Pattern Drafting</li>
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Specialized Corsetry Techniques</li>
                     <li className="flex gap-3"><span className="text-primary font-bold">/</span> Mermaid Silhouette Perfection</li>
@@ -96,8 +96,8 @@ const Academy = () => {
                   </ul>
                 </div>
                 <div className="mt-12 pt-8 border-t border-white/10">
-                   <p className="text-2xl font-black text-white">₦600,000</p>
-                   <p className="text-[10px] text-white/40 uppercase font-bold tracking-widest mt-1">Skill Elevation</p>
+                   <p className="text-2xl font-black text-basic">₦600,000</p>
+                   <p className="text-[10px] text-basic/40 uppercase font-bold tracking-widest mt-1">Skill Elevation</p>
                 </div>
               </div>
 
@@ -138,7 +138,7 @@ const Academy = () => {
              </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="https://paystack.shop/pay/geenahs-stitches-academy" className="px-12 py-5 bg-primary text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-basic transition-all shadow-2xl shadow-primary/20">
+            <Link href="https://paystack.shop/pay/geenahs-stitches-academy" className="px-12 py-5 bg-primary text-basic font-black uppercase text-xs tracking-[0.2em] hover:bg-background-light transition-all shadow-2xl shadow-primary/20">
               Register Now
             </Link>
             <p className="text-[10px] text-muted font-bold uppercase tracking-widest">

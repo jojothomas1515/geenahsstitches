@@ -9,7 +9,7 @@ const About = () => {
   return (
     <main className="bg-background-dark min-h-screen text-basic">
       {/* Hero Section */}
-      <section className="bg-basic text-white py-40 px-6 sm:px-10 relative overflow-hidden">
+      <section className="bg-background-light text-basic py-40 px-6 sm:px-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/4 h-full bg-primary/20 -skew-x-12 translate-x-1/2 opacity-50" />
         <div className="container mx-auto relative">
           <div className="max-w-4xl space-y-6">
@@ -37,7 +37,7 @@ const About = () => {
                  />
                  <div className="absolute inset-0 bg-linear-to-t from-basic via-transparent to-transparent opacity-60" />
                  <div className="absolute bottom-10 left-10 space-y-1">
-                   <h2 className="text-3xl font-black text-white uppercase tracking-tighter">Regina Thomas</h2>
+                   <h2 className="text-3xl font-black text-basic uppercase tracking-tighter">Regina Thomas</h2>
                    <p className="text-primary font-black uppercase tracking-[0.3em] text-[10px]">Lead Designer & Visionary</p>
                  </div>
                </div>

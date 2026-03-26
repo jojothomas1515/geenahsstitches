@@ -72,7 +72,7 @@ export default function StaffProductsPage() {
                     </div>
                     <button
                         onClick={handleAddProduct}
-                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-basic font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
                     >
                         <Plus className="h-5 w-5" />
                         Add New Product

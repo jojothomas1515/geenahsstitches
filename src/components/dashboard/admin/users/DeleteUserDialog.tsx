@@ -62,7 +62,7 @@ export default function DeleteUserDialog({ userId, userName, onClose, onSuccess 
                     <button
                         onClick={handleDelete}
                         disabled={isDeleting}
-                        className="flex-1 py-3 px-4 rounded-xl font-bold bg-red-500 text-white hover:bg-red-600 transition-all shadow-lg shadow-red-200 flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="flex-1 py-3 px-4 rounded-xl font-bold bg-red-500 text-basic hover:bg-red-600 transition-all shadow-lg shadow-red-200 flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                         {isDeleting && <Loader2 className="h-4 w-4 animate-spin" />}
                         {isDeleting ? "Deleting..." : "Yes, Delete"}

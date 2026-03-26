@@ -79,7 +79,7 @@ export default function AdminUsersPage() {
                     </div>
                     <button
                         onClick={handleAddUser}
-                        className="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
+                        className="flex items-center gap-2 px-6 py-3 bg-primary text-basic font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5"
                     >
                         <UserPlus className="h-5 w-5" />
                         Add New User

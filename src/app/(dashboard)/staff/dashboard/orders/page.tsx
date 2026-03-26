@@ -112,7 +112,7 @@ export default function StaffOrdersPage() {
                     <div className="flex bg-background border border-background-dark rounded-xl p-1 overflow-x-auto max-w-full">
                         <button
                             onClick={() => setStatusFilter("ALL")}
-                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${statusFilter === "ALL" ? 'bg-primary text-white shadow-md' : 'text-muted hover:text-basic'}`}
+                            className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all ${statusFilter === "ALL" ? 'bg-primary text-basic shadow-md' : 'text-muted hover:text-basic'}`}
                         >
                             All Orders
                         </button>
@@ -120,7 +120,7 @@ export default function StaffOrdersPage() {
                             <button
                                 key={status}
                                 onClick={() => setStatusFilter(status)}
-                                className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${statusFilter === status ? 'bg-primary text-white shadow-md' : 'text-muted hover:text-basic'}`}
+                                className={`px-4 py-1.5 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${statusFilter === status ? 'bg-primary text-basic shadow-md' : 'text-muted hover:text-basic'}`}
                             >
                                 {status.charAt(0) + status.slice(1).toLowerCase()}
                             </button>

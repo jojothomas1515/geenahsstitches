@@ -8,10 +8,10 @@ import Link from "next/link";
 const Contact = () => {
   return (
     <main className="bg-background-dark min-h-screen">
-      <section className="bg-basic text-white py-20 px-10">
+      <section className="bg-background-light text-basic py-20 px-10">
         <div className="container mx-auto">
           <h1 className="text-5xl font-black mb-4 tracking-tighter uppercase leading-none">Contact Us</h1>
-          <p className="text-xl text-white/50 italic font-medium max-w-xl">
+          <p className="text-xl text-basic/50 italic font-medium max-w-xl">
              We&apos;re here to help you begin your journey to elegance and creativity.
           </p>
         </div>
@@ -87,8 +87,8 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="border-0 grayscale hover:grayscale-0 transition-all duration-700"
               ></iframe>
-              <div className="absolute inset-x-8 bottom-8 bg-basic p-8 shadow-2xl">
-                 <p className="text-white text-xs font-bold uppercase tracking-widest text-center">Visit our Atelier</p>
+              <div className="absolute inset-x-8 bottom-8 bg-background-light p-8 shadow-2xl">
+                 <p className="text-basic text-xs font-bold uppercase tracking-widest text-center">Visit our Atelier</p>
               </div>
             </div>
           </div>
