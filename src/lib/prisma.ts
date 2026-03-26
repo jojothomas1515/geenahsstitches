@@ -2,7 +2,8 @@ import { PrismaClient } from "@/generated/prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 
 
-const connectionString = `${process.env.DATABASE_URL}`
+let connectionString = `${process.env.DATABASE_URL}`;
+connectionString = connectionString.replace('sslmode=require', 'sslmode=require&uselibpqcompat=true');
 const adapter = new PrismaPg({ connectionString })
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
