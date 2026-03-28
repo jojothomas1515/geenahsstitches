@@ -1,8 +1,9 @@
 import { getProductById } from "@/actions/product.actions";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, ShoppingBag, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShieldCheck } from "lucide-react";
 import ProductGallery from "@/components/main/ProductGallery";
+import AddToCartButton from "@/components/main/cart/AddToCartButton";
 
 interface ProductPageProps {
   params: {
@@ -85,13 +86,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button
-                disabled={product.quantity === 0}
-                className="flex-1 flex items-center justify-center gap-3 bg-background-light hover:bg-primary text-basic py-5 px-8 font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-primary/20 hover:-translate-y-1 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-background-light disabled:cursor-not-allowed group"
-              >
-                <ShoppingBag size={20} className="group-hover:-rotate-12 transition-transform" />
-                Add to Cart
-              </button>
+              <AddToCartButton productId={product.id} stock={product.quantity} />
             </div>
 
             <div className="grid grid-cols-1 gap-6 bg-background p-6 border border-background-light">

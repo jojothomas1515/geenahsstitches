@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import { Session } from "@/lib/auth";
 import { User, ShoppingCart } from "lucide-react";
 import { useThrottle } from "@/hooks/use-throttle";
+import { useCart } from "@/context/CartProvider";
 
 const NavLinks = [
   { name: "Home", href: "/" },
@@ -22,6 +23,7 @@ const NavLinks = [
 ];
 
 const Header = ({ session }: { session: Session | null }) => {
+  const { itemCount } = useCart();
 
   const [isSrolled, setIsSrolled] = useState(false);
   const [isFloating, setIsFloating] = useState(false);
@@ -90,7 +92,9 @@ const Header = ({ session }: { session: Session | null }) => {
             <div className="flex items-center gap-6 ml-auto lg:ml-0">
               <Link href="/cart" className="relative group">
                 <ShoppingCart className="w-5 h-5 group-hover:text-primary transition-colors" />
-                <span className="absolute -top-2 -right-2 bg-primary text-basic text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">0</span>
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-primary text-basic text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-background">{itemCount > 9 ? '9+' : itemCount}</span>
+                )}
               </Link>
               <Link href="/account" className="group">
                 <User className="w-5 h-5 group-hover:text-primary transition-colors" />

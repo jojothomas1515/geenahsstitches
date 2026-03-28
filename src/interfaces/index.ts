@@ -244,3 +244,11 @@ export interface AddProductToCollectionFormProps {
     onClose: () => void;
     onSuccess: () => void;
 }
+
+// ── Cart ─────────────────────────────────────────────────────────────────────
+
+export interface CartItemDetail {
+    id: string;
+    quantity: number;
+    product: Product;
+}
