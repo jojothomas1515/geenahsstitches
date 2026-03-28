@@ -1,0 +1,28 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px;">
+  <div style="text-align: center; margin-bottom: 24px;">
+    <h1 style="color: #111; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Geenah's<br/>Stitches</h1>
+  </div>
+  <h2 style="color: #111; text-align: center; margin-bottom: 24px;">Order Update</h2>
+  <p style="color: #444; font-size: 16px; line-height: 1.5;">Hi {{name}},</p>
+  <p style="color: #444; font-size: 16px; line-height: 1.5;">
+    There is an update on your order <strong>#{{orderNumber}}</strong>.
+  </p>
+  
+  <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; margin: 24px 0;">
+    <h3 style="margin-top: 0; color: #111;">New Status: <span style="color: #000; padding: 4px 8px; border: 1px solid #000; border-radius: 4px; font-size: 14px; text-transform: uppercase;">{{status}}</span></h3>
+    {{#if trackingNumber}}
+    <p style="color: #444; margin-bottom: 0; margin-top: 12px; font-size: 15px;">Tracking Number: <strong style="color: #111;">{{trackingNumber}}</strong></p>
+    {{/if}}
+  </div>
+
+  <div style="text-align: center; margin: 32px 0;">
+    <a href="{{orderUrl}}" 
+       style="background-color: #000; color: #fff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+      View Details
+    </a>
+  </div>
+  <hr style="border: none; border-top: 1px solid #eaeaea; margin: 32px 0;">
+  <p style="color: #888; font-size: 12px; text-align: center;">
+    &copy; {{year}} Geenah's Stitches. All rights reserved.
+  </p>
+</div>

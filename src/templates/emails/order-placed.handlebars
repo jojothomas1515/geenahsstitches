@@ -1,0 +1,40 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px;">
+  <div style="text-align: center; margin-bottom: 24px;">
+    <h1 style="color: #111; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">Geenah's<br/>Stitches</h1>
+  </div>
+  <h2 style="color: #111; text-align: center; margin-bottom: 24px;">Order Confirmed!</h2>
+  <p style="color: #444; font-size: 16px; line-height: 1.5;">Hi {{name}},</p>
+  <p style="color: #444; font-size: 16px; line-height: 1.5;">
+    Thank you for your purchase! We've received your order <strong style="color: #111;">#{{orderNumber}}</strong> and are getting it ready.
+  </p>
+  
+  <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; margin: 24px 0;">
+    <h3 style="margin-top: 0; color: #111; border-bottom: 1px solid #eaeaea; padding-bottom: 12px;">Order Summary</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+      {{#each items}}
+      <tr>
+        <td style="padding: 12px 0; border-bottom: 1px solid #eaeaea; color: #444; font-size: 14px;">{{this.quantity}}x {{this.name}}</td>
+        <td style="padding: 12px 0; border-bottom: 1px solid #eaeaea; text-align: right; color: #111; font-weight: bold; font-size: 14px;">{{this.price}}</td>
+      </tr>
+      {{/each}}
+      <tr>
+        <td style="padding: 16px 0 8px; font-weight: bold; color: #111; font-size: 16px;">Total</td>
+        <td style="padding: 16px 0 8px; text-align: right; font-weight: bold; color: #111; text-transform: uppercase; font-size: 16px;">{{totalAmount}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="text-align: center; margin: 32px 0;">
+    <a href="{{orderUrl}}" 
+       style="background-color: #000; color: #fff; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+      View Order Status
+    </a>
+  </div>
+  <p style="color: #444; font-size: 16px; line-height: 1.5;">
+    We'll send you another email when your order ships.
+  </p>
+  <hr style="border: none; border-top: 1px solid #eaeaea; margin: 32px 0;">
+  <p style="color: #888; font-size: 12px; text-align: center;">
+    &copy; {{year}} Geenah's Stitches. All rights reserved.
+  </p>
+</div>
