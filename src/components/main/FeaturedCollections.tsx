@@ -37,7 +37,7 @@ export default function FeaturedCollections({ collections }: FeaturedCollections
                                 <div className="lg:w-1/3 space-y-6">
                                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
                                         <Package size={12} />
-                                        Collection {index + 1}
+                                        Collection
                                     </div>
                                     <h4 className="text-3xl font-bold text-basic">{collection.name}</h4>
                                     <p className="text-muted leading-relaxed line-clamp-4 italic">
