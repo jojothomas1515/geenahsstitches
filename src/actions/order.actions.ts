@@ -1,11 +1,13 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireRole } from "@/lib/auth-guard";
 import { OrderStatus } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import type { OrderDetails } from "@/interfaces";
 
 export async function getOrders() {
+    await requireRole("ADMIN", "STAFF");
     try {
         return await prisma.order.findMany({
             include: {
@@ -21,6 +23,7 @@ export async function getOrders() {
 }
 
 export async function updateOrderStatus(orderId: string, status: OrderStatus) {
+    await requireRole("ADMIN", "STAFF");
     try {
         await prisma.order.update({
             where: { id: orderId },
@@ -35,6 +38,7 @@ export async function updateOrderStatus(orderId: string, status: OrderStatus) {
 }
 
 export async function getOrderById(orderId: string): Promise<OrderDetails | null> {
+    await requireRole("ADMIN", "STAFF");
     try {
         const order = await prisma.order.findUnique({
             where: { id: orderId },

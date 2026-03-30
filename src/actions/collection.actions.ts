@@ -1,5 +1,6 @@
 "use server";
 import { prisma } from "@/lib/prisma";
+import { requireRole } from "@/lib/auth-guard";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import type { CollectionActionState, CollectionProductActionState } from "@/interfaces";
@@ -20,6 +21,7 @@ const CollectionProductsSchema = z.object({
 })
 
 export async function createCollection(prevState: CollectionActionState, formData: FormData): Promise<CollectionActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         name: formData.get("name"),
         description: formData.get("description"),
@@ -47,6 +49,7 @@ export async function createCollection(prevState: CollectionActionState, formDat
 }
 
 export async function addToCollection(prevState: CollectionProductActionState, formData: FormData): Promise<CollectionProductActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         collectionId: formData.get("collectionId"),
         productId: formData.get("productId"),
@@ -83,6 +86,7 @@ export async function addToCollection(prevState: CollectionProductActionState, f
 }
 
 export async function removeFromCollection(prevState: CollectionProductActionState, formData: FormData): Promise<CollectionProductActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         collectionId: formData.get("collectionId"),
         productId: formData.get("productId"),
@@ -121,6 +125,7 @@ export async function removeFromCollection(prevState: CollectionProductActionSta
 }
 
 export async function addManyToCollection(prevState: CollectionProductActionState, formData: FormData): Promise<CollectionProductActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         collectionId: formData.get("collectionId"),
         productsId: formData.getAll("productId"),
@@ -158,6 +163,7 @@ export async function addManyToCollection(prevState: CollectionProductActionStat
 
 
 export async function getCollections() {
+    await requireRole("ADMIN", "STAFF");
     try {
         const collections = await prisma.collection.findMany({
             include: {
@@ -177,6 +183,7 @@ export async function getCollections() {
 }
 
 export async function deleteCollection(id: string) {
+    await requireRole("ADMIN", "STAFF");
     try {
         await prisma.collection.delete({
             where: { id },
@@ -190,6 +197,7 @@ export async function deleteCollection(id: string) {
 }
 
 export async function getCollectionById(id: string) {
+    await requireRole("ADMIN", "STAFF");
     try {
         const collection = await prisma.collection.findUnique({
             where: { id },
@@ -209,6 +217,7 @@ export async function getCollectionById(id: string) {
 }
 
 export async function updateCollection(id: string, prevState: CollectionActionState, formData: FormData): Promise<CollectionActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         name: formData.get("name"),
         description: formData.get("description"),

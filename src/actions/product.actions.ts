@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireRole } from "@/lib/auth-guard";
 import { uploadToBucket, deleteObject } from "@/lib/bucket";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -17,6 +18,7 @@ const ProductSchema = z.object({
 
 
 export async function getProducts() {
+    await requireRole("ADMIN", "STAFF");
     try {
         return await prisma.product.findMany({
             orderBy: { name: "asc" },
@@ -29,6 +31,7 @@ export async function getProducts() {
 }
 
 export async function getProductById(id: string) {
+    await requireRole("ADMIN", "STAFF");
     try {
         return await prisma.product.findUnique({
             where: { id },
@@ -41,6 +44,7 @@ export async function getProductById(id: string) {
 }
 
 export async function createProduct(prevState: ProductActionState, formData: FormData): Promise<ProductActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         name: formData.get("name"),
         price: formData.get("price"),
@@ -104,6 +108,7 @@ export async function createProduct(prevState: ProductActionState, formData: For
 }
 
 export async function updateProduct(id: string, prevState: ProductActionState, formData: FormData): Promise<ProductActionState> {
+    await requireRole("ADMIN", "STAFF");
     const rawData = {
         name: formData.get("name"),
         price: formData.get("price"),
@@ -179,6 +184,7 @@ export async function updateProduct(id: string, prevState: ProductActionState, f
 }
 
 export async function deleteProduct(id: string) {
+    await requireRole("ADMIN", "STAFF");
     try {
         // Fetch images so we can clean up S3 objects
         const images = await prisma.productImage.findMany({

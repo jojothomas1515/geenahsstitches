@@ -1,32 +1,28 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireRole } from "@/lib/auth-guard";
 import type { DashboardStats } from "@/interfaces";
 
-
-
 export async function getDashboardStats(): Promise<DashboardStats> {
+    await requireRole("ADMIN");
+
     try {
         const [
             totalProducts,
             totalUsers,
             totalOrders,
-            pendingOrders,
-            processingOrders,
-            shippedOrders,
-            completedOrders,
-            cancelledOrders,
+            orderStatusCounts,
             revenueResult,
             recentOrders,
         ] = await Promise.all([
             prisma.product.count(),
             prisma.user.count(),
             prisma.order.count(),
-            prisma.order.count({ where: { orderStatus: "PENDING" } }),
-            prisma.order.count({ where: { orderStatus: "PROCESSING" } }),
-            prisma.order.count({ where: { orderStatus: "SHIPPED" } }),
-            prisma.order.count({ where: { orderStatus: "DELIVERED" } }),
-            prisma.order.count({ where: { orderStatus: "CANCELLED" } }),
+            prisma.order.groupBy({
+                by: ["orderStatus"],
+                _count: { _all: true },
+            }),
             prisma.order.aggregate({ _sum: { totalAmount: true } }),
             prisma.order.findMany({
                 take: 5,
@@ -35,15 +31,20 @@ export async function getDashboardStats(): Promise<DashboardStats> {
             }),
         ]);
 
+        // Build a map from the groupBy result
+        const statusMap = Object.fromEntries(
+            orderStatusCounts.map((g) => [g.orderStatus, g._count._all])
+        );
+
         return {
             totalProducts,
             totalUsers,
             totalOrders,
-            pendingOrders,
-            processingOrders,
-            shippedOrders,
-            completedOrders,
-            cancelledOrders,
+            pendingOrders: statusMap["PENDING"] ?? 0,
+            processingOrders: statusMap["PROCESSING"] ?? 0,
+            shippedOrders: statusMap["SHIPPED"] ?? 0,
+            completedOrders: statusMap["DELIVERED"] ?? 0,
+            cancelledOrders: statusMap["CANCELLED"] ?? 0,
             totalRevenue: revenueResult._sum.totalAmount ?? 0,
             recentOrders: recentOrders.map((order) => ({
                 id: order.id,

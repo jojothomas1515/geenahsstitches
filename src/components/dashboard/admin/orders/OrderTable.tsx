@@ -1,19 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Eye, RefreshCw } from "lucide-react";
+import { Search, RefreshCw } from "lucide-react";
 import OrderStatusBadge from "./OrderStatusBadge";
+import TablePagination from "@/components/dashboard/shared/TablePagination";
 import { OrderStatus } from "@/generated/prisma/enums";
 import type { OrderTableProps } from "@/interfaces";
 
+const PAGE_SIZE = 10;
+
 export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: OrderTableProps) {
     const [searchQuery, setSearchQuery] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
 
     const filteredOrders = orders.filter((order) =>
         order.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
         order.user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         order.user.email.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const totalPages = Math.ceil(filteredOrders.length / PAGE_SIZE);
+    const paginatedOrders = filteredOrders.slice(
+        (currentPage - 1) * PAGE_SIZE,
+        currentPage * PAGE_SIZE
+    );
+
+    const handleSearch = (value: string) => {
+        setSearchQuery(value);
+        setCurrentPage(1);
+    };
 
     return (
         <div className="bg-background rounded-2xl shadow-sm overflow-hidden border border-background-dark">
@@ -25,11 +40,11 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                         placeholder="Search orders, customers..."
                         className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-primary/50"
                         value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={(e) => handleSearch(e.target.value)}
                     />
                 </div>
                 <div className="text-sm text-muted">
-                    Showing {filteredOrders.length} of {orders.length} orders
+                    Showing {paginatedOrders.length} of {filteredOrders.length} orders
                 </div>
             </div>
 
@@ -47,9 +62,9 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-background-dark">
-                        {filteredOrders.length > 0 ? (
-                            filteredOrders.map((order) => (
-                                <tr key={order.id} className="hover:bg-background-light/30 transition-colors">
+                        {paginatedOrders.length > 0 ? (
+                            paginatedOrders.map((order) => (
+                                <tr key={order.id} className="hover:bg-background-light/30 transition-colors cursor-pointer" onClick={() => onViewDetails(order.id)}>
                                     <td className="py-4 px-6 font-mono text-xs text-muted truncate max-w-[120px]" title={order.id}>
                                         #{order.id.slice(0, 8)}...
                                     </td>
@@ -77,15 +92,7 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                                     </td>
                                     <td className="py-4 px-6 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <button
-                                                onClick={() => onViewDetails(order.id)}
-                                                className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
-                                                title="View Details"
-                                            >
-                                                <Eye className="h-4 w-4" />
-                                            </button>
-                                            
-                                            <div className="relative group">
+                                            <div className="relative group" onClick={(e) => e.stopPropagation()}>
                                                 <button
                                                     className="p-2 rounded-lg hover:bg-background-dark text-muted hover:text-basic transition-colors"
                                                     title="Change Status"
@@ -122,6 +129,14 @@ export default function OrderTable({ orders, onViewDetails, onUpdateStatus }: Or
                     </tbody>
                 </table>
             </div>
+
+            <TablePagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={filteredOrders.length}
+                pageSize={PAGE_SIZE}
+                onPageChange={setCurrentPage}
+            />
         </div>
     );
 }

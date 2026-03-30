@@ -1,18 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { Edit, Trash2, Search, Package, Eye } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Edit, Trash2, Search, Package } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import TablePagination from "@/components/dashboard/shared/TablePagination";
 import type { ProductTableProps } from "@/interfaces";
 
+const PAGE_SIZE = 10;
+
 export default function ProductTable({ products, onEdit, onDelete }: ProductTableProps) {
+    const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
 
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.category.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
     );
+
+    const totalPages = Math.ceil(filteredProducts.length / PAGE_SIZE);
+    const paginatedProducts = filteredProducts.slice(
+        (currentPage - 1) * PAGE_SIZE,
+        currentPage * PAGE_SIZE
+    );
+
+    // Reset to page 1 when search changes
+    const handleSearch = (value: string) => {
+        setSearchQuery(value);
+        setCurrentPage(1);
+    };
 
     return (
         <div className="bg-background rounded-2xl shadow-sm overflow-hidden border border-background-dark">
@@ -24,11 +41,11 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                         placeholder="Search products..."
                         className="w-full pl-10 pr-4 py-2 rounded-xl bg-background-light border border-background-dark text-sm text-basic focus:outline-none focus:ring-2 focus:ring-primary/50"
                         value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={(e) => handleSearch(e.target.value)}
                     />
                 </div>
                 <div className="text-sm text-muted">
-                    Showing {filteredProducts.length} of {products.length} products
+                    Showing {paginatedProducts.length} of {filteredProducts.length} products
                 </div>
             </div>
 
@@ -45,9 +62,9 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-background-dark">
-                        {filteredProducts.length > 0 ? (
-                            filteredProducts.map((product) => (
-                                <tr key={product.id} className="hover:bg-background-light/30 transition-colors">
+                        {paginatedProducts.length > 0 ? (
+                            paginatedProducts.map((product) => (
+                                <tr key={product.id} className="hover:bg-background-light/30 transition-colors cursor-pointer" onClick={() => router.push(`/admin/dashboard/products/${product.id}`)}>
                                     <td className="py-4 px-6">
                                         <div className="flex items-center gap-3">
                                             <div className="relative h-12 w-12 rounded-lg overflow-hidden border border-background-dark bg-background-light shrink-0">
@@ -108,22 +125,15 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                                     </td>
                                     <td className="py-4 px-6 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <Link
-                                                href={`/admin/dashboard/products/${product.id}`}
-                                                className="p-2 rounded-lg hover:bg-blue-50 text-blue-500 transition-colors"
-                                                title="View product"
-                                            >
-                                                <Eye className="h-4 w-4" />
-                                            </Link>
                                             <button
-                                                onClick={() => onEdit(product)}
+                                                onClick={(e) => { e.stopPropagation(); onEdit(product); }}
                                                 className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
                                                 title="Edit product"
                                             >
                                                 <Edit className="h-4 w-4" />
                                             </button>
                                             <button
-                                                onClick={() => onDelete(product.id)}
+                                                onClick={(e) => { e.stopPropagation(); onDelete(product.id); }}
                                                 className="p-2 rounded-lg hover:bg-red-50 text-red-500 transition-colors"
                                                 title="Delete product"
                                             >
@@ -143,6 +153,14 @@ export default function ProductTable({ products, onEdit, onDelete }: ProductTabl
                     </tbody>
                 </table>
             </div>
+
+            <TablePagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={filteredProducts.length}
+                pageSize={PAGE_SIZE}
+                onPageChange={setCurrentPage}
+            />
         </div>
     );
 }

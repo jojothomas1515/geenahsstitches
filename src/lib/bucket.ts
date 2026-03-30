@@ -1,4 +1,5 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { randomUUID } from "crypto";
 
 const s3Client = new S3Client({
     endpoint: process.env.S3_ENDPOINT,
@@ -11,18 +12,21 @@ const s3Client = new S3Client({
 });
 
 export async function uploadToBucket(file: File) {
-    const url = process.env.S3_PUBLIC_ENDPOINT + "/" + process.env.S3_BUCKET_NAME + "/" + file.name;
+    // Sanitize filename: strip path separators and prefix with UUID to avoid collisions
+    const safeName = file.name.replace(/[/\\]/g, "_");
+    const key = `${randomUUID()}-${safeName}`;
+    const url = process.env.S3_PUBLIC_ENDPOINT + "/" + process.env.S3_BUCKET_NAME + "/" + key;
     const buffer = Buffer.from(await file.arrayBuffer());
     const params = {
         Bucket: process.env.S3_BUCKET_NAME!,
-        Key: file.name,
+        Key: key,
         Body: buffer,
         ContentType: file.type,
     };
     const command = new PutObjectCommand(params);
     const response = await s3Client.send(command);
     if (response.$metadata.httpStatusCode === 200) {
-        return { url, key: file.name };
+        return { url, key };
     }
     return null;
 }

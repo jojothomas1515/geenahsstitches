@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { requireRole } from "@/lib/auth-guard";
 import { Role } from "@/generated/prisma/enums";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -50,6 +51,7 @@ export type PasswordActionState = {
 };
 
 export async function getUsers() {
+    await requireRole("ADMIN");
     try {
         return await prisma.user.findMany({
             include: {
@@ -64,6 +66,7 @@ export async function getUsers() {
 }
 
 export async function createUser(prevState: UserActionState, formData: FormData): Promise<UserActionState> {
+    await requireRole("ADMIN");
     const rawData = {
         name: formData.get("name"),
         email: formData.get("email"),
@@ -112,6 +115,7 @@ export async function createUser(prevState: UserActionState, formData: FormData)
 }
 
 export async function updateUser(id: string, prevState: UserActionState, formData: FormData): Promise<UserActionState> {
+    await requireRole("ADMIN");
     const rawData = {
         name: formData.get("name"),
         email: formData.get("email"),
@@ -142,6 +146,7 @@ export async function updateUser(id: string, prevState: UserActionState, formDat
 }
 
 export async function deleteUser(id: string) {
+    await requireRole("ADMIN");
     try {
         await prisma.user.delete({
             where: { id },

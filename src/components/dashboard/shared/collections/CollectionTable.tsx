@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Edit, Trash2, Search, Layers, ExternalLink, Eye } from "lucide-react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Edit, Trash2, Search, Layers, ExternalLink } from "lucide-react";
 import type { CollectionTableProps } from "@/interfaces";
 
 export default function CollectionTable({ collections, onEdit, onDelete, onManageProducts, baseUrl = "/admin/dashboard/collections" }: CollectionTableProps) {
+    const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
 
     const filteredCollections = collections.filter((collection) =>
@@ -45,18 +46,15 @@ export default function CollectionTable({ collections, onEdit, onDelete, onManag
                     <tbody className="divide-y divide-background-dark">
                         {filteredCollections.length > 0 ? (
                             filteredCollections.map((collection) => (
-                                <tr key={collection.id} className="hover:bg-background-light/30 transition-colors">
+                                <tr key={collection.id} className="hover:bg-background-light/30 transition-colors cursor-pointer" onClick={() => router.push(`${baseUrl}/${collection.id}`)}>
                                     <td className="py-4 px-6">
                                         <div className="flex items-center gap-3">
                                             <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
                                                 <Layers className="h-5 w-5" />
                                             </div>
-                                            <Link 
-                                                href={`${baseUrl}/${collection.id}`}
-                                                className="font-medium text-basic truncate max-w-[150px] hover:text-primary transition-colors"
-                                            >
+                                            <div className="font-medium text-basic truncate max-w-[150px]">
                                                 {collection.name}
-                                            </Link>
+                                            </div>
                                         </div>
                                     </td>
                                     <td className="py-4 px-6">
@@ -74,29 +72,22 @@ export default function CollectionTable({ collections, onEdit, onDelete, onManag
                                     </td>
                                     <td className="py-4 px-6 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <Link
-                                                href={`${baseUrl}/${collection.id}`}
-                                                className="p-2 rounded-lg hover:bg-blue-50 text-blue-500 transition-colors"
-                                                title="View collection details"
-                                            >
-                                                <Eye className="h-4 w-4" />
-                                            </Link>
                                             <button
-                                                onClick={() => onManageProducts(collection)}
+                                                onClick={(e) => { e.stopPropagation(); onManageProducts(collection); }}
                                                 className="p-2 rounded-lg hover:bg-blue-50 text-blue-500 transition-colors"
                                                 title="Manage products"
                                             >
                                                 <ExternalLink className="h-4 w-4" />
                                             </button>
                                             <button
-                                                onClick={() => onEdit(collection)}
+                                                onClick={(e) => { e.stopPropagation(); onEdit(collection); }}
                                                 className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors"
                                                 title="Edit collection"
                                             >
                                                 <Edit className="h-4 w-4" />
                                             </button>
                                             <button
-                                                onClick={() => onDelete(collection.id)}
+                                                onClick={(e) => { e.stopPropagation(); onDelete(collection.id); }}
                                                 className="p-2 rounded-lg hover:bg-red-50 text-red-500 transition-colors"
                                                 title="Delete collection"
                                             >
