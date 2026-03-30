@@ -4,6 +4,7 @@ import Handlebars from "handlebars";
 import { transporter, defaultMailOptions } from "./nodemailer";
 import type {
   SendMailOptions,
+  WelcomePayload,
   RegistrationCompletePayload,
   VerifyEmailPayload,
   ResetPasswordPayload,
@@ -50,6 +51,15 @@ async function sendTemplateMail({
 }
 
 // ─── Typed Send Functions ─────────────────────────────────────────────────────
+
+export async function sendWelcomeEmail(to: string, payload: WelcomePayload) {
+  return sendTemplateMail({
+    to,
+    subject: "Welcome to Geenah's Stitches! 🎉",
+    templateName: "welcome",
+    context: payload,
+  });
+}
 
 export async function sendRegistrationCompleteEmail(
   to: string,

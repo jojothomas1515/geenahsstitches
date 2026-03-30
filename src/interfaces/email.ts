@@ -14,6 +14,11 @@ export interface RegistrationCompletePayload {
   storeUrl: string;
 }
 
+export interface WelcomePayload {
+  name: string;
+  storeUrl: string;
+}
+
 export interface VerifyEmailPayload {
   name: string;
   verificationUrl: string;

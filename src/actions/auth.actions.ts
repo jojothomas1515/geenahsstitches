@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { headers } from "next/headers";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const loginSchema = z.object({
     email: z.email(),
@@ -64,9 +65,20 @@ export async function register(state: { error: string | null }, formData: FormDa
                 rememberMe: false,
             },
         });
+
+        // Send a welcome email after successful sign up
+        try {
+            await sendWelcomeEmail(data.data.email, {
+                name: data.data.name,
+                storeUrl: process.env.STOREURL || "",
+            });
+        } catch (emailError) {
+            console.error("Failed to send welcome email:", emailError);
+            // We don't want to fail registration if the email fails.
+        }
     }
     catch (error: unknown) {
-        const message = error instanceof Error ? error.message : "Login failed";
+        const message = error instanceof Error ? error.message : "Registration failed";
         return { error: message };
     }
     return redirect("/");
