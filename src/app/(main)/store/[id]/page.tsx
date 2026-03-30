@@ -1,9 +1,11 @@
-import { getProductById } from "@/actions/product.actions";
+import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, ShieldCheck } from "lucide-react";
+import { ChevronRight, ShieldCheck, Sparkles } from "lucide-react";
 import ProductGallery from "@/components/main/ProductGallery";
 import AddToCartButton from "@/components/main/cart/AddToCartButton";
+import ProductCard from "@/components/main/ProductCard";
+import type { Product } from "@/interfaces";
 
 interface ProductPageProps {
   params: {
@@ -13,11 +15,28 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = await getProductById(id);
+
+  const product = await prisma.product.findUnique({
+    where: { id },
+    include: { productImages: true },
+  });
 
   if (!product) {
     notFound();
   }
+
+  // Fetch related products that share at least one category
+  const relatedProducts = product.category.length > 0
+    ? await prisma.product.findMany({
+        where: {
+          id: { not: product.id },
+          category: { hasSome: product.category },
+        },
+        include: { productImages: true },
+        take: 4,
+        orderBy: { createdAt: "desc" },
+      })
+    : [];
 
   const discountedPrice = product.price * (1 - product.discount / 100);
   const hasDiscount = product.discount > 0;
@@ -103,6 +122,28 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           </div>
         </div>
+
+        {/* Related Products */}
+        {relatedProducts.length > 0 && (
+          <section className="mt-28">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="p-2.5 bg-primary/10 text-primary rounded-full">
+                <Sparkles size={18} />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-1">You May Also Like</p>
+                <h2 className="text-3xl sm:text-4xl font-black text-basic uppercase tracking-tighter leading-none">Related Items</h2>
+              </div>
+              <div className="hidden sm:block flex-1 h-px bg-background-light ml-6" />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {relatedProducts.map((relProduct) => (
+                <ProductCard key={relProduct.id} product={relProduct as unknown as Product} />
+              ))}
+            </div>
+          </section>
+        )}
+
       </div>
     </main>
   );

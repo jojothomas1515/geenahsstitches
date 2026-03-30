@@ -38,6 +38,7 @@ async function sendTemplateMail({
       to,
       subject,
       html,
+      name: "Geenah's Stitches",
     });
 
     console.log(`[email] Sent "${templateName}" to ${to} — id: ${info.messageId}`);
